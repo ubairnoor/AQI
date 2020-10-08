@@ -1,0 +1,94 @@
+<link rel="stylesheet" href="static/css/view.css" />
+
+<div class="row">
+
+
+    <div class="">
+        <div class="container">
+
+            <div class="card">
+
+                <div class="card-body" id="bg-body">
+                    <div class="row">
+
+                        <div class="col-md-8">
+                            <h1 class="card-title">
+                                <span id="header">{{data.location}}</span>
+
+
+                            </h1>
+
+                        </div>
+                        <div class="col-md-4">
+                            <span id=" subText ">AQI: {{data.pollution}}</span>
+                        </div>
+
+
+
+                    </div>
+                    <span id=" subText ">{{data.quality}}</span>
+
+
+
+
+
+                    </h2>
+
+                    <p class="card-text ">
+                        <span id="relevant_info ">ATTENTION
+                            <ol>
+                                <li> <span id="header ">{{data.message}}</span></li>
+                        <li> <span id="header ">{{data.message_window}}</span></li>
+                        <li> <span id="header ">{{data.message_outdoor}}</span></li>
+                        </ol>
+
+
+                        </span>
+                    </p>
+
+                </div>
+
+                <svg class="bg-svg " width="350 " height="200 ">
+                    <g>
+                        <rect fill="none " id="canvas_background " height="202 " width="352 " y="-1 " x="-1 " />
+                        <g display="none " overflow="visible " y="0 " x="0 " height="100% " width="100% " id="canvasGrid ">
+                            <rect fill="url(#gridpattern) " stroke-width="0 " y="0 " x="0 " height="100% " width="100% " />
+                        </g>
+                    </g>
+                    <g>
+                        <ellipse ry="65 " rx="286.5 " id="svg_3 " cy="162.5 " cx="181 " stroke-width="1.5 " />
+                        <rect stroke="null " id="svg_4 " height="47 " width="12 " y="74.5 " x="68.5 " fill-opacity="null " stroke-opacity="null " stroke-width="1.5 " />
+                        <path id="svg_6 " d="m51.2175,87.27062l23,-35l23,35l-46,0z " fill-opacity="null " stroke-opacity="null " stroke-width="1.5 " stroke="null " />
+                        <path stroke="null " id="svg_7 " d="m52.2175,70.27062l21.5,-35l21.5,35l-43,0z " fill-opacity="null " stroke-opacity="null " stroke-width="1.5 " />
+                        <rect stroke="null " id="svg_8 " height="31 " width="6 " y="89.5 " x="110.5 " fill-opacity="null " stroke-opacity="null " stroke-width="1.5 " />
+                        <path stroke="null " id="svg_9 " d="m101.2175,94.27062l12,-16l12,16l-24,0z " fill-opacity="null " stroke-opacity="null " stroke-width="1.5 " />
+                        <path stroke="null " id="svg_10 " d="m104.2175,84.27062l9,-18l9,18l-18,0z " fill-opacity="null " stroke-opacity="null " stroke-width="1.5 " />
+                    </g>
+                </svg>
+
+            </div>
+            <div class="card ">
+                <div class="card-back ">
+                    <div class="data-item ">
+                        <h3>Pollution</h3><span id="feels_like ">{{data.pollution}}</span>
+                    </div>
+                    <div class="data-item ">
+                        <h3>Temperature</h3><span id="temp_min ">{{data.weather}}</span>
+                    </div>
+                    <div class="data-item ">
+                        <h3>Wind Speed</h3><span id="temp_max ">{{data.windspeed}}</span>
+                    </div>
+                    <div class="data-item ">
+                        <h3>Pressure</h3><span id="pressure ">{{data.pressure}}</span>
+                    </div>
+                    <div class="data-item ">
+                        <h3>Humidity</h3><span id="humidity ">{{data.Humidity}}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

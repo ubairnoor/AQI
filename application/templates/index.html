@@ -1,0 +1,57 @@
+{% extends "layout.html" %} {% block content %}
+<div class="row">
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Explore the air quality anywhere in the world</h1>
+                    <button> <a href="{{ url_for('courses') }}" class="nav-link {% if courses %}active{% endif %}">Check AQI</a></button> </div>
+
+            <div class="col-md-8">
+                <h1>What causes bad air quality?</h1>
+                <p>
+                    Air pollution can be created by both manmade and natural sources. Natural sources include windblown or kicked-up dust, dirt and sand, volcanic smoke, and burning materials. Manmade sources, meaning that pollution is created by the actions of human beings,
+                    tend to be the leading contributor to air pollution in cities and are inherently more able to be influenced by regulations. Manmade sources primarily include various forms of combustion, such as from gas-powered transportation (planes,
+                    trains, and automobiles) and industrial businesses (power plants, refineries, and factories), biomass burning (the burning of plant matter or coal for heating, cooking, and energy), and agriculture. The contribution of various air
+                    pollution sources to a location’s air quality is highly dependent on the city’s location and regulations. Each location has its own mix of contributors and pollutants. Sources are commonly categorized into the following:
+                </p>
+                <h1>
+                    Industry
+                </h1>
+                <p>
+                    Industry includes pollution from facilities such as manufacturing factories, mines, and oil refineries as well as coal power plants and boilers for heat and power generation. Industrial activity is a major global source of nitrogen oxides (NOx), hydrogen
+                    sulfide, volatile organic compounds (VOCs), and particulate matter, all of which contribute to ozone and smog.
+                </p>
+                <h1>
+
+                    Agriculture</h1>
+                <p>
+                    The heavy use of fertilizers on agricultural land is a significant contributor to fine-particulate air pollution. A study in Geophysical Research Letters found that pollution generated from farms outweighed all other manmade sources of PM in much of the
+                    United States, Europe, Russia, and China.2 Globally, agricultural land use is on the rise due to an increased demand for animal products and per capita food.
+
+
+                </p>
+                <h1>
+
+                </h1>
+                <p>
+                    Air pollution from transport refers primarily to fuel combustion in motor vehicles, such as in cars, trucks, trains, planes, and ships. Transport emissions are a major contributor to elevated levels of fine particulate matter (PM2.5), ozone, and nitrogen
+                    dioxide (NO2). The majority of emissions from transportation occur in the world’s top vehicle markets, as there tends to be a strong correlation between per capita transport emissions and incomes. As standards of living and economic
+                    activity increases, so too does the demand for transportation.3
+
+                </p>
+                <h1>
+                    Natural sources
+
+                </h1>
+                <p>Natural air pollution sources include naturally occurring phenomena such as volcanic activity, wildfires, and dust or sandstorms. The impact of natural sources on air quality is highly dependent on the local environment. For example, locations
+                    near large deserts like the Sahara are greatly impacted by windblown dust and sand, while forested locations are more likely to experience air pollution from wildfires.
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>{% endblock %}

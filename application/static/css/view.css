@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap");
+body {
+    height: 100vh;
+    background: #ffffff;
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    color: white;
+    overflow: hidden;
+}
+
+.warning_mask {
+    color: red;
+    font-size: 10px;
+}
+
+.subText {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container {
+    margin: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background: #26c2e1;
+    overflow: hidden;
+    height: 400px;
+    width: 350px;
+    box-shadow: 1rem 0 5rem #000;
+    border-radius: 5%;
+    transition: 0.2s;
+}
+
+.card:first-child {
+    z-index: 1;
+}
+
+.card:nth-child(2) {
+    height: 350px;
+    width: 250px;
+    margin-left: -150px;
+    background: #595959;
+}
+
+.card:nth-child(2):hover {
+    margin-left: -20px;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-back {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    margin-right: 1rem;
+}
+
+.data-item {
+    height: 30px;
+    margin-top: 2rem;
+    border-bottom: 2px solid white;
+}
+
+.data-item>h3 {
+    margin: 0;
+    float: left;
+}
+
+.data-item>span {
+    float: right;
+}
+
+.card-text {
+    padding-top: 1rem;
+}
+
+.card-title {
+    color: #595959;
+}
+
+.bg-svg {
+    margin-top: -2rem;
+    stroke: #cfdbd5;
+    fill: #cfdbd5;
+}

@@ -1,0 +1,54 @@
+ {% extends "layout.html" %} {% block content %}
+<h1>Explore Your Air Quality</h1>
+
+<!--  Display the Term and Year here --->
+<h3>Any Where in The World</h3>
+
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Country</th>
+                <th scope="col">State</th>
+                <th scope="col">city</th>
+
+                <th scope="col">Enroll</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <!-- Construct the rest of courses here -->
+            {% for data in courseData %}
+            <!-- courseData is varaible in  json file -->
+            <tr>
+                <td scope='row'>{{data["country"]}}</td>
+                <td>{{data["state"]}}</td>
+                <td>{{data["city"]}}</td>
+
+
+
+                <td>
+                    <form action="{{url_for('enrollment')}}" method="GET">
+                        <input type="hidden" name="courseID" value="{{data['country']}}">
+                        <input type="hidden" name="state" value="{{data['state']}}">
+                        <input type="hidden" name="city" value="{{data['city']}}">
+
+
+                        <button>Check</button>
+
+                    </form>
+
+
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
