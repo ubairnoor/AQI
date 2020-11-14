@@ -1,0 +1,60 @@
+{% extends "layout.html" %} {% block content %}
+
+
+<body data-open="click" data-menu="vertical-menu" data-col="1-column" class=" 1-column  fixed-navbar">
+
+    <!-- navbar-fixed-top-->
+
+
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+    <div class="app-content content container-fluid">
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                    <div class="px-2 py-3 row mb-0 mt-3">
+                        <img class="img-fluid mx-auto d-block pb-3 pt-4 width-65-per" src="static/app-assets/images/logo/robust-logo-dark-big.png" alt="Robust Search">
+                        <fieldset class="form-group position-relative">
+                            <input type="text" class="form-control form-control-lg input-lg" id="iconLeft" placeholder="Explore baihAQI">
+                            <div class="form-control-position">
+                                <i class="icon-microphone2 font-medium-4"></i>
+                            </div>
+                        </fieldset>
+                        <div class="row py-2">
+                            <div class="col-xs-12 text-xs-center">
+                                <a href="search-website.html" class="btn btn-primary btn-md"><i class="icon-ios-search-strong"></i> baihAQI Search </a>
+                                <span class="dropdown">
+                        <button id="btnSearchDrop" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn btn-warning  btn-md dropdown-toggle dropdown-menu-right"><i class="icon-cog3"></i> Advanced search</button>
+                        <span aria-labelledby="btnSearchDrop" class="dropdown-menu mt-1 dropdown-menu-right">
+                            <a href="search-website.html" class="dropdown-item"><i class="icon-link4"></i> Web</a>
+                            <a href="#" class="dropdown-item"><i class="icon-image4"></i> Images</a>
+                            <a href="#" class="dropdown-item"><i class="icon-video2"></i> Videos</a>
+                            <a href="#" class="dropdown-item"><i class="icon-map6"></i> Maps</a>
+                            <span class="dropdown-divider block"></span>
+                                <a href="#" class="dropdown-item"><i class="icon-smile"></i> I'm Feeling Lucky</a>
+                                </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row py-1">
+                            <div class="text-xs-center">
+                                <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-facebook"><span class="icon-facebook3"></span></a>
+                                <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-twitter"><span class="icon-twitter3"></span></a>
+                                <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-linkedin"><span class="icon-linkedin3 font-medium-4"></span></a>
+                                <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-github"><span class="icon-github font-medium-4"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+
+
+
+
+
+</body>{% endblock %}
