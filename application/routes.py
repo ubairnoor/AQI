@@ -1,6 +1,87 @@
 from application import app,db
 from flask import render_template, request,Response,json
 from pip._vendor import requests
+
+@app.route("/")
+@app.route("/index")
+@app.route("/home")
+def index():
+    return render_template("index.html",index=True)
+@app.route("/courses")
+@app.route("/courses/<term>")
+def courses(term=" Spring 2019"):
+    return render_template("courses.html", courseData=courseData, courses= True, term=term)
+@app.route("/register")
+def register():
+    return render_template("index2.html", register= True)
+@app.route("/login")
+def login():
+    return render_template("login.html", login= True)
+@app.route("/search")
+def  search():
+    return render_template("search-page.html")
+@app.route("/enrollment")
+def enrollment():
+    id = request.args.get('courseID')
+    title = request.args.get('title')
+    term = request.args.get('term')
+    state = request.args.get('state')
+    city = request.args.get('city')
+    url = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=india&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970" %(city,state)
+    payload = {}
+    headers= {}
+    response = requests.request("GET", url, headers=headers, data = payload)
+    print(url)
+    print(json.loads(response.text))
+    airResponse = json.loads(response.text)["data"]
+ 
+    qualityValue=airResponse["current"]["pollution"]["aqius"]
+    message_window=None
+    message=None
+    message_window=None
+    message_outdoor=None
+    
+
+    if(qualityValue<50):
+        quality="Good"
+        message="Wear a mask outdoors" 
+       
+    elif(qualityValue>=51 and qualityValue<99):
+        quality="Satisfactory"
+        message="Wear a mask outdoors"
+        message_outdoor="Avoid Outdoor Excercise" 
+        message_window="Close your windows to avoid dirty outdoor air"
+    elif(qualityValue>100 and qualityValue<=200):
+        quality="Unhealthy For Sensitive Groups"
+        message="Wear a mask outdoors"
+        message_window="Close your windows to avoid dirty outdoor air"
+        message_outdoor="Avoid Outdoor Games"
+    elif(qualityValue>200 and qualityValue<=300):
+        quality="Unhealthy"
+    elif(qualityValue>301 and qualityValue<=400):
+        quality="Very Poor"
+    else:
+        quality="Severe"
+    #return render_template("enrollment.html", enrollment=True, data={"id":id, "title":title, "term":term ,"location":airResponse["city"], "pollution":airResponse["current"]["pollution"]["aqius"],"quality":quality})
+    return render_template("index.html", enrollment=True, data={"id":id, "title":title, "term":term ,"location":airResponse["city"], "pollution":airResponse["current"]["pollution"]["aqius"],"weather":airResponse["current"]["weather"]["tp"],"Humidity":airResponse["current"]["weather"]["hu"],"pressure":airResponse["current"]["weather"]["pr"],"windspeed":airResponse["current"]["weather"]["ws"],"quality":quality,"message":message,"message_window":message_window,"message_outdoor":message_outdoor})
+
+class  User(db.Document):
+    user_id = db.IntField(unique = True)
+    first_name = db.StringField(max_length=50)
+    last_name = db.StringField(max_length=30)
+    email = db.StringField(max_length=30)
+    password = db.StringField(max_length =30)
+@app.route("/user")
+def user():
+    User(user_id=1, first_name="ubair",last_name="noor",email="ubairnoor@gmail.com", password="1234567").save()
+    users = User.objects.all()
+    return render_template("user.html", users=users)
+
+# @app.route("/getdata")
+# def api():
+   
+#course data
+
 courseData = [ {"country":"india","state":"Jammu and kashmir","city":"Jammu"},
 {"country":"india","state":"Jammu and kashmir","city":"Srinagar"},
 {"country":"india","state":"Andhra Pradesh","city":"Amaravati"},
@@ -147,88 +228,4 @@ courseData = [ {"country":"india","state":"Jammu and kashmir","city":"Jammu"},
 {"country":"india","state":"West Bengal","city":"Kolkata"},
 {"country":"india","state":"West Bengal","city":"Medinipur"},
 {"country":"india","state":"West Bengal","city":"Siliguri"},
-{"country":"india","state":"West Bengal","city":"Solap"}
-
-     ]
-
-@app.route("/")
-@app.route("/index")
-@app.route("/home")
-def index():
-    return render_template("index.html",index=True)
-@app.route("/courses")
-@app.route("/courses/<term>")
-
-def courses(term=" Spring 2019"):
-    return render_template("courses.html", courseData=courseData, courses= True, term=term)
-
-@app.route("/register")
-def register():
-    return render_template("register.html", register= True)
-
-@app.route("/login")
-def login():
-    return render_template("login.html", login= True)
-@app.route("/enrollment")
-def enrollment():
-    id = request.args.get('courseID')
-    title = request.args.get('title')
-    term = request.args.get('term')
-    state = request.args.get('state')
-    city = request.args.get('city')
-    
-    url = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=india&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970" %(city,state)
-    payload = {}
-    headers= {}
-    response = requests.request("GET", url, headers=headers, data = payload)
-    print(url)
-    print(json.loads(response.text))
-    airResponse = json.loads(response.text)["data"]
- 
-    qualityValue=airResponse["current"]["pollution"]["aqius"]
-    message_window=None
-    message=None
-    message_window=None
-    message_outdoor=None
-    
-
-    if(qualityValue<50):
-        quality="Good"
-        message="Wear a mask outdoors" 
-       
-    elif(qualityValue>=51 and qualityValue<99):
-        quality="Satisfactory"
-        message="Wear a mask outdoors"
-        message_outdoor="Avoid Outdoor Excercise" 
-        message_window="Close your windows to avoid dirty outdoor air"
-    elif(qualityValue>100 and qualityValue<=200):
-        quality="Unhealthy For Sensitive Groups"
-        message="Wear a mask outdoors"
-        message_window="Close your windows to avoid dirty outdoor air"
-        message_outdoor="Avoid Outdoor Games"
-    elif(qualityValue>200 and qualityValue<=300):
-        quality="Unhealthy"
-    elif(qualityValue>301 and qualityValue<=400):
-        quality="Very Poor"
-    else:
-        quality="Severe"
-    
-    #return render_template("enrollment.html", enrollment=True, data={"id":id, "title":title, "term":term ,"location":airResponse["city"], "pollution":airResponse["current"]["pollution"]["aqius"],"quality":quality})
-    return render_template("airQuality.html", enrollment=True, data={"id":id, "title":title, "term":term ,"location":airResponse["city"], "pollution":airResponse["current"]["pollution"]["aqius"],"weather":airResponse["current"]["weather"]["tp"],"Humidity":airResponse["current"]["weather"]["hu"],"pressure":airResponse["current"]["weather"]["pr"],"windspeed":airResponse["current"]["weather"]["ws"],"quality":quality,"message":message,"message_window":message_window,"message_outdoor":message_outdoor})
-
-
-class  User(db.Document):
-    user_id = db.IntField(unique = True)
-    first_name = db.StringField(max_length=50)
-    last_name = db.StringField(max_length=30)
-    email = db.StringField(max_length=30)
-    password = db.StringField(max_length =30)
-@app.route("/user")
-def user():
-    User(user_id=1, first_name="ubair",last_name="noor",email="ubairnoor@gmail.com", password="1234567").save()
-    users = User.objects.all()
-    return render_template("user.html", users=users)
-
-# @app.route("/getdata")
-# def api():
-   
+{"country":"india","state":"West Bengal","city":"Solap"}]
