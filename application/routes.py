@@ -20,6 +20,28 @@ def login():
 @app.route("/search")
 def  search():
     return render_template("search-page.html")
+@app.route("/worldmap")
+def worldMap():
+    return render_template("WorldMap.html")
+@app.route("/asia")
+def asia():
+    return render_template("asia.html")
+
+@app.route("/europe")
+def europe():
+    return render_template("europe.html")
+@app.route("/africa")
+def africa():
+    return render_template("africa.html")
+@app.route("/southAmerica")
+def southAmerica():
+    return render_template("southAmerica.html")
+@app.route("/northAmerica")
+def northAmerica():
+    return render_template("northAmerica.html")
+@app.route("/australia")
+def australia():
+    return render_template("australia.html")
 @app.route("/enrollment")
 def enrollment():
     id = request.args.get('courseID')
@@ -64,7 +86,7 @@ def enrollment():
         quality="Severe"
     #return render_template("enrollment.html", enrollment=True, data={"id":id, "title":title, "term":term ,"location":airResponse["city"], "pollution":airResponse["current"]["pollution"]["aqius"],"quality":quality})
     return render_template("index.html", enrollment=True, data={"id":id, "title":title, "term":term ,"location":airResponse["city"], "pollution":airResponse["current"]["pollution"]["aqius"],"weather":airResponse["current"]["weather"]["tp"],"Humidity":airResponse["current"]["weather"]["hu"],"pressure":airResponse["current"]["weather"]["pr"],"windspeed":airResponse["current"]["weather"]["ws"],"quality":quality,"message":message,"message_window":message_window,"message_outdoor":message_outdoor})
-
+#                             
 class  User(db.Document):
     user_id = db.IntField(unique = True)
     first_name = db.StringField(max_length=50)

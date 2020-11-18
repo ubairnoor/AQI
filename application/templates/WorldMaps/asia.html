@@ -1,0 +1,37 @@
+{% extends "layout.html" %} {% block content %}
+<link rel="stylesheet" type="text/css" href="static/app-assets/vendors/css/charts/jqvmap.css">
+
+<body data-open="click" data-menu="vertical-menu" data-col="2-columns" class="vertical-layout vertical-menu 2-columns  fixed-navbar">
+
+    <div class="app-content content container-fluid">
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">World Map</h4>
+                                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                        <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body collapse in">
+                                <div class="card-block height-400">
+                                    <div id="world-map" class="jqvmap-area"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>{% endblock %}
