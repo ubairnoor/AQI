@@ -44,6 +44,9 @@ def northAmerica():
 @app.route("/australia")
 def australia():
     return render_template("australia.html")
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
 @app.route("/enrollment")
 def enrollment():
     id = request.args.get('courseID')

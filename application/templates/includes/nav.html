@@ -11,18 +11,41 @@
         </div>
         <div class="navbar-container content container-fluid">
             <div id="navbar-mobile" class="collapse navbar-toggleable-sm">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item hidden-sm-down"><a class="nav-link nav-menu-main menu-toggle hidden-xs"><i class="icon-menu5">         </i></a></li>
-                    <li class="nav-item hidden-sm-down"><a href="#" class="nav-link nav-link-expand"><i class="ficon icon-expand2"></i></a></li>
-                    <li class="nav-item hidden-sm-down"><a href="{{ url_for('courses') }}" target="_blank" class="btn btn-success upgrade-to-pro">Home</a></li>
-                    <div aria-labelledby="dropdown-flag" class="dropdown-menu"><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-gb"></i> English</a><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-fr"></i> French</a><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-cn"></i> Chinese</a>
-                        <a href="#" class="dropdown-item"><i class="flag-icon flag-icon-de"></i> German</a>
-                    </div>
-                    <div aria-labelledby="dropdown-flag" class="dropdown-menu"><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-gb"></i> English</a><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-fr"></i> French</a><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-cn"></i> Chinese</a>
-                        <a href="#" class="dropdown-item"><i class="flag-icon flag-icon-de"></i> German</a>
-                    </div>
-                </ul>
 
+
+                <ul class="nav navbar-nav ">
+                    <li class="dropdown dropdown-language nav-item"><a href="{{url_for('index')}}" aria-haspopup="true" aria-expanded="false" class=" nav-link"><i class="icon-home3"></i>Home</a>
+
+
+
+                    </li>
+                    <li class="dropdown dropdown-language nav-item"><a id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle nav-link"><i class="icon-sphere"></i><span class="selected-language">World Air Quality</span></a>
+                        <div aria-labelledby="dropdown-flag" class="dropdown-menu"><a href="{{url_for('asia')}}" class="dropdown-item"><i class="flag-icon flag-icon-gb"></i> Asia</a><a href="" class="dropdown-item"><i class="flag-icon flag-icon-fr"></i> Australia</a><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-cn"></i> Africa</a>
+                            <a href="{{url_for('europe')}}" class="dropdown-item"><i class="flag-icon flag-icon-de"></i> Europe</a>
+                        </div>
+
+
+                    </li>
+                    <li class="dropdown dropdown-language nav-item"><a id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle nav-link"><i class="icon-newspaper"></i><span class="selected-language">News</span></a>
+                        <div aria-labelledby="dropdown-flag" class="dropdown-menu"><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-gb"></i> English</a><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-fr"></i> French</a><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-cn"></i> Chinese</a>
+                            <a href="#" class="dropdown-item"><i class="flag-icon flag-icon-de"></i> German</a>
+                        </div>
+
+
+                    </li>
+                    <li class="dropdown dropdown-language nav-item"><a id="dropdown-flag" href="{{url_for('asia')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle nav-link"><i class="flag-icon flag-icon-gb"></i><span class="selected-language">Support</span></a>
+                        <div aria-labelledby="dropdown-flag" class="dropdown-menu"><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-gb"></i> English</a><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-fr"></i> French</a><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-cn"></i> Chinese</a>
+                            <a href="#" class="dropdown-item"><i class="flag-icon flag-icon-de"></i> German</a>
+                        </div>
+
+
+                    </li>
+                    <li class="dropdown dropdown-language nav-item"><a href="{{url_for('contact')}}" aria-haspopup="true" aria-expanded="false" class=" nav-link"><i class="icon-phone"></i>Contact</a>
+
+
+                    </li>
+
+                </ul>
                 <ul class="nav navbar-nav float-xs-right">
                     <li class="dropdown dropdown-language nav-item"><a id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle nav-link"><i class="flag-icon flag-icon-gb"></i><span class="selected-language">English</span></a>
                         <div aria-labelledby="dropdown-flag" class="dropdown-menu"><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-gb"></i> English</a><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-fr"></i> French</a><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-cn"></i> Chinese</a>
@@ -139,7 +162,7 @@
                             <li class="dropdown-menu-footer"><a href="javascript:void(0)" class="dropdown-item text-muted text-xs-center">Read all messages</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown dropdown-user nav-item"><a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar avatar-online"><img src="../../app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span><span class="user-name">John Doe</span></a>
+                    <li class="dropdown dropdown-user nav-item"><a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar avatar-online"><img src="static/app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span><span class="user-name">John Doe</span></a>
                         <div class="dropdown-menu dropdown-menu-right"><a href="#" class="dropdown-item"><i class="icon-head"></i> Edit Profile</a><a href="#" class="dropdown-item"><i class="icon-mail6"></i> My Inbox</a><a href="#" class="dropdown-item"><i class="icon-clipboard2"></i> Task</a>
                             <a href="#" class="dropdown-item"><i class="icon-calendar5"></i> Calender</a>
                             <div class="dropdown-divider"></div><a href="#" class="dropdown-item"><i class="icon-power3"></i> Logout</a>
