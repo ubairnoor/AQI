@@ -20,13 +20,15 @@ def login():
 @app.route("/search")
 def  search():
     return render_template("search-page.html")
+@app.route("/result")
+def result():
+    return render_template("result.html")
 @app.route("/worldmap")
 def worldMap():
     return render_template("WorldMap.html")
 @app.route("/asia")
 def asia():
     return render_template("asia.html")
-
 @app.route("/europe")
 def europe():
     return render_template("europe.html")
