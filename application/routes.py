@@ -1,6 +1,8 @@
 from application import app,db
 from flask import render_template, request,Response,json
 from pip._vendor import requests
+from flask_sqlalchemy import SQLAlchemy
+
 courseData = [ {"country":"india","state":"Jammu and kashmir","city":"Jammu"},
 {"country":"india","state":"Jammu and kashmir","city":"Srinagar"},
 {"country":"india","state":"Andhra Pradesh","city":"Amaravati"},
