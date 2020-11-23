@@ -1,120 +1,116 @@
 {% extends "layout.html" %} {% block content %}
 
 <body data-open="click" data-menu="vertical-menu" data-col="2-columns" class="  1-column 2-columns  fixed-navbar">
-
-
     <div class="app-content content container-fluid">
         <div class="content-wrapper">
             <div class="content-header row">
-            </div>
-            <div class="content-body">
-                <div class="row match-height">
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title text-info text-bold-900">Live City Ranking</h4>
-                                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-                                <div class="heading-elements">
-                                    <ul class="list-inline mb-0">
-                                        <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
-                                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
-                                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body collapse in">
-                                <div class="card-block">
-                                    <div class="media-list">
-                                        <div class="media">
-                                            <a class="media-left" href="#">
-                                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-3.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Cookie candy</h4>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <a class="media-left" href="#">
-                                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-6.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Tootsie roll dessert </h4>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <a class="media-left" href="#">
-                                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-13.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Lemon drops ice cream</h4>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-
-                                            <div class="media-body">
-                                                <button class="btn btn-warning btn-min-width mr-1 mb-1 btn-block">See All Rankings</button>
-                                            </div>
-                                        </div>
-
+                <div class="col-xl-3 col-lg-6 col-xs-12">
+                    <div class="card bg-teal">
+                        <div class="card-body">
+                            <div class="card-block">
+                                <div class="media">
+                                    <div class="media-left media-middle">
+                                        <i class="icon-trending_up white font-large-2 float-xs-left"></i>
+                                    </div>
+                                    <div class="media-body white text-xs-right">
+                                        <h3>64.89 %</h3>
+                                        <span>Bounce Rate</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!--new section -->
-                    <div class="col-xl-8 col-lg-6">
-                        <div class="card ">
-                            <div class="card-header">
-                                <h4 class="card-title text-danger">Media List</h4>
-                                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-                                <div class="heading-elements">
-                                    <ul class="list-inline mb-0">
-                                        <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
-                                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
-                                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
-                                    </ul>
+                </div>
+                <div class="content-body">
+                    <section id="minimal-statistics-bg">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-12">
+                                <div class="card card-inverse bg-info">
+                                    <div class="card-body">
+                                        <div class="position-relative">
+                                            <div class="chart-title position-absolute mt-2 ml-2 white">
+                                                <h1 class="display-4">100%</h1>
+                                                <span>Employees Satisfied</span>
+                                            </div>
+                                            <canvas id="emp-satisfaction" class="height-450 block"></canvas>
+                                            <div class="chart-stats position-absolute position-bottom-0 position-right-0 mb-2 mr-3 white">
+                                                <a href="#" class="btn bg-info bg-darken-3 mr-1 white">Statistics <i class="icon-stats-bars"></i></a> for the last year.
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card-body collapse in">
-                                <div class="card-block">
-                                    <div class="media-list media-bordered">
-                                        <div class="media">
-                                            <span class="media-left">
-             <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-3.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-         </span>
-                                            <div class="media-body">
-                                                <h5 class="media-heading">Cookie candy</h5>
+                            <div class="col-xl-8 col-lg-6 col-xs-12">
+                                <div class="row">
+
+                                    <div class="card bg-cyan">
+                                        <div class="card-body">
+                                            <div class="card-block">
+                                                <div class="media">
+                                                    <div class="media-left media-middle">
+                                                        <i class="icon-pencil white font-large-2 float-xs-left"></i>
+                                                    </div>
+                                                    <div class="media-body white text-xs-right">
+                                                        <h3>278</h3>
+                                                        <span>New Posts</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="media">
-                                            <span class="media-left">
-             <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-6.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-         </span>
-                                            <div class="media-body">
-                                                <h5 class="media-heading">Tootsie roll dessert</h5>
+                                    </div>
+                                    <div class="card bg-cyan">
+                                        <div class="card-body">
+                                            <div class="card-block">
+                                                <div class="media">
+                                                    <div class="media-left media-middle">
+                                                        <i class="icon-pencil white font-large-2 float-xs-left"></i>
+                                                    </div>
+                                                    <div class="media-body white text-xs-right">
+                                                        <h3>278</h3>
+                                                        <span>New Posts</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="media">
-                                            <span class="media-left">
-             <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-15.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-         </span>
-                                            <div class="media-body">
-                                                <h5 class="media-heading">Lemon drops ice cream</h5>
+                                    </div>
+                                    <div class="card bg-cyan">
+                                        <div class="card-body">
+                                            <div class="card-block">
+                                                <div class="media">
+                                                    <div class="media-left media-middle">
+                                                        <i class="icon-pencil white font-large-2 float-xs-left"></i>
+                                                    </div>
+                                                    <div class="media-body white text-xs-right">
+                                                        <h3>278</h3>
+                                                        <span>New Posts</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card bg-cyan">
+                                        <div class="card-body">
+                                            <div class="card-block">
+                                                <div class="media">
+                                                    <div class="media-left media-middle">
+                                                        <i class="icon-pencil white font-large-2 float-xs-left"></i>
+                                                    </div>
+                                                    <div class="media-body white text-xs-right">
+                                                        <h3>278</h3>
+                                                        <span>New Posts</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-
-
-
+                    </section>
                 </div>
             </div>
         </div>
     </div>
-</body>{% endblock %}
+
+</body>
+{% endblock %}

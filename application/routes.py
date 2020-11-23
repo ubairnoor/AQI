@@ -20,9 +20,7 @@ def login():
 @app.route("/search")
 def  search():
     return render_template("search-page.html")
-@app.route("/result")
-def result():
-    return render_template("result.html")
+
 @app.route("/worldmap")
 def worldMap():
     return render_template("WorldMap.html")
@@ -41,6 +39,20 @@ def southAmerica():
 @app.route("/northAmerica")
 def northAmerica():
     return render_template("northAmerica.html")
+@app.route('/searchT', methods = ['GET', 'POST'])
+def searchT():
+    if request.method == 'POST':
+        city = request.form.get('city')
+        print(city)
+        return render_template("Result.html")
+        # return redirect(url_for('booking', date=date))
+    # return render_template('main/index.html')
+
+
+# @app.route('/booking')
+# def booking():
+#     date = request.args.get('date', None)
+#     return render_template('main/booking.html', date=date) 
 @app.route("/australia")
 def australia():
     return render_template("australia.html")

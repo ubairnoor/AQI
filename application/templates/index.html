@@ -6,6 +6,8 @@
     <div class="app-content content container-fluid">
         <div class="content-wrapper">
             <div class="content-header row">
+
+
             </div>
             <div class="content-body">
                 <div class="row match-height">
@@ -15,22 +17,30 @@
                             <h6 class=" text-sm-right  text-bold-700 ">Anywhere In The World</h6>
                         </div>
                     </div>
+                    <form action="/searchT" method="post">
 
-                    <div class="col-md-7 ">
-                        <div class="px-2 py-3 row mb-0 mt-3">
-                            <fieldset class="form-group position-relative no-border-top">
-                                <input type="text" class="form-control form-control-lg input-lg no-border-top no-border-left no-border-right bottom-darken-4 " id="iconLeft" placeholder="Your country, city or location…">
-                                <div class="form-control-position">
-                                    <i class="icon-microphone2 font-medium-4"></i>
-                                </div>
-                            </fieldset>
+                        <div class="col-md-7 ">
+                            <div class="px-2 py-3 row mb-0 mt-3">
+                                <fieldset class="form-group position-relative no-border-top">
+                                    <input type="text" class="form-control form-control-lg input-lg no-border-top no-border-left no-border-right bottom-darken-4 " id="city" name="city" placeholder="Your country, city or location…">
+                                    <div class="form-control-position">
+                                        <i class="icon-microphone2 font-medium-4"> <input type="submit" value="Submit"></i>
+
+                                    </div>
+                                </fieldset>
 
 
+                            </div>
                         </div>
-                    </div>
+
+                    </form>
+
                 </div>
 
-
+                <!-- <form action="/" method="post">
+                    <label for="text">Date: </label>
+                    <input type="text" id="date" name="date">
+                </form> -->
                 <!-- Recent invoice with Statistics -->
                 <div class="row match-height">
                     <div class="col-xl-4 col-lg-6">
