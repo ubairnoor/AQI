@@ -44,9 +44,56 @@ def searchT():
     if request.method == 'POST':
         city = request.form.get('city')
         print(city)
-        return render_template("Result.html")
-        # return redirect(url_for('booking', date=date))
-    # return render_template('main/index.html')
+        # return render_template("Result.html")
+        state = 'Jammu and kashmir'
+        # city = 'srinagar'
+        url = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=india&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970" %(city,state)
+        payload = {}
+        headers= {}
+        response = requests.request("GET", url, headers=headers, data = payload)
+        print(url)
+        print(json.loads(response.text))
+        airResponse = json.loads(response.text)["data"]
+ 
+        # qualityValue=airResponse["current"]["pollution"]["aqius"]
+        # message_window=None
+        # message=None
+        # message_window=None
+        # message_outdoor=None
+        
+
+        # if(qualityValue<50):
+        #     quality="Good"
+        #     message="Wear a mask outdoors"   
+        # elif(qualityValue>=51 and qualityValue<99):
+        #     quality="Satisfactory"
+        #     message="Wear a mask outdoors"
+        #     message_outdoor="Avoid Outdoor Excercise" 
+        #     message_window="Close your windows to avoid dirty outdoor air"
+        # elif(qualityValue>100 and qualityValue<=200):
+        #     quality="Unhealthy For Sensitive Groups"
+        #     message="Wear a mask outdoors"
+        #     message_window="Close your windows to avoid dirty outdoor air"
+        #     message_outdoor="Avoid Outdoor Games"
+        # elif(qualityValue>200 and qualityValue<=300):
+        #     quality="Unhealthy"
+        # elif(qualityValue>301 and qualityValue<=400):
+        #     quality="Very Poor"
+        # else:
+        #     quality="Severe"
+        #return render_template("enrollment.html", enrollment=True, data={"id":id, "title":title, "term":term ,"location":airResponse["city"], "pollution":airResponse["current"]["pollution"]["aqius"],"quality":quality})
+        # return render_template("result.html", enrollment=True, data={"id":id, "title":title, "term":term ,"location":airResponse["city"], "pollution":airResponse["current"]["pollution"]["aqius"],"weather":airResponse["current"]["weather"]["tp"],"Humidity":airResponse["current"]["weather"]["hu"],"pressure":airResponse["current"]["weather"]["pr"],"windspeed":airResponse["current"]["weather"]["ws"],"quality":quality,"message":message,"message_window":message_window,"message_outdoor":message_outdoor})
+        data = {}
+        data['city']=airResponse['city']
+        data['state']=airResponse['state']
+        data['pollution']=airResponse["current"]["pollution"]["aqius"]
+        data['ts']=airResponse["current"]["weather"]["ts"]
+
+        return render_template("Result.html",data=data)
+
+        
+            # return redirect(url_for('booking', date=date))
+        # return render_template('main/index.html')
 
 
 # @app.route('/booking')

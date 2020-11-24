@@ -1,4 +1,5 @@
 {% extends "layout.html" %} {% block content %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 
 <body data-open="click" data-menu="vertical-menu" data-col="2-columns" class="  1-column 2-columns  fixed-navbar">
     <div class="app-content content container-fluid">
@@ -9,8 +10,8 @@
                     <div class="card ">
                         <div class="col-md-12 text-xs-left">
                             <div class="px-2 py-3 row mb-0 mt-3">
-                                <h1 class=" light-black text-bold-700 text-justify ">Air Quality in Srinagar</h1>
-                                <h6 class=" text-bold-700 tag tag-danger ">Air quality index (AQI) and PM2.5 air pollution in Srinagar
+                                <h1 class=" light-black text-bold-700 text-justify ">Air Quality in {{data.city}}</h1>
+                                <h6 class=" text-bold-700 tag tag-danger ">Air quality index (AQI) and PM{{data.city}} air pollution in {{data.city}}
                                 </h6>
                             </div>
                         </div>
@@ -53,52 +54,50 @@
                             </div>
                             <div class="col-xl-8 col-lg-6 col-xs-12">
                                 <div class="row">
-                                    <div class="card bg-deep-orange">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div class="media">
+                                                <div class="p-2 text-xs-center bg-cyan media-left media-middle">
+                                                    <i class="icon-camera7 font-large-2 white"></i>
+                                                </div>
+                                                <div class="p-2 media-body">
+                                                    <h5>New Products</h5>
+                                                    <h5 class="text-bold-400">28</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div class="card-body">
+                                                <div class="card-block">
+                                                    <div class="media">
+                                                        <div class="media-body text-xs-left">
+                                                            <h3 class="cyan">278</h3>
+                                                            <span>New Posts</span>
+                                                        </div>
+                                                        <div class="media-right media-middle">
+                                                            <i class="icon-pencil cyan font-large-2 float-xs-right"></i>
+                                                        </div>
+                                                    </div>
+                                                    <progress class="progress progress-sm progress-cyan mt-1 mb-0" value="80" max="100"></progress>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card ">
                                         <div class="card-body">
                                             <div class="card-block">
                                                 <div class="media">
-                                                    <div class="media-body white media-middle">
-                                                        <h3>64.89 %</h3>
-                                                        <span>US AQI</span>
-                                                    </div>
-                                                    <div class="media-body white media-middle">
-                                                        <h3>64.89 %</h3>
-                                                        <span>LIVE AQI INDEX</span>
+                                                    <div class="media-body text-xs-left">
+                                                        <h3 class="cyan">278</h3>
+                                                        <span>New Posts</span>
                                                     </div>
                                                     <div class="media-right media-middle">
-                                                        <i class="icon-happy2 white font-large-2 float-xs-right"></i>
+                                                        <i class="icon-pencil cyan font-large-2 float-xs-right"></i>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card bg-cyan">
-                                        <div class="card-body">
-                                            <div class="card-block">
-                                                <div class="media">
-                                                    <div class="media-left media-middle">
-                                                        <i class="icon-pencil white font-large-2 float-xs-left"></i>
-                                                    </div>
-                                                    <div class="media-body white text-xs-right">
-                                                        <h3>278</h3>
-                                                        <span>New Posts</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card bg-cyan">
-                                        <div class="card-body">
-                                            <div class="card-block">
-                                                <div class="media">
-                                                    <div class="media-left media-middle">
-                                                        <i class="icon-pencil white font-large-2 float-xs-left"></i>
-                                                    </div>
-                                                    <div class="media-body white text-xs-right">
-                                                        <h3>278</h3>
-                                                        <span>New Posts</span>
-                                                    </div>
-                                                </div>
+                                                <progress class="progress progress-sm progress-cyan mt-1 mb-0" value="80" max="100"></progress>
                                             </div>
                                         </div>
                                     </div>
@@ -160,7 +159,8 @@
                             <div class="col-xl-6 col-lg-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="card-title">Ongoing Projects</h4>
+                                        <h4 class="card-title">{{data.city}} air quality index (AQI) forecast
+                                        </h4>
                                         <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
                                         <div class="heading-elements">
                                             <ul class="list-inline mb-0">
@@ -177,17 +177,17 @@
                                             <table class="table table-hover mb-0">
                                                 <thead>
                                                     <tr>
-                                                        <th>Project</th>
-                                                        <th>Owner</th>
-                                                        <th>Priority</th>
-                                                        <th>Progress</th>
+                                                        <th>Day</th>
+                                                        <th>Pollution Level</th>
+                                                        <th>Weather</th>
+                                                        <th>Temperature</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td class="text-truncate">ReactJS App</td>
+                                                        <td class="text-truncate">{{data.ts}}</td>
                                                         <td class="text-truncate">
-                                                            <span class="avatar avatar-xs"><img src="../../app-assets/images/portrait/small/avatar-s-4.png" alt="avatar"></span> <span>Sarah W.</span>
+                                                            <span class="avatar avatar-xs"><img src="static/app-assets/images/portrait/small/avatar-s-4.png" alt="avatar"></span> <span>{{data.pollution}}</span>
                                                         </td>
                                                         <td class="text-truncate"><span class="tag tag-success">Low</span></td>
                                                         <td class="valign-middle">
@@ -195,9 +195,9 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-truncate">Fitness App</td>
+                                                        <td class="text-truncate">{{data.title}}</td>
                                                         <td class="text-truncate">
-                                                            <span class="avatar avatar-xs"><img src="../../app-assets/images/portrait/small/avatar-s-5.png" alt="avatar"></span> <span>Edward C.</span>
+                                                            <span class="avatar avatar-xs"><img src="static/app-assets/images/portrait/small/avatar-s-5.png" alt="avatar"></span> <span>Edward C.</span>
                                                         </td>
                                                         <td class="text-truncate"><span class="tag tag-warning">Medium</span></td>
                                                         <td class="valign-middle">
@@ -205,9 +205,9 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-truncate">SOU plugin</td>
+                                                        <td class="text-truncate">{{data.term}}</td>
                                                         <td class="text-truncate">
-                                                            <span class="avatar avatar-xs"><img src="../../app-assets/images/portrait/small/avatar-s-6.png" alt="avatar"></span> <span>Carol E.</span>
+                                                            <span class="avatar avatar-xs"><img src="static/app-assets/images/portrait/small/avatar-s-6.png" alt="avatar"></span> <span>Carol E.</span>
                                                         </td>
                                                         <td class="text-truncate"><span class="tag tag-danger">Critical</span></td>
                                                         <td class="valign-middle">
@@ -215,9 +215,9 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-truncate">Android App</td>
+                                                        <td class="text-truncate">{{data.location}}</td>
                                                         <td class="text-truncate">
-                                                            <span class="avatar avatar-xs"><img src="../../app-assets/images/portrait/small/avatar-s-7.png" alt="avatar"></span> <span>Gregory L.</span>
+                                                            <span class="avatar avatar-xs"><img src="static/app-assets/images/portrait/small/avatar-s-7.png" alt="avatar"></span> <span>Gregory L.</span>
                                                         </td>
                                                         <td class="text-truncate"><span class="tag tag-success">Low</span></td>
                                                         <td class="valign-middle">
@@ -225,9 +225,9 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-truncate">ABC Inc. UI/UX</td>
+                                                        <td class="text-truncate">{{data.pollution}}</td>
                                                         <td class="text-truncate">
-                                                            <span class="avatar avatar-xs"><img src="../../app-assets/images/portrait/small/avatar-s-8.png" alt="avatar"></span> <span>Susan S.</span>
+                                                            <span class="avatar avatar-xs"><img src="static/app-assets/images/portrait/small/avatar-s-8.png" alt="avatar"></span> <span>Susan S.</span>
                                                         </td>
                                                         <td class="text-truncate"><span class="tag tag-warning">Medium</span></td>
                                                         <td class="valign-middle">
@@ -235,9 +235,9 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-truncate">Product UI</td>
+                                                        <td class="text-truncate">{{data.quality}}</td>
                                                         <td class="text-truncate">
-                                                            <span class="avatar avatar-xs"><img src="../../app-assets/images/portrait/small/avatar-s-9.png" alt="avatar"></span> <span>Walter K.</span>
+                                                            <span class="avatar avatar-xs"><img src="static/app-assets/images/portrait/small/avatar-s-9.png" alt="avatar"></span> <span>Walter K.</span>
                                                         </td>
                                                         <td class="text-truncate"><span class="tag tag-danger">Critical</span></td>
                                                         <td class="valign-middle">
@@ -247,7 +247,7 @@
                                                     <tr>
                                                         <td class="text-truncate">Fitness App</td>
                                                         <td class="text-truncate">
-                                                            <span class="avatar avatar-xs"><img src="../../app-assets/images/portrait/small/avatar-s-5.png" alt="avatar"></span> <span>Edward C.</span>
+                                                            <span class="avatar avatar-xs"><img src="static/app-assets/images/portrait/small/avatar-s-5.png" alt="avatar"></span> <span>Edward C.</span>
                                                         </td>
                                                         <td class="text-truncate"><span class="tag tag-warning">Medium</span></td>
                                                         <td class="valign-middle">
