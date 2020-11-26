@@ -11,6 +11,7 @@ def index():
 @app.route("/courses/<term>")
 def courses(term=" Spring 2019"):
     return render_template("courses.html", courseData=courseData, courses= True, term=term)
+
 @app.route("/register")
 def register():
     return render_template("index2.html", register= True)
@@ -162,6 +163,11 @@ def user():
     User(user_id=1, first_name="ubair",last_name="noor",email="ubairnoor@gmail.com", password="1234567").save()
     users = User.objects.all()
     return render_template("user.html", users=users)
+
+@app.route("/infoaqi")
+def infoaqi():
+        return render_template("infoaqi.html", infoaqi=infoaqi)
+
 
 # @app.route("/getdata")
 # def api():

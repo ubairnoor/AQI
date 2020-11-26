@@ -1,0 +1,105 @@
+<html>
+<div id="h1header3" style="padding: 2px; font-family: &quot;Noto Serif&quot;, Cambria, &quot;Palatino Linotype&quot;, &quot;Book Antiqua&quot;, &quot;URW Palladio L&quot;, serif; font-size: 30px;"><center>About the Air Quality and Pollution Measurement:<center></div>
+<div class="whitebody" style="font-family:&quot;Noto Serif&quot;,Cambria,&quot;Palatino Linotype&quot;,&quot;Book Antiqua&quot;,&quot;URW Palladio L&quot;,serif;">
+    <center>
+        <div class="section-content">
+            <center> About the Air Quality Levels<br> <br>
+                <style type="text/css">
+                    #legend-full table.infoaqitable {
+                        line-height: 1.5;
+                        background-color: white;
+                        max-width: 1000px;
+                        width: 95%;
+                        margin: 0px;
+                        border: 1px solid black;
+                        cursor: pointer;
+                    }
+
+                    #legend-full table.infoaqitable td {
+                        padding: 5px;
+                        font-size: 15px;
+                        text-shadow: none;
+                    }
+
+                    #legend-full .aqiwtxt {
+                        color: #ffffff;
+                    }
+
+                    #legend-full .aqibtxt {
+                        color: #000000;
+                    }
+
+                    @media only screen and (max-width: 800px) {
+                        #legend-full table.infoaqitable {
+                            width: 98%;
+                        }
+                    }
+
+                    @media only screen and (max-width: 800px) {
+                        #legend-full table.infoaqitable td {
+                            display: block;
+                        }
+
+                        #legend-full table.infoaqitable td:nth-child(1) {
+                            display: inline-block;
+                            font-size: 1.2em;
+                        }
+
+                        #legend-full table.infoaqitable td:nth-child(2) {
+                            display: inline-block;
+                            font-weight: 800;
+                            font-size: 1.2em;
+                        }
+                    }
+
+                </style>
+                <div id="legend-full" onclick="window.location=&quot;/scale/&quot;">
+                    <table class="infoaqitable cautionary">
+                        <thead>
+                            <tr>
+                                <td>AQI</td>
+                                <td>Air Pollution Level</td>
+                                <td>Health Implications</td>
+                                <td>Cautionary Statement (for PM2.5)</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background-color:#009966;">
+                                <td class="aqiwtxt" nowrap="true">0 - 50</td>
+                                <td class="aqiwtxt">Good</td>
+                                <td class="aqiwtxt">Air quality is considered satisfactory, and air pollution poses little or no risk</td>
+                                <td class="aqiwtxt">None</td>
+                            </tr>
+                            <tr style="background-color:#ffde33" class="aqibtxt">
+                                <td class="aqibtxt" nowrap="true">51 -100</td>
+                                <td class="aqibtxt">Moderate</td>
+                                <td class="aqibtxt">Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.</td>
+                                <td class="aqibtxt">Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.</td>
+                            </tr>
+                            <tr style="background-color:#ff9933;">
+                                <td class="aqibtxt" nowrap="true">101-150</td>
+                                <td class="aqibtxt">Unhealthy for Sensitive Groups</td>
+                                <td class="aqibtxt">Members of sensitive groups may experience health effects. The general public is not likely to be affected.</td>
+                                <td class="aqibtxt">Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.</td>
+                            </tr>
+                            <tr style="background-color:#cc0033;">
+                                <td class="aqiwtxt" nowrap="true">151-200</td>
+                                <td class="aqiwtxt">Unhealthy</td>
+                                <td class="aqiwtxt">Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects</td>
+                                <td class="aqiwtxt">Active children and adults, and people with respiratory disease, such as asthma, should avoid prolonged outdoor exertion; everyone else, especially children, should limit prolonged outdoor exertion</td>
+                            </tr>
+                            <tr style="background-color:#660099;">
+                                <td class="aqiwtxt" nowrap="true">201-300</td>
+                                <td class="aqiwtxt">Very Unhealthy</td>
+                                <td class="aqiwtxt">Health warnings of emergency conditions. The entire population is more likely to be affected.</td>
+                                <td class="aqiwtxt">Active children and adults, and people with respiratory disease, such as asthma, should avoid all outdoor exertion; everyone else, especially children, should limit outdoor exertion.</td>
+                            </tr>
+                            <tr style="background-color:#7e0023;">
+                                <td class="aqiwtxt" nowrap="true">300+</td>
+                                <td class="aqiwtxt">Hazardous</td>
+                                <td class="aqiwtxt">Health alert: everyone may experience more serious health effects</td>
+                                <td class="aqiwtxt">Everyone should avoid all outdoor exertion</td>
+                            </tr>
+                        </tbody>
+                    </table>
+</html>
