@@ -40,14 +40,33 @@ def southAmerica():
 @app.route("/northAmerica")
 def northAmerica():
     return render_template("northAmerica.html")
+
+#Getting Data from 2nd api
 @app.route('/searchT', methods = ['GET', 'POST'])
 def searchT():
+    
     if request.method == 'POST':
+        print("Inside Method")
         city = request.form.get('city')
-        print(city)
+        print("City Found Inside Request Method---------=:- "+city)
+        
+        #Comparsion city and state
+        def stateName(city):
+            print("The Name of city Inside State Name fuction-------=:- "+city)
+            flag ='N'
+            for data in courseData:
+                if data["city"]== city:
+                    flag = 'Y'
+                    break
+            #return data["state"]    
+            if flag =='Y':
+                return data["state"]
+            else:
+                return 'No data Found'
+        
         # return render_template("Result.html")
-        state = 'Jammu and kashmir'
         # city = 'srinagar'
+        state = stateName(city)
         url = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=india&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970" %(city,state)
         payload = {}
         headers= {}
