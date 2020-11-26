@@ -1,5 +1,8 @@
-<html>
-<div id="h1header3" style="padding: 2px; font-family: &quot;Noto Serif&quot;, Cambria, &quot;Palatino Linotype&quot;, &quot;Book Antiqua&quot;, &quot;URW Palladio L&quot;, serif; font-size: 30px;"><center>About the Air Quality and Pollution Measurement:<center></div>
+{% extends "layout.html" %} {% block content %}
+<div id="h1header3" style="padding: 2px; font-family: &quot;Noto Serif&quot;, Cambria, &quot;Palatino Linotype&quot;, &quot;Book Antiqua&quot;, &quot;URW Palladio L&quot;, serif; font-size: 30px;">
+    <center>About the Air Quality and Pollution Measurement:
+        <center>
+</div>
 <div class="whitebody" style="font-family:&quot;Noto Serif&quot;,Cambria,&quot;Palatino Linotype&quot;,&quot;Book Antiqua&quot;,&quot;URW Palladio L&quot;,serif;">
     <center>
         <div class="section-content">
@@ -14,44 +17,41 @@
                         border: 1px solid black;
                         cursor: pointer;
                     }
-
+                    
                     #legend-full table.infoaqitable td {
                         padding: 5px;
                         font-size: 15px;
                         text-shadow: none;
                     }
-
+                    
                     #legend-full .aqiwtxt {
                         color: #ffffff;
                     }
-
+                    
                     #legend-full .aqibtxt {
                         color: #000000;
                     }
-
+                    
                     @media only screen and (max-width: 800px) {
                         #legend-full table.infoaqitable {
                             width: 98%;
                         }
                     }
-
+                    
                     @media only screen and (max-width: 800px) {
                         #legend-full table.infoaqitable td {
                             display: block;
                         }
-
                         #legend-full table.infoaqitable td:nth-child(1) {
                             display: inline-block;
                             font-size: 1.2em;
                         }
-
                         #legend-full table.infoaqitable td:nth-child(2) {
                             display: inline-block;
                             font-weight: 800;
                             font-size: 1.2em;
                         }
                     }
-
                 </style>
                 <div id="legend-full" onclick="window.location=&quot;/scale/&quot;">
                     <table class="infoaqitable cautionary">
@@ -101,5 +101,4 @@
                                 <td class="aqiwtxt">Everyone should avoid all outdoor exertion</td>
                             </tr>
                         </tbody>
-                    </table>
-</html>
+                    </table>{% endblock a%}
