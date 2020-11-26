@@ -30,6 +30,9 @@
                 < <!-- Breath the clean air End-->
                     <!-- div Content end-->
             </div>
+
+
+
             <div class="content-wrapper">
                 <div class="content-header row">
 
@@ -41,8 +44,9 @@
                                     <div class="card-body">
                                         <div class="position-relative">
                                             <div class="chart-title position-absolute mt-2 ml-2 white">
-                                                <h1 class="display-4">100%</h1>
-                                                <span>Employees Satisfied</span>
+                                                <h1 class="display-4">{{data.value}}</h1>
+                                                <span></span>
+
                                             </div>
                                             <canvas id="emp-satisfaction" class="height-450 block"></canvas>
                                             <div class="chart-stats position-absolute position-bottom-0 position-right-0 mb-2 mr-3 white">
@@ -58,11 +62,23 @@
                                         <div class="card-body">
                                             <div class="media">
                                                 <div class="p-2 text-xs-center bg-cyan media-left media-middle">
-                                                    <i class="icon-camera7 font-large-2 white"></i>
+                                                    <i class="icon-shocked2 font-large-2 orange"></i>
                                                 </div>
                                                 <div class="p-2 media-body">
                                                     <h5>New Products</h5>
-                                                    <h5 class="text-bold-400">28</h5>
+                                                    <h5 class="text-bold-400">8</h5>
+                                                </div>
+                                                <div class="p-2 media-body">
+                                                    <h5>New Products</h5>
+                                                    <h5 class="text-bold-400">8</h5>
+                                                </div>
+                                                <div class="p-2 media-body">
+                                                    <h5>New Products</h5>
+                                                    <h5 class="text-bold-400">8</h5>
+                                                </div>
+                                                <div class="p-2 media-body">
+                                                    <h5>New Products</h5>
+                                                    <h5 class="text-bold-400">8</h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -108,53 +124,51 @@
                     </section>
                     <section>
                         <div class="row">
-                            <div class="col-xl-3 col-lg-12">
-                                <div class="card bg-cyan">
+                            <div class=" col-md-3 col-sm-12">
+                                <div class="card">
                                     <div class="card-body">
                                         <div class="card-block">
-                                            <div class="media">
-                                                <div class="media-left media-middle">
-                                                    <i class="icon-pencil white font-large-2 float-xs-left"></i>
+                                            <h4 class="card-title">HEALTH RECOMMENDATIONS</h4>
+                                            <p class="card-text text-xs-center">How to protect from air pollution in {{data.city}}?</p>
+                                        </div>
+                                        <div id="accordionWrap1" role="tablist" aria-multiselectable="true">
+                                            <div class="card collapse-icon panel mb-0 box-shadow-0 no-border">
+                                                <div id="heading11" role="tab" class="card-header border-bottom-grey border-bottom-lighten-2 text-xs-center">
+                                                    <a data-toggle="collapse" data-parent="#accordionWrap1" href="#accordion11" aria-expanded="false" aria-controls="accordion11" class="h6 indigo collapsed">Mask</a>
                                                 </div>
-                                                <div class="media-body white text-xs-right">
-                                                    <h3>278</h3>
-                                                    <span>New Posts</span>
+                                                <div id="accordion11" role="tabpanel" aria-labelledby="heading11" class="card-collapse collapse" aria-expanded="false">
+                                                    <div class="card-block">
+                                                        <p class="card-text">{{data.message}}</p>
+                                                    </div>
+                                                </div>
+                                                <div id="heading12" role="tab" class="card-header border-bottom-grey border-bottom-lighten-2 text-xs-center text-xs-center">
+                                                    <a data-toggle="collapse" data-parent="#accordionWrap1" href="#accordion12" aria-expanded="true" aria-controls="accordion12" class="h6 indigo">Purifier</a>
+                                                </div>
+                                                <div id="accordion12" role="tabpanel" aria-labelledby="heading12" class="card-collapse collapse in" aria-expanded="true">
+                                                    <div class="card-block">
+                                                        <p class="card-text">{{data.purifier}}</p>
+                                                    </div>
+                                                </div>
+                                                <div id="heading13" role="tab" class="card-header border-bottom-grey border-bottom-lighten-2 text-xs-center">
+                                                    <a data-toggle="collapse" data-parent="#accordionWrap1" href="#accordion13" aria-expanded="false" aria-controls="accordion13" class="h6 indigo collapsed">Outdoor Air</a>
+                                                </div>
+                                                <div id="accordion13" role="tabpanel" aria-labelledby="heading13" class="card-collapse collapse" aria-expanded="false">
+                                                    <div class="card-block">
+                                                        <p class="card-text">{{data.messageWindow}}</p>
+                                                    </div>
+                                                </div>
+                                                <div id="heading14" role="tab" class="card-header border-bottom-grey border-bottom-lighten-2 text-xs-center">
+                                                    <a data-toggle="collapse" data-parent="#accordionWrap1" href="#accordion14" aria-expanded="false" aria-controls="accordion14" class="h6 indigo collapsed ">Outdoor Games</a>
+                                                </div>
+                                                <div id="accordion14" role="tabpanel" aria-labelledby="heading14" class="card-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                                    <div class="card-block">
+                                                        <p class="card-text"> {{data.messageWindow}}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card bg-teal">
-                                    <div class="card-body">
-                                        <div class="card-block">
-                                            <div class="media">
-                                                <div class="media-body white text-xs-left">
-                                                    <h3>156</h3>
-                                                    <span>New Clients</span>
-                                                </div>
-                                                <div class="media-right media-middle">
-                                                    <i class="icon-user1 white font-large-2 float-xs-right"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card bg-deep-orange">
-                                    <div class="card-body">
-                                        <div class="card-block">
-                                            <div class="media">
-                                                <div class="media-left media-middle">
-                                                    <i class="icon-chat1 white font-large-2 float-xs-left"></i>
-                                                </div>
-                                                <div class="media-body white text-xs-right">
-                                                    <h3>156</h3>
-                                                    <span>New Comments</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                             <div class="col-xl-6 col-lg-12">
                                 <div class="card">
@@ -261,6 +275,7 @@
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-12">
+
                                 <div class="card bg-cyan">
                                     <div class="card-body">
                                         <div class="card-block">
@@ -269,8 +284,8 @@
                                                     <i class="icon-pencil white font-large-2 float-xs-left"></i>
                                                 </div>
                                                 <div class="media-body white text-xs-right">
-                                                    <h3>278</h3>
-                                                    <span>New Posts</span>
+                                                    <h3>{{data.temperature}}</h3>
+                                                    <span>Temperature</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -281,8 +296,23 @@
                                         <div class="card-block">
                                             <div class="media">
                                                 <div class="media-body white text-xs-left">
-                                                    <h3>156</h3>
-                                                    <span>New Clients</span>
+                                                    <h3>{{data.humidity}}</h3>
+                                                    <span>Humidity</span>
+                                                </div>
+                                                <div class="media-right media-middle">
+                                                    <i class="icon-user1 white font-large-2 float-xs-right"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card bg-teal">
+                                    <div class="card-body">
+                                        <div class="card-block">
+                                            <div class="media">
+                                                <div class="media-body white text-xs-left">
+                                                    <h3>{{data.icon}}</h3>
+                                                    <span>weather 2</span>
                                                 </div>
                                                 <div class="media-right media-middle">
                                                     <i class="icon-user1 white font-large-2 float-xs-right"></i>
@@ -299,8 +329,8 @@
                                                     <i class="icon-chat1 white font-large-2 float-xs-left"></i>
                                                 </div>
                                                 <div class="media-body white text-xs-right">
-                                                    <h3>156</h3>
-                                                    <span>New Comments</span>
+                                                    <h3>{{data.wind_direction}}</h3>
+                                                    <span>Wind</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -311,8 +341,8 @@
                                         <div class="card-block">
                                             <div class="media">
                                                 <div class="media-body white text-xs-left">
-                                                    <h3>423</h3>
-                                                    <span>Support Tickets</span>
+                                                    <h3>{{data.pressure}}</h3>
+                                                    <span>Pressure</span>
                                                 </div>
                                                 <div class="media-right media-middle">
                                                     <i class="icon-ios-help-outline white font-large-2 float-xs-right"></i>

@@ -1,3 +1,4 @@
+import dateparser
 from application import app,db
 from flask import render_template, request,Response,json
 from pip._vendor import requests
@@ -56,40 +57,83 @@ def searchT():
         print(json.loads(response.text))
         airResponse = json.loads(response.text)["data"]
  
-        # qualityValue=airResponse["current"]["pollution"]["aqius"]
+        qualityValue=airResponse["current"]["pollution"]["aqius"]
         # message_window=None
         # message=None
         # message_window=None
         # message_outdoor=None
         
 
-        # if(qualityValue<50):
-        #     quality="Good"
-        #     message="Wear a mask outdoors"   
-        # elif(qualityValue>=51 and qualityValue<99):
-        #     quality="Satisfactory"
-        #     message="Wear a mask outdoors"
-        #     message_outdoor="Avoid Outdoor Excercise" 
-        #     message_window="Close your windows to avoid dirty outdoor air"
-        # elif(qualityValue>100 and qualityValue<=200):
-        #     quality="Unhealthy For Sensitive Groups"
-        #     message="Wear a mask outdoors"
-        #     message_window="Close your windows to avoid dirty outdoor air"
-        #     message_outdoor="Avoid Outdoor Games"
-        # elif(qualityValue>200 and qualityValue<=300):
-        #     quality="Unhealthy"
-        # elif(qualityValue>301 and qualityValue<=400):
-        #     quality="Very Poor"
-        # else:
-        #     quality="Severe"
+        if(qualityValue<50):
+            quality="Good"
+            message="Wear a mask outdoors"
+        elif(qualityValue>=51 and qualityValue<99):
+            quality="Satisfactory"
+            purifier="	Run an air purifier"   
+            message="Wear a mask outdoors"
+            message_outdoor="Avoid Outdoor Excercise" 
+            message_window="Close your windows to avoid dirty outdoor air"
+        elif(qualityValue>100 and qualityValue<=200):
+            quality="Unhealthy For Sensitive Groups"
+            purifier="	Run an air purifier"   
+            message="Wear a mask outdoors"
+            message_window="Close your windows to avoid dirty outdoor air"
+            message_outdoor="Avoid Outdoor Games"
+        elif(qualityValue>200 and qualityValue<=300):
+            quality="Unhealthy"
+        elif(qualityValue>301 and qualityValue<=400):
+            quality="Very Poor"
+        else:
+            quality="Severe"
+
+        #for weather priction
+        weather_icon =  airResponse["current"]["weather"]["ic"]
+        print(weather_icon)
+        if(weather_icon =="06n"):
+            output = "Clear Sky"
+        elif(weather_icon == "01n"):
+            output = "Clear Sky(night)"
+        elif(weather_icon == "02d"):
+            output = "few Clouds(day)"
+        elif(weather_icon == "02n"):
+            output = "few clouds"
+        elif(weather_icon == "03d"):
+            output = "scattered cloud"
+        elif(weather_icon == "04d"):
+            output = "Broekn cloud"
+        elif(weather_icon == "09d"):
+            output = "shoer rain"
+        elif(weather_icon == "04n"):
+            output = "Rainday time"
+        else:
+            output = "Rain Night time"
+
+
         #return render_template("enrollment.html", enrollment=True, data={"id":id, "title":title, "term":term ,"location":airResponse["city"], "pollution":airResponse["current"]["pollution"]["aqius"],"quality":quality})
         # return render_template("result.html", enrollment=True, data={"id":id, "title":title, "term":term ,"location":airResponse["city"], "pollution":airResponse["current"]["pollution"]["aqius"],"weather":airResponse["current"]["weather"]["tp"],"Humidity":airResponse["current"]["weather"]["hu"],"pressure":airResponse["current"]["weather"]["pr"],"windspeed":airResponse["current"]["weather"]["ws"],"quality":quality,"message":message,"message_window":message_window,"message_outdoor":message_outdoor})
         data = {}
         data['city']=airResponse['city']
         data['state']=airResponse['state']
         data['pollution']=airResponse["current"]["pollution"]["aqius"]
-        data['ts']=airResponse["current"]["weather"]["ts"]
+        print(qualityValue)
+        data['value']=qualityValue
+        data['message']=message_window
+        data['quality']= quality 
+        data['purifier']=purifier
+        data['messageOutdoor'] =message_outdoor
+        data['messageWindow']=message_window
+        #WEATHER VARIABLE
+        data['temperature']=airResponse["current"]["weather"]["tp"]
+        data['pressure']=airResponse["current"]["weather"]["pr"]
+        data['humidity'] = airResponse["current"]["weather"]["hu"]
+        data['windspeed']=airResponse["current"]["weather"]["ws"]
+        data['wind_direction']=airResponse["current"]["weather"]["wd"]
+        data['icon']= output
 
+
+
+        print(data)    
+        
         return render_template("Result.html",data=data)
 
         
