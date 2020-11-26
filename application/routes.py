@@ -45,9 +45,7 @@ def northAmerica():
 #Getting Data from 2nd api
 @app.route('/searchT', methods = ['GET', 'POST'])
 def searchT():
-    
-    if request.method == 'POST':
-      
+    if request.method == 'POST':      
         city = request.form.get('city')
         print("City Found Inside Request Method---------=:- "+ city)
         city = city.title()
@@ -67,8 +65,8 @@ def searchT():
         
         # return render_template("Result.html")
         # city = 'srinagar'
-        state = stateName(city)
-        url = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=india&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970" %(city,state)
+        state = stateName(city)        
+        url = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=india&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970" %(city,state)   
         payload = {}
         headers= {}
         response = requests.request("GET", url, headers=headers, data = payload)
