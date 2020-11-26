@@ -47,13 +47,13 @@ def northAmerica():
 def searchT():
     
     if request.method == 'POST':
-        print("Inside Method")
+      
         city = request.form.get('city')
-        print("City Found Inside Request Method---------=:- "+city)
-        
+        print("City Found Inside Request Method---------=:- "+ city)
+        city = city.title()
         #Comparsion city and state
         def stateName(city):
-            print("The Name of city Inside State Name fuction-------=:- "+city)
+            print("The Name of city Inside State Name fuction-------=:- "+ city)
             flag ='N'
             for data in courseData:
                 if data["city"]== city:
