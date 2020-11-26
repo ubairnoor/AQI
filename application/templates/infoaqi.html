@@ -1,44 +1,2472 @@
-{% extends "layout.html" %} {% block content %}
-<div id="h1header3" style="padding: 2px; font-family: &quot;Noto Serif&quot;, Cambria, &quot;Palatino Linotype&quot;, &quot;Book Antiqua&quot;, &quot;URW Palladio L&quot;, serif; font-size: 30px;">
-    <center>About the Air Quality and Pollution Measurement:
+<html xmlns="http://www.w3.org/1999/xhtml" itemscope="" itemtype="http://schema.org/LocalBusiness" ng-app="waqi" style="height: 100%;">
+
+<head>
+    <script type="application/javascript" async="" defer="" src="https://by2.uservoice.com/t2/136455/web/a5c2964f-61e7-4879-57f0-964c4c5a5b73/track.js?_=1606402482210&amp;s=1&amp;c=__uvSessionData0&amp;d=eyJlIjp7InUiOiJodHRwczovL2FxaWNuLm9yZy9tYXNrLyIsInIiOiJodHRwczovL2FxaWNuLm9yZy9zY2FsZS8ifX0%3D"></script>
+    <script src="https://connect.facebook.net/en_US/sdk.js?hash=03c8464b927480ea586576b653efb5db&amp;ua=modern_es6" async="" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://api-public.addthis.com/url/shares.json?url=https%3A%2F%2Faqicn.org%2Fmask%2F&amp;callback=_ate.cbs.sc_httpsaqicnorgmask0"></script>
+    <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+    <script src="https://www.googletagservices.com/activeview/js/current/osd.js?cb=%2Fr20100101"></script>
+    <script src="https://partner.googleadservices.com/gampad/cookie.js?domain=aqicn.org&amp;callback=_gfp_s_&amp;client=ca-pub-0281575029452656&amp;cookie=ID%3Dbe76f4259ca04a03-22fb6dc2dac4002f%3AT%3D1605947561%3ART%3D1605947561%3AS%3DALNI_MY98bmCsfnTccpm9hNoVXh2g-GOeA"></script>
+    <script type="text/javascript" src="https://m.addthis.com/live/red_lojson/300lo.json?si=5fbfc1adb76eec10&amp;bkl=0&amp;bl=1&amp;pdt=1463&amp;sid=5fbfc1adb76eec10&amp;pub=50cb38c52fa9b3d9&amp;rev=v8.28.8-wp&amp;ln=en&amp;pc=men&amp;cb=0&amp;ab=-&amp;dp=aqicn.org&amp;fp=mask%2F&amp;fr=scale%2F&amp;of=2&amp;pd=0&amp;irt=1&amp;vcl=1&amp;md=0&amp;ct=0&amp;tct=0&amp;abt=0&amp;cdn=0&amp;pi=1&amp;rb=2&amp;gen=100&amp;chr=UTF-8&amp;mk=PM2.5%2CAQI%2CAir%20Quality%20Index%2CAir%20Pollution%20Index%2CAir%20Pollution%2CAir%20Quality%20Index%2CAir%20Quality%2CAir%20Pollution%2CPollution%2CChina%20Air%20Pollution%2CAsia%20Air%20Pollution%2CWorld%20Air%20Pollution&amp;colc=1606402478063&amp;jsl=1&amp;uvs=5fbfc195ecd27e5d001&amp;skipb=1&amp;callback=addthis.cbs.jsonp__56591511195429330"></script>
+    <script type="text/javascript" src="https://v1.addthisedge.com/live/boost/50cb38c52fa9b3d9/_ate.track.config_resp"></script>
+    <script type="text/javascript" async="" src="//widget.uservoice.com/JwN2BeySmet8TPZSrlLdpQ.js"></script>
+    <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" src="https://z.moatads.com/addthismoatframe568911941483/moatframe.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta itemprop="name" content="World Air Quality Index project">
+    <meta itemprop="image" content="/images/logo/regular.png">
+    <meta name="author" content="The World Air Quality Index project">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Feel tired with the pollution: Get a mask!</title>
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/iOS/ico_114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/iOS/ico_72.png">
+    <link rel="apple-touch-icon" href="/images/iOS/ico_57.png">
+    <meta itemprop="description" name="Description" content="Real-time air pollution index for 100+ countries" http-equiv="Description">
+    <meta name="Keywords" http-equiv="Keywords" content=" PM2.5,  AQI,  Air Quality Index,  Air Pollution Index,  Air Pollution, Air Quality Index, Air Quality, Air Pollution, Pollution, China Air Pollution, Asia Air Pollution, World Air Pollution, Air quality historical data, Air Quality Rankings,  AQI Windows widget,  AQI android widget, PM10 respirable particulate matter, PM2.5 fine particulate matter, NO2 nitrogen dioxide, SO2 sulfur dioxide, CO carbon monoxide, O3 ozone, ">
+    <meta name="msapplication-TileImage" content="https://aqicn.org/images/iOS/ico_114.png">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="aqicn.org">
+    <meta property="fb:app_id" content="643196515742584">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:site" content="@world_aqi">
+    <meta property="og:image" content="https://aqicn.org/images/aqicn.fbworldmap-201911.png">
+    <meta property="twitter:image" content="https://aqicn.org/images/aqicn.fbworldmap-201911.png">
+    <meta property="og:description" content="How polluted is the air today? Check out the real-time air pollution map, for more than 100 countries.">
+    <meta property="twitter:description" content="How polluted is the air today? Check out the real-time air pollution map, for more than 100 countries.">
+    <meta property="og:title" content="Feel tired with the pollution: Get a mask!">
+    <meta property="twitter:title" content="Feel tired with the pollution: Get a mask!">
+    <!--[if !IE]> -->
+    <style type="text/css">
+        .aqivalue {
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+            margin-top: 2px;
+            margin-bottom: 2px;
+            width: 100%;
+            text-align: center
+        }
+        
+        .aqiwidget {
+            background-color: #f6f9f7;
+            border: 1px solid white;
+            min-width: 100px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+            -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+            -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+            padding: 0;
+            margin: 0;
+            border-spacing: 0
+        }
+    </style>
+    <!-- <![endif]-->
+    <!--[if IE]> <link rel="stylesheet" type="text/css" href="https://aqicn.org/css/style.ie.css" /> <![endif]-->
+    <link rel="stylesheet" type="text/css" href="https://aqicn.org/css/style.min.css?_=1582516260">
+    <link rel="preconnect" href="https://waqi.info">
+    <link rel="preconnect" href="https://api.waqi.info">
+    <script src="https://pagead2.googlesyndication.com/pagead/js/r20201112/r20190131/show_ads_impl.js" id="google_shimpl"></script>
+    <script src="https://aqicn.org/air-cache/header/bundle.min.js?_=20200913.193607" type="text/javascript"></script>
+    <script type="text/javascript">
+        var waqiStartTime = new Date().getTime();
+
+        function jskey() {
+            return (function() {
+                var u = "";
+                decodeURIComponent("%603Z3FwWiyZDSBdN%7B9JTTKXYnqkYh1%2CQUeUGXhkZh%3E%3E").split('').forEach(function(c) {
+                    u += String.fromCharCode(c.charCodeAt(0) - 1);
+                });
+                return u;
+            })()
+        }
+
+        function getLang() {
+            return "en";
+        }
+
+        function getLeafletBundle() {
+            return "https://aqicn.org/jscripts/leaflet-light/build/prod/map.7f315189b349e0137419.js";
+        }
+
+        function getLeafletGlBundle() {
+            return "https://aqicn.org/jscripts/leaflet-gl/buildx/prod/map.1f337878702cad10a12f.js";
+        }
+
+        function getWidgetBundle() {
+            return "https://aqicn.org/air-cache/widget/build/awui.js?_=20200713.153145";
+        }
+    </script>
+    <script type="text/javascript">
+        var useSentry = 0;
+        if (useSentry) loadScriptAsync("https://browser.sentry-cdn.com/5.15.4/bundle.min.js").then(function() {
+            Sentry.init({
+                dsn: "https://d4707f2862cb4ee2a190634b84d03fd1@o192223.ingest.sentry.io/1293843"
+            });
+        });
+    </script>
+    <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-0281575029452656",
+            enable_page_level_ads: false,
+            overlays: {
+                bottom: true
+            }
+        });
+    </script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50cb38c52fa9b3d9"></script>
+    <script type="text/javascript" async="" src="//translate.google.com/translate_a/element.js?cb=gTransFullCallback"></script>
+    <style type="text/css">
+        .at-icon {
+            fill: #fff;
+            border: 0
+        }
+        
+        .at-icon-wrapper {
+            display: inline-block;
+            overflow: hidden
+        }
+        
+        a .at-icon-wrapper {
+            cursor: pointer
+        }
+        
+        .at-rounded,
+        .at-rounded-element .at-icon-wrapper {
+            border-radius: 12%
+        }
+        
+        .at-circular,
+        .at-circular-element .at-icon-wrapper {
+            border-radius: 50%
+        }
+        
+        .addthis_32x32_style .at-icon {
+            width: 2pc;
+            height: 2pc
+        }
+        
+        .addthis_24x24_style .at-icon {
+            width: 24px;
+            height: 24px
+        }
+        
+        .addthis_20x20_style .at-icon {
+            width: 20px;
+            height: 20px
+        }
+        
+        .addthis_16x16_style .at-icon {
+            width: 1pc;
+            height: 1pc
+        }
+        
+        #at16lb {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1001;
+            background-color: #000;
+            opacity: .001
+        }
+        
+        #at_complete,
+        #at_error,
+        #at_share,
+        #at_success {
+            position: static !important
+        }
+        
+        .at15dn {
+            display: none
+        }
+        
+        #at15s,
+        #at16p,
+        #at16p form input,
+        #at16p label,
+        #at16p textarea,
+        #at_share .at_item {
+            font-family: arial, helvetica, tahoma, verdana, sans-serif !important;
+            font-size: 9pt !important;
+            outline-style: none;
+            outline-width: 0;
+            line-height: 1em
+        }
+        
+        * html #at15s.mmborder {
+            position: absolute !important
+        }
+        
+        #at15s.mmborder {
+            position: fixed !important;
+            width: 250px !important
+        }
+        
+        #at15s {
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpiZGBgaGAgAjAxEAlGFVJHIUCAAQDcngCUgqGMqwAAAABJRU5ErkJggg==);
+            float: none;
+            line-height: 1em;
+            margin: 0;
+            overflow: visible;
+            padding: 5px;
+            text-align: left;
+            position: absolute
+        }
+        
+        #at15s a,
+        #at15s span {
+            outline: 0;
+            direction: ltr;
+            text-transform: none
+        }
+        
+        #at15s .at-label {
+            margin-left: 5px
+        }
+        
+        #at15s .at-icon-wrapper {
+            width: 1pc;
+            height: 1pc;
+            vertical-align: middle
+        }
+        
+        #at15s .at-icon {
+            width: 1pc;
+            height: 1pc
+        }
+        
+        .at4-icon {
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-position: top left;
+            margin: 0;
+            overflow: hidden;
+            cursor: pointer
+        }
+        
+        .addthis_16x16_style .at4-icon,
+        .addthis_default_style .at4-icon,
+        .at4-icon,
+        .at-16x16 {
+            width: 1pc;
+            height: 1pc;
+            line-height: 1pc;
+            background-size: 1pc !important
+        }
+        
+        .addthis_32x32_style .at4-icon,
+        .at-32x32 {
+            width: 2pc;
+            height: 2pc;
+            line-height: 2pc;
+            background-size: 2pc !important
+        }
+        
+        .addthis_24x24_style .at4-icon,
+        .at-24x24 {
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            background-size: 24px !important
+        }
+        
+        .addthis_20x20_style .at4-icon,
+        .at-20x20 {
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            background-size: 20px !important
+        }
+        
+        .at4-icon.circular,
+        .circular .at4-icon,
+        .circular.aticon {
+            border-radius: 50%
+        }
+        
+        .at4-icon.rounded,
+        .rounded .at4-icon {
+            border-radius: 4px
+        }
+        
+        .at4-icon-left {
+            float: left
+        }
+        
+        #at15s .at4-icon {
+            text-indent: 20px;
+            padding: 0;
+            overflow: visible;
+            white-space: nowrap;
+            background-size: 1pc;
+            width: 1pc;
+            height: 1pc;
+            background-position: top left;
+            display: inline-block;
+            line-height: 1pc
+        }
+        
+        .addthis_vertical_style .at4-icon,
+        .at4-follow-container .at4-icon {
+            margin-right: 5px
+        }
+        
+        html>body #at15s {
+            width: 250px !important
+        }
+        
+        #at15s.atm {
+            background: none !important;
+            padding: 0 !important;
+            width: 10pc !important
+        }
+        
+        #at15s_inner {
+            background: #fff;
+            border: 1px solid #fff;
+            margin: 0
+        }
+        
+        #at15s_head {
+            position: relative;
+            background: #f2f2f2;
+            padding: 4px;
+            cursor: default;
+            border-bottom: 1px solid #e5e5e5
+        }
+        
+        .at15s_head_success {
+            background: #cafd99 !important;
+            border-bottom: 1px solid #a9d582 !important
+        }
+        
+        .at15s_head_success a,
+        .at15s_head_success span {
+            color: #000 !important;
+            text-decoration: none
+        }
+        
+        #at15s_brand,
+        #at15sptx,
+        #at16_brand {
+            position: absolute
+        }
+        
+        #at15s_brand {
+            top: 4px;
+            right: 4px
+        }
+        
+        .at15s_brandx {
+            right: 20px !important
+        }
+        
+        a#at15sptx {
+            top: 4px;
+            right: 4px;
+            text-decoration: none;
+            color: #4c4c4c;
+            font-weight: 700
+        }
+        
+        #at15sptx:hover {
+            text-decoration: underline
+        }
+        
+        #at16_brand {
+            top: 5px;
+            right: 30px;
+            cursor: default
+        }
+        
+        #at_hover {
+            padding: 4px
+        }
+        
+        #at_hover .at_item,
+        #at_share .at_item {
+            background: #fff !important;
+            float: left !important;
+            color: #4c4c4c !important
+        }
+        
+        #at_share .at_item .at-icon-wrapper {
+            margin-right: 5px
+        }
+        
+        #at_hover .at_bold {
+            font-weight: 700;
+            color: #000 !important
+        }
+        
+        #at_hover .at_item {
+            width: 7pc !important;
+            padding: 2px 3px !important;
+            margin: 1px;
+            text-decoration: none !important
+        }
+        
+        #at_hover .at_item.athov,
+        #at_hover .at_item:focus,
+        #at_hover .at_item:hover {
+            margin: 0 !important
+        }
+        
+        #at_hover .at_item.athov,
+        #at_hover .at_item:focus,
+        #at_hover .at_item:hover,
+        #at_share .at_item.athov,
+        #at_share .at_item:hover {
+            background: #f2f2f2 !important;
+            border: 1px solid #e5e5e5;
+            color: #000 !important;
+            text-decoration: none
+        }
+        
+        .ipad #at_hover .at_item:focus {
+            background: #fff !important;
+            border: 1px solid #fff
+        }
+        
+        .at15t {
+            display: block !important;
+            height: 1pc !important;
+            line-height: 1pc !important;
+            padding-left: 20px !important;
+            background-position: 0 0;
+            text-align: left
+        }
+        
+        .addthis_button,
+        .at15t {
+            cursor: pointer
+        }
+        
+        .addthis_toolbox a.at300b,
+        .addthis_toolbox a.at300m {
+            width: auto
+        }
+        
+        .addthis_toolbox a {
+            margin-bottom: 5px;
+            line-height: initial
+        }
+        
+        .addthis_toolbox.addthis_vertical_style {
+            width: 200px
+        }
+        
+        .addthis_button_facebook_like .fb_iframe_widget {
+            line-height: 100%
+        }
+        
+        .addthis_button_facebook_like iframe.fb_iframe_widget_lift {
+            max-width: none
+        }
+        
+        .addthis_toolbox a.addthis_button_counter,
+        .addthis_toolbox a.addthis_button_facebook_like,
+        .addthis_toolbox a.addthis_button_facebook_send,
+        .addthis_toolbox a.addthis_button_facebook_share,
+        .addthis_toolbox a.addthis_button_foursquare,
+        .addthis_toolbox a.addthis_button_linkedin_counter,
+        .addthis_toolbox a.addthis_button_pinterest_pinit,
+        .addthis_toolbox a.addthis_button_tweet {
+            display: inline-block
+        }
+        
+        .addthis_toolbox span.addthis_follow_label {
+            display: none
+        }
+        
+        .addthis_toolbox.addthis_vertical_style span.addthis_follow_label {
+            display: block;
+            white-space: nowrap
+        }
+        
+        .addthis_toolbox.addthis_vertical_style a {
+            display: block
+        }
+        
+        .addthis_toolbox.addthis_vertical_style.addthis_32x32_style a {
+            line-height: 2pc;
+            height: 2pc
+        }
+        
+        .addthis_toolbox.addthis_vertical_style .at300bs {
+            margin-right: 4px;
+            float: left
+        }
+        
+        .addthis_toolbox.addthis_20x20_style span {
+            line-height: 20px
+        }
+        
+        .addthis_toolbox.addthis_32x32_style span {
+            line-height: 2pc
+        }
+        
+        .addthis_toolbox.addthis_pill_combo_style .addthis_button_compact .at15t_compact,
+        .addthis_toolbox.addthis_pill_combo_style a {
+            float: left
+        }
+        
+        .addthis_toolbox.addthis_pill_combo_style a.addthis_button_tweet {
+            margin-top: -2px
+        }
+        
+        .addthis_toolbox.addthis_pill_combo_style .addthis_button_compact .at15t_compact {
+            margin-right: 4px
+        }
+        
+        .addthis_default_style .addthis_separator {
+            margin: 0 5px;
+            display: inline
+        }
+        
+        div.atclear {
+            clear: both
+        }
+        
+        .addthis_default_style .addthis_separator,
+        .addthis_default_style .at4-icon,
+        .addthis_default_style .at300b,
+        .addthis_default_style .at300bo,
+        .addthis_default_style .at300bs,
+        .addthis_default_style .at300m {
+            float: left
+        }
+        
+        .at300b img,
+        .at300bo img {
+            border: 0
+        }
+        
+        a.at300b .at4-icon,
+        a.at300m .at4-icon {
+            display: block
+        }
+        
+        .addthis_default_style .at300b,
+        .addthis_default_style .at300bo,
+        .addthis_default_style .at300m {
+            padding: 0 2px
+        }
+        
+        .at300b,
+        .at300bo,
+        .at300bs,
+        .at300m {
+            cursor: pointer
+        }
+        
+        .addthis_button_facebook_like.at300b:hover,
+        .addthis_button_facebook_like.at300bs:hover,
+        .addthis_button_facebook_send.at300b:hover,
+        .addthis_button_facebook_send.at300bs:hover {
+            opacity: 1
+        }
+        
+        .addthis_20x20_style .at15t,
+        .addthis_20x20_style .at300bs {
+            overflow: hidden;
+            display: block;
+            height: 20px !important;
+            width: 20px !important;
+            line-height: 20px !important
+        }
+        
+        .addthis_32x32_style .at15t,
+        .addthis_32x32_style .at300bs {
+            overflow: hidden;
+            display: block;
+            height: 2pc !important;
+            width: 2pc !important;
+            line-height: 2pc !important
+        }
+        
+        .at300bs {
+            overflow: hidden;
+            display: block;
+            background-position: 0 0;
+            height: 1pc;
+            width: 1pc;
+            line-height: 1pc !important
+        }
+        
+        .addthis_default_style .at15t_compact,
+        .addthis_default_style .at15t_expanded {
+            margin-right: 4px
+        }
+        
+        #at_share .at_item {
+            width: 123px !important;
+            padding: 4px;
+            margin-right: 2px;
+            border: 1px solid #fff
+        }
+        
+        #at16p {
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpiZGBgaGAgAjAxEAlGFVJHIUCAAQDcngCUgqGMqwAAAABJRU5ErkJggg==);
+            z-index: 10000001;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            padding: 10px;
+            margin: 0 auto;
+            margin-top: -185px;
+            margin-left: -155px;
+            font-family: arial, helvetica, tahoma, verdana, sans-serif;
+            font-size: 9pt;
+            color: #5e5e5e
+        }
+        
+        #at_share {
+            margin: 0;
+            padding: 0
+        }
+        
+        #at16pt {
+            position: relative;
+            background: #f2f2f2;
+            height: 13px;
+            padding: 5px 10px
+        }
+        
+        #at16pt a,
+        #at16pt h4 {
+            font-weight: 700
+        }
+        
+        #at16pt h4 {
+            display: inline;
+            margin: 0;
+            padding: 0;
+            font-size: 9pt;
+            color: #4c4c4c;
+            cursor: default
+        }
+        
+        #at16pt a {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            color: #4c4c4c;
+            text-decoration: none;
+            padding: 2px
+        }
+        
+        #at15sptx:focus,
+        #at16pt a:focus {
+            outline: thin dotted
+        }
+        
+        #at15s #at16pf a {
+            top: 1px
+        }
+        
+        #_atssh {
+            width: 1px !important;
+            height: 1px !important;
+            border: 0 !important
+        }
+        
+        .atm {
+            width: 10pc !important;
+            padding: 0;
+            margin: 0;
+            line-height: 9pt;
+            letter-spacing: normal;
+            font-family: arial, helvetica, tahoma, verdana, sans-serif;
+            font-size: 9pt;
+            color: #444;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpiZGBgaGAgAjAxEAlGFVJHIUCAAQDcngCUgqGMqwAAAABJRU5ErkJggg==);
+            padding: 4px
+        }
+        
+        .atm-f {
+            text-align: right;
+            border-top: 1px solid #ddd;
+            padding: 5px 8px
+        }
+        
+        .atm-i {
+            background: #fff;
+            border: 1px solid #d5d6d6;
+            padding: 0;
+            margin: 0;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, .15)
+        }
+        
+        .atm-s {
+            margin: 0 !important;
+            padding: 0 !important
+        }
+        
+        .atm-s a:focus {
+            border: transparent;
+            outline: 0;
+            transition: none
+        }
+        
+        #at_hover.atm-s a,
+        .atm-s a {
+            display: block;
+            text-decoration: none;
+            padding: 4px 10px;
+            color: #235dab !important;
+            font-weight: 400;
+            font-style: normal;
+            transition: none
+        }
+        
+        #at_hover.atm-s .at_bold {
+            color: #235dab !important
+        }
+        
+        #at_hover.atm-s a:hover,
+        .atm-s a:hover {
+            background: #2095f0;
+            text-decoration: none;
+            color: #fff !important
+        }
+        
+        #at_hover.atm-s .at_bold {
+            font-weight: 700
+        }
+        
+        #at_hover.atm-s a:hover .at_bold {
+            color: #fff !important
+        }
+        
+        .atm-s a .at-label {
+            vertical-align: middle;
+            margin-left: 5px;
+            direction: ltr
+        }
+        
+        .at_PinItButton {
+            display: block;
+            width: 40px;
+            height: 20px;
+            padding: 0;
+            margin: 0;
+            background-image: url(//s7.addthis.com/static/t00/pinit00.png);
+            background-repeat: no-repeat
+        }
+        
+        .at_PinItButton:hover {
+            background-position: 0 -20px
+        }
+        
+        .addthis_toolbox .addthis_button_pinterest_pinit {
+            position: relative
+        }
+        
+        .at-share-tbx-element .fb_iframe_widget span {
+            vertical-align: baseline !important
+        }
+        
+        #at16pf {
+            height: auto;
+            text-align: right;
+            padding: 4px 8px
+        }
+        
+        .at-privacy-info {
+            position: absolute;
+            left: 7px;
+            bottom: 7px;
+            cursor: pointer;
+            text-decoration: none;
+            font-family: helvetica, arial, sans-serif;
+            font-size: 10px;
+            line-height: 9pt;
+            letter-spacing: .2px;
+            color: #666
+        }
+        
+        .at-privacy-info:hover {
+            color: #000
+        }
+        
+        .body .wsb-social-share .wsb-social-share-button-vert {
+            padding-top: 0;
+            padding-bottom: 0
+        }
+        
+        .body .wsb-social-share.addthis_counter_style .addthis_button_tweet.wsb-social-share-button {
+            padding-top: 40px
+        }
+        
+        .body .wsb-social-share.addthis_counter_style .addthis_button_facebook_like.wsb-social-share-button {
+            padding-top: 21px
+        }
+        
+        @media print {
+            #at4-follow,
+            #at4-share,
+            #at4-thankyou,
+            #at4-whatsnext,
+            #at4m-mobile,
+            #at15s,
+            .at4,
+            .at4-recommended {
+                display: none !important
+            }
+        }
+        
+        @media screen and (max-width:400px) {
+            .at4win {
+                width: 100%
+            }
+        }
+        
+        @media screen and (max-height:700px) and (max-width:400px) {
+            .at4-thankyou-inner .at4-recommended-container {
+                height: 122px;
+                overflow: hidden
+            }
+            .at4-thankyou-inner .at4-recommended .at4-recommended-item:first-child {
+                border-bottom: 1px solid #c5c5c5
+            }
+        }
+    </style>
+    <style type="text/css">
+        .at-branding-logo {
+            font-family: helvetica, arial, sans-serif;
+            text-decoration: none;
+            font-size: 10px;
+            display: inline-block;
+            margin: 2px 0;
+            letter-spacing: .2px
+        }
+        
+        .at-branding-logo .at-branding-icon {
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////+GlNUkcc1QAAAB1JREFUeNpiYIQDBjQmAwMmkwEM0JnY1WIxFyDAABGeAFEudiZsAAAAAElFTkSuQmCC")
+        }
+        
+        .at-branding-logo .at-branding-icon,
+        .at-branding-logo .at-privacy-icon {
+            display: inline-block;
+            height: 10px;
+            width: 10px;
+            margin-left: 4px;
+            margin-right: 3px;
+            margin-bottom: -1px;
+            background-repeat: no-repeat
+        }
+        
+        .at-branding-logo .at-privacy-icon {
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAMAAABR24SMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABhQTFRF8fr9ot/xXcfn2/P5AKva////////AKTWodjhjAAAAAd0Uk5T////////ABpLA0YAAAA6SURBVHjaJMzBDQAwCAJAQaj7b9xifV0kUKJ9ciWxlzWEWI5gMF65KUTv0VKkjVeTerqE/x7+9BVgAEXbAWI8QDcfAAAAAElFTkSuQmCC")
+        }
+        
+        .at-branding-logo span {
+            text-decoration: none
+        }
+        
+        .at-branding-logo .at-branding-addthis,
+        .at-branding-logo .at-branding-powered-by {
+            color: #666
+        }
+        
+        .at-branding-logo .at-branding-addthis:hover {
+            color: #333
+        }
+        
+        .at-cv-with-image .at-branding-addthis,
+        .at-cv-with-image .at-branding-addthis:hover {
+            color: #fff
+        }
+        
+        a.at-branding-logo:visited {
+            color: initial
+        }
+        
+        .at-branding-info {
+            display: inline-block;
+            padding: 0 5px;
+            color: #666;
+            border: 1px solid #666;
+            border-radius: 50%;
+            font-size: 10px;
+            line-height: 9pt;
+            opacity: .7;
+            transition: all .3s ease;
+            text-decoration: none
+        }
+        
+        .at-branding-info span {
+            border: 0;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px
+        }
+        
+        .at-branding-info:before {
+            content: 'i';
+            font-family: Times New Roman
+        }
+        
+        .at-branding-info:hover {
+            color: #0780df;
+            border-color: #0780df
+        }
+    </style>
+    <style type="text/css">
+        .mailing-list-subscription input[type="submit"] {
+            color: #000;
+            border-radius: 0 3px 3px 0;
+            font-size: 1.25em;
+            border-color: #888;
+            padding: 0.5em;
+            border-style: solid;
+            border-left-width: 0;
+            max-width: 30%;
+        }
+        
+        .mailing-list-subscription input:focus {
+            outline: none;
+        }
+        
+        .mailing-list-subscription input[type="email"] {
+            max-width: 70%;
+            width: 350px;
+            margin: 0;
+            color: #000;
+            border-radius: 3px 0 0 3px;
+            font-size: 1.25em;
+            border-color: #888;
+            padding: 0.5em;
+            border-style: solid;
+            border-right-width: 0;
+            border-width: 1px;
+        }
+        
+        .mailing-list-subscription .input {
+            white-space: nowrap;
+            display: block;
+        }
+        
+        .mailing-list-subscription {
+            color: #888;
+            margin: 10px;
+            padding: 10px;
+        }
+        
+        @media only screen and (max-width: 500px) {
+            .mailing-list-subscription input[type="text"] {
+                max-width: 60%
+            }
+        }
+    </style>
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css">
+    <script type="text/javascript" charset="UTF-8" src="https://translate.googleapis.com/translate_static/js/element/main.js"></script>
+    <link rel="preload" href="https://adservice.google.co.in/adsid/integrator.js?domain=aqicn.org" as="script">
+    <script type="text/javascript" src="https://adservice.google.co.in/adsid/integrator.js?domain=aqicn.org"></script>
+    <link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=aqicn.org" as="script">
+    <script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=aqicn.org"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://translate.googleapis.com/element/TE_20200506_00/e/js/element/element_main.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" src="https://s7.addthis.com/static/counter.d27508c102582d608697.js"></script>
+    <style type="text/css" media="screen">
+        .uv-icon {
+            box-sizing: border-box;
+            display: inline-block;
+            cursor: pointer;
+            position: relative;
+            transition: all 300ms;
+            width: 39px;
+            height: 39px;
+            position: fixed;
+            z-index: 100002;
+            opacity: 0.8;
+            transition: opacity 100ms
+        }
+        
+        .uv-icon.uv-bottom-right {
+            bottom: 10px;
+            right: 12px
+        }
+        
+        .uv-icon.uv-top-right {
+            top: 10px;
+            right: 12px
+        }
+        
+        .uv-icon.uv-bottom-left {
+            bottom: 10px;
+            left: 12px
+        }
+        
+        .uv-icon.uv-top-left {
+            top: 10px;
+            left: 12px
+        }
+        
+        .uv-icon.uv-is-selected {
+            opacity: 1
+        }
+        
+        .uv-icon svg {
+            width: 39px;
+            height: 39px
+        }
+        
+        .uv-icon .uv-tooltip-container {
+            position: relative
+        }
+        
+        .uv-icon .uv-tooltip-container .uv-icon-tooltip {
+            display: none;
+            position: absolute;
+            height: 20px;
+            padding: 4px 8px;
+            background-color: #464653;
+            color: white;
+            font-size: 12px;
+            border-radius: 4px;
+            line-height: 18px;
+            font-family: "Open Sans", sans-serif;
+            white-space: nowrap
+        }
+        
+        .uv-icon .uv-tooltip-container .uv-icon-tooltip.left,
+        .uv-icon .uv-tooltip-container .uv-icon-tooltip.right {
+            top: 0;
+            bottom: 0;
+            margin: auto 10px
+        }
+        
+        .uv-icon .uv-tooltip-container .uv-icon-tooltip.top,
+        .uv-icon .uv-tooltip-container .uv-icon-tooltip.bottom {
+            transform: translate(-30%);
+            margin: 10px auto
+        }
+        
+        .uv-icon .uv-tooltip-container .uv-icon-tooltip.top {
+            bottom: 100%
+        }
+        
+        .uv-icon .uv-tooltip-container .uv-icon-tooltip.bottom {
+            top: 100%
+        }
+        
+        .uv-icon .uv-tooltip-container .uv-icon-tooltip.left {
+            right: 100%
+        }
+        
+        .uv-icon .uv-tooltip-container .uv-icon-tooltip.right {
+            left: 100%
+        }
+        
+        .uv-icon .uv-tooltip-container:hover .uv-icon-tooltip {
+            display: block
+        }
+        
+        .uv-icon-trigger {
+            display: block;
+            width: 39px;
+            height: 39px;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            background: none
+        }
+        
+        .uv-popover {
+            font-family: sans-serif;
+            font-weight: 100;
+            font-size: 13px;
+            color: black;
+            position: fixed;
+            z-index: 100001
+        }
+        
+        .uv-popover-content {
+            border-radius: 5px;
+            background: white;
+            border: 1px solid transparent;
+            position: relative;
+            width: 325px;
+            height: 325px;
+            transition: background 200ms
+        }
+        
+        .uv-bottom .uv-popover-content {
+            box-shadow: rgba(0, 0, 0, 0.3) 0 -10px 60px, rgba(0, 0, 0, 0.1) 0 0 20px
+        }
+        
+        .uv-top .uv-popover-content {
+            box-shadow: rgba(0, 0, 0, 0.3) 0 10px 60px, rgba(0, 0, 0, 0.1) 0 0 20px
+        }
+        
+        .uv-left .uv-popover-content {
+            box-shadow: rgba(0, 0, 0, 0.3) 10px 0 60px, rgba(0, 0, 0, 0.1) 0 0 20px
+        }
+        
+        .uv-right .uv-popover-content {
+            box-shadow: rgba(0, 0, 0, 0.3) -10px 0 60px, rgba(0, 0, 0, 0.1) 0 0 20px
+        }
+        
+        .uv-ie8 .uv-popover-content {
+            position: relative
+        }
+        
+        .uv-ie8 .uv-popover-content .uv-popover-content-shadow {
+            display: block;
+            background: black;
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: -15px;
+            width: 100%;
+            height: 100%;
+            filter: progid: DXImageTransform.Microsoft.Blur(PixelRadius=15, MakeShadow=true, ShadowOpacity=0.30);
+            z-index: -1
+        }
+        
+        .uv-popover-tail {
+            border: 9px solid transparent;
+            width: 0;
+            z-index: 10;
+            position: absolute;
+            transition: border-top-color 200ms
+        }
+        
+        .uv-top .uv-popover-tail {
+            bottom: -20px;
+            border-top: 11px solid white
+        }
+        
+        .uv-bottom .uv-popover-tail {
+            top: -20px;
+            border-bottom: 11px solid white
+        }
+        
+        .uv-left .uv-popover-tail {
+            right: -20px;
+            border-left: 11px solid white
+        }
+        
+        .uv-right .uv-popover-tail {
+            left: -20px;
+            border-right: 11px solid white
+        }
+        
+        .uv-popover-loading {
+            background: white;
+            border-radius: 5px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0
+        }
+        
+        .uv-popover-loading-text {
+            position: absolute;
+            top: 50%;
+            margin-top: -0.5em;
+            width: 100%;
+            text-align: center
+        }
+        
+        .uv-popover-iframe-container {
+            height: 100%
+        }
+        
+        .uv-popover-iframe {
+            border-radius: 5px;
+            overflow: hidden
+        }
+        
+        .uv-is-hidden {
+            display: none
+        }
+        
+        .uv-is-invisible {
+            display: block !important;
+            visibility: hidden !important
+        }
+        
+        .uv-is-transitioning {
+            display: block !important
+        }
+        
+        .uv-no-transition {
+            transition: none !important
+        }
+        
+        .uv-fade {
+            opacity: 1;
+            transition: opacity 200ms ease-out
+        }
+        
+        .uv-fade.uv-is-hidden {
+            opacity: 0
+        }
+        
+        .uv-scale-top,
+        .uv-scale-top-left,
+        .uv-scale-top-right,
+        .uv-scale-bottom,
+        .uv-scale-bottom-left,
+        .uv-scale-bottom-right,
+        .uv-scale-right,
+        .uv-scale-right-top,
+        .uv-scale-right-bottom,
+        .uv-scale-left,
+        .uv-scale-left-top,
+        .uv-scale-left-bottom,
+        .uv-slide-top,
+        .uv-slide-bottom,
+        .uv-slide-left,
+        .uv-slide-right {
+            opacity: 1;
+            transition: all 80ms ease-out
+        }
+        
+        .uv-scale-top.uv-is-hidden {
+            opacity: 0;
+            transform: scale(0.8) translateY(-15%)
+        }
+        
+        .uv-scale-top-left.uv-is-hidden {
+            opacity: 0;
+            transform: scale(0.8) translateY(-15%) translateX(-10%)
+        }
+        
+        .uv-scale-top-right.uv-is-hidden {
+            opacity: 0;
+            transform: scale(0.8) translateY(-15%) translateX(10%)
+        }
+        
+        .uv-scale-bottom.uv-is-hidden {
+            opacity: 0;
+            transform: scale(0.8) translateY(15%)
+        }
+        
+        .uv-scale-bottom-left.uv-is-hidden {
+            opacity: 0;
+            transform: scale(0.8) translateY(15%) translateX(-10%)
+        }
+        
+        .uv-scale-bottom-right.uv-is-hidden {
+            opacity: 0;
+            transform: scale(0.8) translateY(15%) translateX(10%)
+        }
+        
+        .uv-scale-right.uv-is-hidden {
+            opacity: 0;
+            transform: scale(0.8) translateX(15%)
+        }
+        
+        .uv-scale-right-top.uv-is-hidden {
+            opacity: 0;
+            transform: scale(0.8) translateX(15%) translateY(-10%)
+        }
+        
+        .uv-scale-right-bottom.uv-is-hidden {
+            opacity: 0;
+            transform: scale(0.8) translateX(15%) translateY(10%)
+        }
+        
+        .uv-scale-left.uv-is-hidden {
+            opacity: 0;
+            transform: scale(0.8) translateX(-15%)
+        }
+        
+        .uv-scale-left-top.uv-is-hidden {
+            opacity: 0;
+            transform: scale(0.8) translateX(-15%) translateY(-10%)
+        }
+        
+        .uv-scale-left-bottom.uv-is-hidden {
+            opacity: 0;
+            transform: scale(0.8) translateX(-15%) translateY(10%)
+        }
+        
+        .uv-slide-top.uv-is-hidden {
+            transform: translateY(-100%)
+        }
+        
+        .uv-slide-bottom.uv-is-hidden {
+            transform: translateY(100%)
+        }
+        
+        .uv-slide-left.uv-is-hidden {
+            transform: translateX(-100%)
+        }
+        
+        .uv-slide-right.uv-is-hidden {
+            transform: translateX(100%)
+        }
+    </style>
+    <style type="text/css" media="print">
+        #uvTab,
+        .uv-tray,
+        .uv-icon,
+        .uv-popover,
+        .uv-bubble {
+            display: none !important
+        }
+    </style>
+    <style type="text/css">
+        .addthis_counter {
+            font-weight: 700;
+            display: inline-block;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            color: #fff
+        }
+        
+        .addthis_counter a {
+            display: block;
+            font-family: arial, helvetica, sans-serif !important;
+            text-decoration: none !important;
+            border: 0
+        }
+        
+        .addthis_counter {
+            text-decoration: none !important;
+            text-align: left
+        }
+        
+        .addthis_counter .addthis_button_expanded {
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAACaCAMAAADcrusAAAAA21BMVEX////+bUznWjrnWjrBwcGJiYnm5ubFxcWMjIyRkZH39/f19fX////nWjr+bUzys6n+uq7/7+z87evqd2H+hm3/5+P+sKPxqJz65OH/9/b+el3paU//zcT2yMDshXH99vX+kXz+nIn/w7n0vrX30cz9bEv/3tn529f/1s/ukYH3aUn+ppbvnY/bUjTmWTn/3dX+9fP3aEj/9vT52NH/5d/aUTP9a0r74tzlWDjfWz386+f/7en4b1H/7uv4b1D/3db/9/X/7uraUjT+9vT87Oj87OnpZEb52dH+dlezszuQAAAABHRSTlMAExMAzBw6IQAAAnlJREFUeF6009eKKzEMBuBJriW5T2/pPdvbqb28/xMdGbOQiyxZZ9n/QnjAH8KWJxl8uqeI3H8ZJFcUmatkFktmCUXnXHIBIRevJ/AcBuUSQI0onZ8k1/QxkNqVJIvyNPl8S1/ZMFkuuYxtqhQoS2MA1RNIGKUArjwk/4Lk0jtXp0QpjEjJHiw5SbzZQlo6eUi+fafba0985LKwqSOqJdNaMdmQ5O+NOn6WYsNlPk7nnvRF6iF3lOBz/MZqZ6kvZCBS+bUn1h/MvTCXmumYArEKijlYJr6N6t8y/fcn5zz+dfwvNlhH9ZmtB8nw6REj8vg0TO4wMnfJPpbsE4zOueQGQm5eT+A5DKopgF5htjhJLvFDIE1eoeiq0+T3A/5lw2Q65TIxmdagDU4AdIsgYJUB5NUh+RMklzbPmwwxgxVq0YLBXCBvNpBVuTgkP3/hw6UnPmLamSxHbATTRjPZouDvrT5+lm7LZTHJFp60XeYhdxTgc/zGmtxg24lAhPZrT4w/WP7CXBqmEwzEaOgWYJj4Nrp9y/Tfn5zz+Hex5Ecy3EX12e+G/9mrQxUAYBgGooEFAm3//3snZmviJnL+6cMRrXSgHqsWOGb8iISEhISEqDxRAsSld5De/nLbr4MViEEYDMI5mFQ3ff/nXejx33YHcyqtc/8QQSXaRYfJZpAaFWx2FdwfMXyqYdYjp4punpP5fcgiiyyyyCKVl9+6nxQHCP+t20WHCTdIjQo2KjgDAT/Y7UQk/li1tkPtyaQlEhBARABBUV+lvhc1rz4w+FX4bKWLrA0cp7Ue+KhqnpA/mXggAQFEBBAU9VXqe1HzzgNTv2Iyx9Dc8gWOjkKMG1wfQQAAAABJRU5ErkJggg==");
+            background-repeat: no-repeat;
+            display: inline-block
+        }
+        
+        .addthis_counter .atc_s {
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUBAMAAAB/pwA+AAAAFVBMVEUAAAD///////////////////////9Iz20EAAAABnRSTlMAwPm7kB4+mBDvAAAAP0lEQVQI12MIVksDgyRTBrM0KEhmAApChRnS4ACdKcCIl5ko6MAiKAZmJjAAARsKE6GAsGE43IBwJLLTER4CAHvvQkc3Hji8AAAAAElFTkSuQmCC");
+            background-size: 10px;
+            background-repeat: no-repeat;
+            background-color: #fe6d4c;
+            background-position: 5px 5px;
+            display: inline-block;
+            border-radius: 2px;
+            min-width: 25px;
+            text-decoration: none
+        }
+        
+        .addthis_counter .atc_s:hover {
+            background-color: #e75a3a
+        }
+        
+        .addthis_counter.addthis_bubble_style {
+            background-image: url("data:image/gif;base64,R0lGODlhUgBkAKIEAOrq6sLCwoWFhf///////wAAAAAAAAAAACH5BAEAAAQALAAAAABSAGQAAAP/SLoa/jDKSetkOGsdwPhgKI5kaYpAsK1sd75wPKZsjQVyrpuq7eO7YLDnqwGFyBixuDomn6UlkwOtkqTTm3ULwmYXTi7U+3WJreSp+VxNF9fs8ZcBjz/dRo8dPSfU90l4TXqAcn1/hTuCLYSJQ31gjY45i3mTipB0kpcnlTZhnDyZdKFKo2ClMJ5GqS+rLa2dpw2xorOgtR+vg7kou7y9AzSzYBbGx8gRxAwCzc7P0NHS09TSywoCm60AAsvZwSDcxALgId2z5OUf56fp6uyj7uXwmfLg9JD2wfh9+r38X76pGwBwisCBBYscRFhP2718Dh/OWThwXb+IEidi/New+SKIhD4ozmu3sRVIhSVLnVRYcWXIluNgopPZjmY8m/VwQlQnblxKRz29VRtKtCg0YsmSOsBgtGmzNz9zDCMgEkpQWGyI+KuyElebBVuhdI2jNc5JRF+pRtUBEu3XqlYSum0DNy6jPQHqcrVEVq2ds2spYQssY2xWsGZ/9MWW+NNiqo35cpmqV8jVFkqTMXVqlEnmz1I4i4Y3twplwjqCehVTthC71VxaA3qdSPYe2oVs/0WVG7HrBqgx+f1deouKylsEFDeOPPlyNM3tPpcTXSzw2oMT4QakOzJs475n8+Ye/vZ4vOV30+rN+Pf1PacBXQWdefPopgQSAAA7");
+            background-repeat: no-repeat
+        }
+        
+        .addthis_counter a.atc_s {
+            font-size: 11px;
+            font-weight: 100;
+            color: #fff;
+            padding: 0 5px 0 20px;
+            line-height: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: none
+        }
+        
+        .addthis_counter .atc_s-span,
+        .addthis_counter a.atc_s {
+            display: block;
+            height: 20px
+        }
+        
+        .addthis_counter .addthis_button_expanded.at300m .at4-icon {
+            display: none !important
+        }
+        
+        .addthis_counter a.addthis_button_expanded:hover,
+        .addthis_counter.addthis_pill_style a.addthis_button_expanded:hover {
+            text-decoration: none;
+            color: #000
+        }
+        
+        .addthis_counter .addthis_button_expanded {
+            display: block;
+            background-repeat: no-repeat;
+            background-position: 0 -40px;
+            width: 50px;
+            height: 33px;
+            line-height: 33px;
+            padding-bottom: 4px;
+            margin-bottom: 3px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1pc;
+            font-weight: 700;
+            color: #333
+        }
+        
+        .addthis_counter {
+            vertical-align: top
+        }
+        
+        .addthis_counter.addthis_native_counter .addthis_button_expanded {
+            font-weight: 400
+        }
+        
+        * html .addthis_counter.compatmode0 .addthis_button_expanded {
+            padding-bottom: 0 !important
+        }
+        
+        * html .addthis_counter .addthis_button_expanded {
+            height: 37px
+        }
+        
+        .addthis_counter .addthis_button_expanded:hover {
+            background-position: 0 -77px;
+            cursor: pointer;
+            color: #000
+        }
+        
+        .addthis_counter .addthis_button_expanded .at300bs {
+            display: none !important
+        }
+        
+        .addthis_counter.addthis_pill_style {
+            display: block;
+            height: 25px;
+            overflow: hidden
+        }
+        
+        .addthis_counter.addthis_pill_style a.atc_s {
+            float: left
+        }
+        
+        .addthis_counter.addthis_pill_style a.addthis_button_expanded {
+            display: none;
+            background-repeat: no-repeat;
+            background-position: 0 -114px;
+            width: 34px !important;
+            height: 20px;
+            line-height: 20px;
+            margin: 0 0 0 3px;
+            padding: 0 0 0 4px;
+            float: left;
+            text-align: center;
+            text-decoration: none;
+            font-family: arial, helvetica, sans-serif;
+            font-weight: 700;
+            font-size: 11px;
+            color: #333;
+            -ms-box-sizing: content-box;
+            -o-box-sizing: content-box;
+            box-sizing: content-box
+        }
+        
+        .addthis_counter.addthis_pill_style.addthis_nonzero a.addthis_button_expanded {
+            display: block !important;
+            transition: none
+        }
+        
+        .addthis_counter.addthis_pill_style a.addthis_button_expanded:hover {
+            background-position: 0 -134px !important
+        }
+        
+        .addthis_counter.addthis_bubble_style {
+            margin: 0 0 0 -2px;
+            text-align: center;
+            font-weight: 700;
+            font-family: arial, helvetica, sans-serif;
+            color: #000;
+            background-repeat: no-repeat;
+            background-position: 0 -4pc;
+            padding: 0 0 0 4px;
+            height: 1pc;
+            width: 2pc !important;
+            -ms-box-sizing: content-box;
+            -o-box-sizing: content-box;
+            box-sizing: content-box
+        }
+        
+        .addthis_native_counter_parent .addthis_counter.addthis_bubble_style {
+            background-position: 0 -4pc !important
+        }
+        
+        .addthis_counter.addthis_bubble_style.addthis_native_counter {
+            margin: 0 2px
+        }
+        
+        .addthis_counter.addthis_bubble_style a.addthis_button_expanded {
+            font-size: 11px;
+            height: 1pc;
+            line-height: 1pc;
+            width: 34px;
+            background: none
+        }
+        
+        .addthis_counter.addthis_bubble_style:hover {
+            background-position: -36px -4pc !important
+        }
+        
+        .addthis_20x20_style .addthis_counter.addthis_bubble_style {
+            background-repeat: no-repeat;
+            background-position: 0 -5pc !important;
+            height: 20px;
+            width: 35px !important;
+            line-height: 20px;
+            padding: 0 0 0 6px
+        }
+        
+        .addthis_20x20_style .addthis_counter.addthis_bubble_style:hover {
+            background-position: -41px -5pc !important
+        }
+        
+        .addthis_20x20_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded {
+            background: none;
+            font-size: 9pt;
+            line-height: 20px;
+            height: 20px;
+            margin: 0;
+            width: 35px !important;
+            padding: 0 !important
+        }
+        
+        .addthis_20x20_style .addthis_counter.addthis_bubble_style.addthis_native_counter a.addthis_button_expanded {
+            font-size: 11px
+        }
+        
+        .addthis_32x32_style .addthis_counter.addthis_bubble_style,
+        .addthis_32x32_white_style .addthis_counter.addthis_bubble_style {
+            background-repeat: no-repeat;
+            background-position: 0 0 !important;
+            height: 2pc;
+            width: 56px !important;
+            line-height: 2pc;
+            padding: 0 0 0 6px
+        }
+        
+        .addthis_32x32_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded,
+        .addthis_32x32_white_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded {
+            background: none;
+            font-size: 1pc;
+            line-height: 2pc;
+            height: 2pc;
+            margin: 0;
+            width: 56px !important;
+            padding: 0 !important
+        }
+        
+        .addthis_32x32_style .addthis_counter.addthis_bubble_style:hover,
+        .addthis_32x32_white_style .addthis_counter.addthis_bubble_style:hover {
+            background-position: 0 -2pc !important
+        }
+        
+        .addthis_counter.addthis_bubble_style .atc_s {
+            display: none !important
+        }
+        
+        * html .addthis_counter.addthis_bubble_style {
+            width: 36px !important;
+            display: inline
+        }
+        
+        * html .addthis_counter.bubblecompatmode0 {
+            width: 2pc !important;
+            display: block
+        }
+        
+        * html .addthis_counter.addthis_bubble_style a.addthis_button_expanded {
+            width: 24px !important;
+            height: 14px !important;
+            line-height: 14px !important;
+            padding: 0;
+            margin-top: 1px !important;
+            display: inline
+        }
+        
+        * html .addthis_counter.bubblecompatmode0 a.addthis_button_expanded {
+            width: 36px
+        }
+        
+        * html .addthis_32x32_style .addthis_counter.addthis_bubble_style {
+            width: 60px !important
+        }
+        
+        * html .addthis_32x32_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded {
+            width: 46px;
+            height: 26px !important;
+            line-height: 26px !important;
+            margin-top: 2px !important
+        }
+        
+        * html .addthis_32x32_style .addthis_counter.bubblecompatmode0 a.addthis_button_expanded {
+            height: 2pc !important;
+            line-height: 2pc !important
+        }
+    </style>
+    <script charset="utf-8" src="https://platform.twitter.com/js/button.63c51c903061d0dbd843c41e8a00aa5a.js"></script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50cb38c52fa9b3d9"></script>
+    <script type="text/javascript" charset="utf-8" async="" src="https://s7.addthis.com/static/14.2dfb61b890959f78272d.js"></script>
+    <style type="text/css" data-fbcssmodules="css:fb.css.basecss:fb.css.dialog css:fb.css.iframewidget">
+        .fb_hidden {
+            position: absolute;
+            top: -10000px;
+            z-index: 10001
+        }
+        
+        .fb_reposition {
+            overflow: hidden;
+            position: relative
+        }
+        
+        .fb_invisible {
+            display: none
+        }
+        
+        .fb_reset {
+            background: none;
+            border: 0;
+            border-spacing: 0;
+            color: #000;
+            cursor: auto;
+            direction: ltr;
+            font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+            font-size: 11px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: normal;
+            letter-spacing: normal;
+            line-height: 1;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            text-align: left;
+            text-decoration: none;
+            text-indent: 0;
+            text-shadow: none;
+            text-transform: none;
+            visibility: visible;
+            white-space: normal;
+            word-spacing: normal
+        }
+        
+        .fb_reset>div {
+            overflow: hidden
+        }
+        
+        @keyframes fb_transform {
+            from {
+                opacity: 0;
+                transform: scale(.95)
+            }
+            to {
+                opacity: 1;
+                transform: scale(1)
+            }
+        }
+        
+        .fb_animate {
+            animation: fb_transform .3s forwards
+        }
+        
+        .fb_dialog {
+            background: rgba(82, 82, 82, .7);
+            position: absolute;
+            top: -10000px;
+            z-index: 10001
+        }
+        
+        .fb_dialog_advanced {
+            border-radius: 8px;
+            padding: 10px
+        }
+        
+        .fb_dialog_content {
+            background: #fff;
+            color: #373737
+        }
+        
+        .fb_dialog_close_icon {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;
+            cursor: pointer;
+            display: block;
+            height: 15px;
+            position: absolute;
+            right: 18px;
+            top: 17px;
+            width: 15px
+        }
+        
+        .fb_dialog_mobile .fb_dialog_close_icon {
+            left: 5px;
+            right: auto;
+            top: 5px
+        }
+        
+        .fb_dialog_padding {
+            background-color: transparent;
+            position: absolute;
+            width: 1px;
+            z-index: -1
+        }
+        
+        .fb_dialog_close_icon:hover {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent
+        }
+        
+        .fb_dialog_close_icon:active {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent
+        }
+        
+        .fb_dialog_iframe {
+            line-height: 0
+        }
+        
+        .fb_dialog_content .dialog_title {
+            background: #6d84b4;
+            border: 1px solid #365899;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0
+        }
+        
+        .fb_dialog_content .dialog_title>span {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;
+            float: left;
+            padding: 5px 0 7px 26px
+        }
+        
+        body.fb_hidden {
+            height: 100%;
+            left: 0;
+            margin: 0;
+            overflow: visible;
+            position: absolute;
+            top: -10000px;
+            transform: none;
+            width: 100%
+        }
+        
+        .fb_dialog.fb_dialog_mobile.loading {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;
+            min-height: 100%;
+            min-width: 100%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            z-index: 10001
+        }
+        
+        .fb_dialog.fb_dialog_mobile.loading.centered {
+            background: none;
+            height: auto;
+            min-height: initial;
+            min-width: initial;
+            width: auto
+        }
+        
+        .fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner {
+            width: 100%
+        }
+        
+        .fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content {
+            background: none
+        }
+        
+        .loading.centered #fb_dialog_loader_close {
+            clear: both;
+            color: #fff;
+            display: block;
+            font-size: 18px;
+            padding-top: 20px
+        }
+        
+        #fb-root #fb_dialog_ipad_overlay {
+            background: rgba(0, 0, 0, .4);
+            bottom: 0;
+            left: 0;
+            min-height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            z-index: 10000
+        }
+        
+        #fb-root #fb_dialog_ipad_overlay.hidden {
+            display: none
+        }
+        
+        .fb_dialog.fb_dialog_mobile.loading iframe {
+            visibility: hidden
+        }
+        
+        .fb_dialog_mobile .fb_dialog_iframe {
+            position: sticky;
+            top: 0
+        }
+        
+        .fb_dialog_content .dialog_header {
+            background: linear-gradient(from(#738aba), to(#2c4987));
+            border-bottom: 1px solid;
+            border-color: #043b87;
+            box-shadow: white 0 1px 1px -1px inset;
+            color: #fff;
+            font: bold 14px Helvetica, sans-serif;
+            text-overflow: ellipsis;
+            text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0;
+            vertical-align: middle;
+            white-space: nowrap
+        }
+        
+        .fb_dialog_content .dialog_header table {
+            height: 43px;
+            width: 100%
+        }
+        
+        .fb_dialog_content .dialog_header td.header_left {
+            font-size: 12px;
+            padding-left: 5px;
+            vertical-align: middle;
+            width: 60px
+        }
+        
+        .fb_dialog_content .dialog_header td.header_right {
+            font-size: 12px;
+            padding-right: 5px;
+            vertical-align: middle;
+            width: 60px
+        }
+        
+        .fb_dialog_content .touchable_button {
+            background: linear-gradient(from(#4267B2), to(#2a4887));
+            background-clip: padding-box;
+            border: 1px solid #29487d;
+            border-radius: 3px;
+            display: inline-block;
+            line-height: 18px;
+            margin-top: 3px;
+            max-width: 85px;
+            padding: 4px 12px;
+            position: relative
+        }
+        
+        .fb_dialog_content .dialog_header .touchable_button input {
+            background: none;
+            border: none;
+            color: #fff;
+            font: bold 12px Helvetica, sans-serif;
+            margin: 2px -12px;
+            padding: 2px 6px 3px 6px;
+            text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0
+        }
+        
+        .fb_dialog_content .dialog_header .header_center {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 18px;
+            text-align: center;
+            vertical-align: middle
+        }
+        
+        .fb_dialog_content .dialog_content {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;
+            border: 1px solid #4a4a4a;
+            border-bottom: 0;
+            border-top: 0;
+            height: 150px
+        }
+        
+        .fb_dialog_content .dialog_footer {
+            background: #f5f6f7;
+            border: 1px solid #4a4a4a;
+            border-top-color: #ccc;
+            height: 40px
+        }
+        
+        #fb_dialog_loader_close {
+            float: left
+        }
+        
+        .fb_dialog.fb_dialog_mobile .fb_dialog_close_icon {
+            visibility: hidden
+        }
+        
+        #fb_dialog_loader_spinner {
+            animation: rotateSpinner 1.2s linear infinite;
+            background-color: transparent;
+            background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            height: 24px;
+            width: 24px
+        }
+        
+        @keyframes rotateSpinner {
+            0% {
+                transform: rotate(0deg)
+            }
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+        
+        .fb_iframe_widget {
+            display: inline-block;
+            position: relative
+        }
+        
+        .fb_iframe_widget span {
+            display: inline-block;
+            position: relative;
+            text-align: justify
+        }
+        
+        .fb_iframe_widget iframe {
+            position: absolute
+        }
+        
+        .fb_iframe_widget_fluid_desktop,
+        .fb_iframe_widget_fluid_desktop span,
+        .fb_iframe_widget_fluid_desktop iframe {
+            max-width: 100%
+        }
+        
+        .fb_iframe_widget_fluid_desktop iframe {
+            min-width: 220px;
+            position: relative
+        }
+        
+        .fb_iframe_widget_lift {
+            z-index: 1
+        }
+        
+        .fb_iframe_widget_fluid {
+            display: inline
+        }
+        
+        .fb_iframe_widget_fluid span {
+            width: 100%
+        }
+    </style>
+</head>
+
+<body style="position: relative; min-height: 100%; top: 0px;">
+    <div id="header" style="z-index:1001;"> </div>
+    <div id="header-top-mark"></div>
+    <style type="text/css">
+        .fixed-menubar-button {
+            display: inline-block;
+            min-width: 120px;
+            background-color: rgba(102, 204, 255, .5);
+            margin: 3px;
+            font-weight: normal;
+            border-radius: 2px;
+            padding: 5px 0;
+        }
+        
+        .fixed-menubar-button:hover {
+            background: #0086c8;
+        }
+        
+        #fixed-menubar {
+            bottom: 0px;
+            z-index: 8000;
+            position: fixed;
+            background: #0086c8;
+            height: 38px;
+            width: 100%;
+            text-align: left;
+            box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.6);
+            -moz-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.6);
+            -webkit-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.6);
+        }
+        
+        #fixed-menubar-container {
+            padding-top: 5px;
+        }
+        
+        .menubar-button {
+            padding: 0px 5px;
+            height: 28px;
+            vertical-align: bottom;
+            display: table-cell;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+        
+        .menubar-cell:hover {
+            background-color: rgb(127, 194, 227);
+        }
+        
+        .menubar-icon,
+        .menubar-icon-main {
+            vertical-align: bottom;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        .menubar-text {
+            text-transform: uppercase;
+            color: white;
+            font-size: 18px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        @media only screen and (max-width: 920px) {
+            .menubar-icon {
+                display: none;
+            }
+            .menubar-text-second {
+                display: none;
+            }
+            #fixed-footer-menu-buttons-with-text {
+                display: block !important;
+            }
+            .menubar-button {
+                padding: 0px 15px;
+            }
+            .menubar-text {
+                padding: 0;
+            }
+        }
+        
+        @media only screen and (max-width: 800px) {
+            .menubar-button {
+                padding: 0px 10px;
+            }
+            .menubar-text {
+                font-weight: normal !important;
+            }
+            .menubar-text {
+                font-size: 21px;
+            }
+            .fixed-menubar-table {
+                width: 100%;
+            }
+        }
+        
+        @media only screen and (max-width: 680px) {
+            .menubar-text {
+                font-size: 16px;
+            }
+            .menubar-button {
+                padding: 0px 5px;
+            }
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .menubar-text {
+                font-size: 15px;
+            }
+        }
+        
+        @media only screen and (max-width: 520px) {
+            .menubar-text {
+                font-size: 14px;
+            }
+            .menubar-button {
+                padding: 0px 3px;
+            }
+        }
+        
+        @media only screen and (max-width: 490px) {
+            .menubar-text {
+                font-size: 13px;
+            }
+        }
+        
+        @media only screen and (max-width: 470px) {
+            .menubar-text {
+                font-size: 12px;
+            }
+            .menubar-button {
+                padding: 0px 2px;
+            }
+        }
+        
+        @media only screen and (max-width: 420px) {
+            .menubar-text {
+                font-size: 11px;
+            }
+        }
+        
+        @media only screen and (max-width: 320px) {
+            .menubar-text {
+                font-size: 10px;
+            }
+            .menubar-button {
+                padding: 0px 1px;
+            }
+        }
+        
+        .fixed-menubar-table {
+            border-right: 1px solid rgb(127, 194, 227);
+            font-weight: normal;
+            font-size: 22px;
+            border-spacing: 0;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .fixed-menubar-table td {
+            border-left: 1px solid rgb(127, 194, 227);
+            vertical-align: middle;
+            height: 38px;
+            padding: 0;
+            margin: 0;
+        }
+        
+        a.menubar-text {
+            text-decoration: none;
+            font-weight: bold;
+            ;
+        }
+        
+        a.menubar-text:hover {
+            text-decoration: underline;
+        }
+        
+        a.menubar-text-second:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script type="text/javascript">
+        function go2home() {
+            var url = 'http://aqicn.org/here/';;
+            url = AqiSettings.getCurrentStationUrl() || url;
+            window.location.href = url;
+        }
+    </script>
+    <div id="fixed-menubar" style="display: none;">
         <center>
-</div>
-<div class="whitebody" style="font-family:&quot;Noto Serif&quot;,Cambria,&quot;Palatino Linotype&quot;,&quot;Book Antiqua&quot;,&quot;URW Palladio L&quot;,serif;">
-    <center>
-        <div class="section-content">
-            <center> About the Air Quality Levels<br> <br>
-                <style type="text/css">
-                    #legend-full table.infoaqitable {
-                        line-height: 1.5;
-                        background-color: white;
-                        max-width: 1000px;
-                        width: 95%;
-                        margin: 0px;
-                        border: 1px solid black;
-                        cursor: pointer;
+            <table class="fixed-menubar-table">
+                <tbody>
+                    <tr>
+                        <td class="menubar-cell">
+                            <a onclick="go2home();" class="menubar-text"></a>
+                            <center>
+                                <a onclick="go2home();" class="menubar-text">
+                                    <div class="menubar-button" ontouchend="this.style.backgroundColor=&quot;rgb(127,194,227)&quot;;">
+                                        <div class="sprite-isprt-web-home menubar-icon-main" title="home"></div><span class="menubar-text-second">home</span>
+                                    </div>
+                                </a>
+                            </center>
+                        </td>
+                        <td class="menubar-cell">
+                            <a href="/here/" class="menubar-text"></a>
+                            <center>
+                                <a href="/here/" class="menubar-text">
+                                    <div class="menubar-button" ontouchend="this.style.backgroundColor=&quot;rgb(127,194,227)&quot;;">
+                                        <div class="sprite-isprt-web-geofencing menubar-icon-main" title="Here"></div><span class="menubar-text-second">Here</span>
+                                    </div>
+                                </a>
+                            </center>
+                        </td>
+                        <td class="menubar-cell">
+                            <a href="/map/world/" class="menubar-text"></a>
+                            <center>
+                                <a href="/map/world/" class="menubar-text">
+                                    <div class="menubar-button" ontouchend="this.style.backgroundColor=&quot;rgb(127,194,227)&quot;;">
+                                        <div class="sprite-isprt-web-globe menubar-icon-main" title="map"></div><span class="menubar-text-second">map</span>
+                                    </div>
+                                </a>
+                            </center>
+                        </td>
+                        <td class="menubar-cell">
+                            <a href="/mask/" class="menubar-text"></a>
+                            <center>
+                                <a href="/mask/" class="menubar-text">
+                                    <div class="menubar-button" ontouchend="this.style.backgroundColor=&quot;rgb(127,194,227)&quot;;">
+                                        <div class="sprite-isprt-web-dustmask menubar-icon-main" title="mask"></div><span class="menubar-text-second">mask</span>
+                                    </div>
+                                </a>
+                            </center>
+                        </td>
+                        <td class="menubar-cell">
+                            <a href="/faq/" class="menubar-text"></a>
+                            <center>
+                                <a href="/faq/" class="menubar-text">
+                                    <div class="menubar-button" ontouchend="this.style.backgroundColor=&quot;rgb(127,194,227)&quot;;">
+                                        <div class="sprite-isprt-web-faq menubar-icon-main" title="faq"></div><span class="menubar-text-second">faq</span>
+                                    </div>
+                                </a>
+                            </center>
+                        </td>
+                        <td class="menubar-cell">
+                            <a href="/city/all/" class="menubar-text"></a>
+                            <center>
+                                <a href="/city/all/" class="menubar-text">
+                                    <div class="menubar-button" ontouchend="this.style.backgroundColor=&quot;rgb(127,194,227)&quot;;">
+                                        <div class="sprite-isprt-web-search menubar-icon-main" title="search"></div><span class="menubar-text-second">search</span>
+                                    </div>
+                                </a>
+                            </center>
+                        </td>
+                        <td class="menubar-cell">
+                            <a href="/contact/" class="menubar-text"></a>
+                            <center>
+                                <a href="/contact/" class="menubar-text">
+                                    <div class="menubar-button" ontouchend="this.style.backgroundColor=&quot;rgb(127,194,227)&quot;;">
+                                        <div class="sprite-isprt-web-talk menubar-icon-main" title="contact"></div><span class="menubar-text-second">contact</span>
+                                    </div>
+                                </a>
+                            </center>
+                        </td>
+                        <td class="menubar-cell">
+                            <a href="/links/" class="menubar-text"></a>
+                            <center>
+                                <a href="/links/" class="menubar-text">
+                                    <div class="menubar-button" ontouchend="this.style.backgroundColor=&quot;rgb(127,194,227)&quot;;">
+                                        <div class="sprite-isprt-web-link menubar-icon-main" title="links"></div><span class="menubar-text-second">links</span>
+                                    </div>
+                                </a>
+                            </center>
+                        </td>
+                        <td class="menubar-cell">
+                            <a onclick="settingsMenu.show();" class="menubar-text" onmouseover="settingsMenu.onmouseover();" onmouseout="settingsMenu.onmouseout();" style="position:relative"></a>
+                            <center>
+                                <a onclick="settingsMenu.show();" class="menubar-text" onmouseover="settingsMenu.onmouseover();" onmouseout="settingsMenu.onmouseout();" style="position:relative">
+                                    <div class="menubar-button">
+                                        <div class="sprite-isprt-web-settings menubar-icon-main" id="footer-settings-img"></div>
+                                    </div>
+                                </a>
+                            </center>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </div>
+    <style type="text/css">
+        div.entry-content p:first-child:first-letter {
+            float: left;
+            font-size: 3em;
+            margin-right: .06em;
+            line-height: 90%;
+        }
+        
+        p.bigletter:first-letter {
+            float: left;
+            font-size: 3.8em;
+            margin-right: .06em;
+            line-height: 90%;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://aqicn.org/air-cache/fonts/Noto_Serif/font.css?_=20190418.093128">
+    <div class="h1section">
+        <h1>
+            <div id="h1header1" style="padding: 2px; font-family: &quot;Noto Serif&quot;, Cambria, &quot;Palatino Linotype&quot;, &quot;Book Antiqua&quot;, &quot;URW Palladio L&quot;, serif; font-size: 30px;">Feel tired with the pollution:
+                <div style="font-size:80%"> Get a mask!</div>
+            </div>
+        </h1>
+    </div>
+    <script type="text/javascript">
+        ;
+        if (!isMobileUA) {
+            fitLine('#h1header1', .88, {
+                maxfs: 45
+            });
+        };
+    </script>
+    <style>
+        .section-content {
+            max-width: 95%;
+            width: 1100px;
+            font-size: 18px;
+            min-height: 300px;
+            text-align: left;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .section-content-tight {
+            min-height: 0px;
+        }
+        
+        .section-banner {
+            background-size: 100%;
+            background: url(https://aqicn.org/images//bluesky-banner-panoramic.jpg) no-repeat center bottom #eee;
+            margin-top: -2px;
+            z-index: -1;
+            border-bottom: 1px solid #888;
+            width: 100%;
+        }
+        
+        .h2-title {
+            x-font-family: 'Bowlby One SC', serif;
+            font-family: inherit;
+            font-size: 1.1em;
+            overflow: hidden;
+            text-align: center;
+            text-transform: capitalize;
+        }
+        
+        .h2-title:before,
+        .h2-title:after {
+            background-color: #ddd;
+            content: '';
+            display: inline-block;
+            height: 1px;
+            position: relative;
+            vertical-align: middle;
+            width: 50%;
+        }
+        
+        .h2-title:before {
+            right: 0.5em;
+            margin-left: -50%;
+        }
+        
+        .h2-title:after {
+            left: 0.5em;
+            margin-right: -50%;
+        }
+        
+        @media only screen and (max-width: 800px) {
+            .section-content {
+                line-height: 1.6;
+                max-width: 98%;
+                min-height: 10px;
+            }
+            .section-banner {
+                display: none;
+            }
+        }
+        
+        .gtrans-div-manual>div {
+            font-family: font-family: "Noto Serif", Cambria, "Palatino Linotype", "Book Antiqua", "URW Palladio L", serif;
+            ;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            border-radius: 3px;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            background: #f8f8f0;
+        }
+    </style>
+    <div class="whitebody" style="font-family: &quot;Noto Serif&quot;, Cambria, &quot;Palatino Linotype&quot;, &quot;Book Antiqua&quot;, &quot;URW Palladio L&quot;, serif; height: auto !important;">
+        <center style="height: auto !important;">
+            <div class="section-content" style="height: auto !important; min-height: 0px !important;">
+                <script>
+                    loadScript('//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50cb38c52fa9b3d9');
+                </script>
+                <script type="text/javascript">
+                    var hp = window.location.hash.split("/");
+
+                    function udpdateTranslateStyles(count) {
+                        if ($(".goog-te-menu-frame").contents().find(".goog-te-menu2").length) {
+                            $(".goog-te-menu-frame").contents().find(".goog-te-menu2").css({
+                                "max-width": "100%",
+                                "padding": "0",
+                                "overflow": "scroll",
+                                "box-sizing": "border-box",
+                                "height": "auto"
+                            })
+                        } else if (count < 100) {
+                            setTimeout(function() {
+                                udpdateTranslateStyles(count + 1)
+                            }, 50);
+                        }
+                    }
+
+                    function gTransLangCallback() {
+                        var lmap = {
+                            "kr": "ko",
+                            "jp": "ja",
+                            "cn": "zh-CN",
+                            "hk": "zh-TW",
+                            "vn": "vi"
+                        };
+                        var lang = getLang();
+                        if (lmap[lang]) lang = lmap[lang];
+                        var props = {
+                            pageLanguage: "en",
+                            multilanguagePage: true,
+                            includedLanguages: hp[2] || lang,
+                            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+                            autoDisplay: true
+                        };
+                        new google.translate.TranslateElement(props, "gtrans-div-id");
+                    };
+
+                    function gTransFullCallback() {
+                        var props = {
+                            pageLanguage: "en",
+                            multilanguagePage: true,
+                            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                            autoDisplay: true
+                        };
+                        new google.translate.TranslateElement(props, "gtrans-div-id");
+                        udpdateTranslateStyles(0);
+                    };
+                    if ((hp.length == 3 && hp[0] == "#" && hp[1] == "w")) {
+                        loadScriptAsync("//translate.google.com/translate_a/element.js?cb=gTransLangCallback");
+                    } else {
+                        loadScriptAsync("//translate.google.com/translate_a/element.js?cb=gTransFullCallback");
+                    }
+                </script>
+                <style>
+                        .goog-te-gadget {
+                        font-family: inherit;
                     }
                     
-                    #legend-full table.infoaqitable td {
-                        padding: 5px;
+                    .goog-te-gadget-simple {
                         font-size: 15px;
-                        text-shadow: none;
+                        border: 1px solid #888;
+                        padding: 5px;
                     }
                     
-                    #legend-full .aqiwtxt {
+                    <<<<<<< HEAD #legend-full .aqiwtxt {
                         color: #ffffff;
                     }
                     
                     #legend-full .aqibtxt {
                         color: #000000;
+                        =======.goog-te-menu-frame {
+                            width: 100% !important;
+                        }
+                </style> <br>
+                <p class="bigletter"> There are many kinds of masks for air pollution protection (<a href="http://aqicn.org/ref/totobobo/" target="_">Totobobo</a>, <a href="http://aqicn.org/ref/respro/" target="_">Respro</a>, <a href="http://aqicn.org/ref/vogmask/" target="_">Vogmask</a>,
+                    <a href="http://aqicn.org/ref/3m-n95/" target="_">3M N95</a> ...) available on the market. We are in no way affiliated to any of the mask producers, but here are some of our favorites that we could recommend:</p>
+                <style type="text/css">
+                        section {
+                        margin-top: 20px;
+                        padding-left: 20px;
+                        border-left: 3px solid #f8f8f8;
+                        margin-bottom: 80px;
+                        >>>>>>>e50975a77d7f79b9401a9ec7f31044b331b215eb
                     }
                     
                     @media only screen and (max-width: 800px) {
-                        #legend-full table.infoaqitable {
-                            width: 98%;
+                        section {
+                            padding-left: 0;
+                            border-left: none;
                         }
                     }
                     
-                    @media only screen and (max-width: 800px) {
+                    <<<<<<< HEAD @media only screen and (max-width: 800px) {
                         #legend-full table.infoaqitable td {
                             display: block;
                         }
@@ -51,54 +2479,309 @@
                             font-weight: 800;
                             font-size: 1.2em;
                         }
+                        =======
+                </style> <br> <br>
+                <h1 style="border-bottom:1px solid black;">3M™ N95 Respirators</h1>
+                <section>
+                    <a href="http://aqicn.org/ref/3m-n95/" target="_">
+                        <center><img src="https://aqicn.org/images/masks/3m-logo.png" style="width:12.401143177112%;max-width:124.01143177112px;"><img src="https://aqicn.org/images/masks/3m-9501.3.jpg" style="width:29.541869831933%;max-width:295.41869831933px;">
+                            <img src="https://aqicn.org/images/masks/3m-9501.5.jpg" style="width:28.345470119113%;max-width:283.45470119113px;"><img src="https://aqicn.org/images/masks/3m-9501.2.jpg" style="width:29.711516871842%;max-width:297.11516871842px;"></center>
+                    </a>
+                    <p class="bigletter"> The most common and affordable mask are known that the <a href="http://aqicn.org/ref/3m-n95/" target="_">3M N95 masks</a> (picture above is for the 3M 9501 model). Despite being very affordable (5 to 6 RMB a piece), the 3M N95 are
+                        always among the top performing masks for Particulate Matter (i.e. PM<sub>2.5</sub> Air Pollution). One of the great advantage for the 9501 model is to be foldable, so that you can always take one with you without it taking much
+                        space. And if you forgot to take One, you can also get this mask from any convenience store in China (like 7-Eleven). </p> The "<b>N95</b>" label stands for the mask ability to filter out at least 95% of airborne particles larger
+                    than 0.3 microns (for reference, PM<sub>2.5</sub> particles are 2.5 microns). From all the <a href="http://aqicn.org/ref/masks-test/" target="_">test result</a>, N95 is good enough for filtering most of the PM2.5 particles, but sensitive
+                    persons can consider using N99 version of those masks (N99 stands for filtering more the 99% of airborne particles). Note that a similar mask, with model number <b>9001</b> is also commonly available and corresponds to N90 filtration
+                    standard. <br> <br> Note that to be really efficient, those masks should be used and worn properly to ensure a good "fit" with the face. You can refer to this page from Singapore government from a simple but good explanation on
+                    <a href="https://www.moh.gov.sg/resources-statistics/educational-resources/haze/faqs-on-haze-health-advisory#AnnexC" target="_">wearing N95 masks</a>. Other more complete <a href="https://www.cdc.gov/niosh/docs/2010-133/pdfs/2010-133.pdf">explanations</a>                    are also available from the Centers for Disease Control and Prevention of the U.S. Department of Health &amp; Human Services.
+                </section>
+                <style>
+                    .img-3m-aura {
+                        width: 23%;
+                        max-height: 210px;
+                        border: 0px;
                     }
                 </style>
-                <div id="legend-full" onclick="window.location=&quot;/scale/&quot;">
-                    <table class="infoaqitable cautionary">
-                        <thead>
-                            <tr>
-                                <td>AQI</td>
-                                <td>Air Pollution Level</td>
-                                <td>Health Implications</td>
-                                <td>Cautionary Statement (for PM2.5)</td>
-                            </tr>
-                        </thead>
+                <h1 style="border-bottom:1px solid black;">3M™ Aura™ Particulate Respirators</h1>
+                <section>
+                    <a href="http://aqicn.org/ref/3m-aura/" target="_">
+                        <center><img src="https://aqicn.org/images/masks/3m-9330.jpg" style="width:22.369551059651%;max-width:223.69551059651px;"><img src="https://aqicn.org/images/masks/3m-9332.jpg" style="width:20.276915637942%;max-width:202.76915637942px;">
+                            <img src="https://aqicn.org/images/masks/3m-93321.jpg" style="width:24.290055191285%;max-width:242.90055191285px;"><img src="https://aqicn.org/images/masks/3m-fitting.png" style="width:33.063478111122%;max-width:330.63478111122px;"></center>
+                    </a>
+                    <p class="bigletter"> For those with a bit more budget and still interrested in the 3M masks, the <a href="http://aqicn.org/ref/3m-aura/" target="_">Aura™ 93xx series</a> is a very good option. The cost is a bit higher (33 RMB for 1 piece for the premimum
+                        9332 model, while it is 29 RMB for 5 pcs for the previous 9501). </p> Half of the models (93x2) come with an exhaust valve (branded as Cool Flow™), which offers improved comfort, especially for those having difficulty to breath
+                    comfortably while wearing the masks. There are also 3 levels of filtration performance (FFP1, FFP2 and FFP3). The N95 standard is almost similar to FFP2 and the N99 to FFP3 ( see wikipedia for the full <a href="http://en.wikipedia.org/wiki/Respirator"
+                        target="_">explanation</a>).
+                </section>
+                <center> </center>
+                <style>
+                    .img-totobobo {
+                        width: 19%;
+                        border: 0px;
+                    }
+                </style>
+                <h1 style="border-bottom:1px solid black;">Totobobo™ Hightech Anti-Pollution Masks</h1>
+                <section>
+                    <a href="http://aqicn.org/ref/totobobo/" target="_">
+                        <center><img src="https://aqicn.org/images/totobobo/totobobo.jpg" style="width:26.470588235294%;max-width:264.70588235294px;"><img src="https://aqicn.org/images/totobobo/icon-ttle.jpg" style="width:18.382352941176%;max-width:183.82352941176px;">
+                            <img src="https://aqicn.org/images/totobobo/icon-tto.jpg" style="width:18.382352941176%;max-width:183.82352941176px;"><img src="https://aqicn.org/images/totobobo/icon-ttsc.jpg" style="width:18.382352941176%;max-width:183.82352941176px;">
+                            <img src="https://aqicn.org/images/totobobo/icon-ttsce.jpg" style="width:18.382352941176%;max-width:183.82352941176px;"></center>
+                    </a> <br>
+                    <p class="bigletter"> <a href="http://aqicn.org/ref/totobobo/" target="_">Totobobo™</a> is a professional Singapore company manufacturing their own masks since 2003. There design and concept is really unique, making it very useful for those on the move.
+                    </p> There has been some recent <a href="http://aqicn.org/ref/cca-mask-test/" target="_">studies</a> showing that totobobo fit test does not perform as well as other brands: When wearing a mask (even the 3M N95), fit molding is an
+                    essential step to ensure that there are no unfiltered air flow. And this fit moudling is both the strength and weakness of totobo. On one side, totobo has a unique heat moudling solution - that no other mask have, but if this step
+                    is not done corretly, then the fit test won't be good. For more information, check <a href="http://aqicn.org/ref/totobo-moudling/" target="_">totobobo's blog</a>
+                </section>
+                <style>
+                    .img-respro {
+                        width: 19%;
+                        border: 0px;
+                        >>>>>>>e50975a77d7f79b9401a9ec7f31044b331b215eb
+                    }
+                </style>
+                <h1 style="border-bottom:1px solid black;">Respro<sup>®</sup> Pollution Masks</h1>
+                <section>
+                    <table border="0">
                         <tbody>
-                            <tr style="background-color:#009966;">
-                                <td class="aqiwtxt" nowrap="true">0 - 50</td>
-                                <td class="aqiwtxt">Good</td>
-                                <td class="aqiwtxt">Air quality is considered satisfactory, and air pollution poses little or no risk</td>
-                                <td class="aqiwtxt">None</td>
+                            <tr>
+                                <td colspan="2">
+                                    <a href=""> </a>
+                                </td>
                             </tr>
-                            <tr style="background-color:#ffde33" class="aqibtxt">
-                                <td class="aqibtxt" nowrap="true">51 -100</td>
-                                <td class="aqibtxt">Moderate</td>
-                                <td class="aqibtxt">Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.</td>
-                                <td class="aqibtxt">Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.</td>
-                            </tr>
-                            <tr style="background-color:#ff9933;">
-                                <td class="aqibtxt" nowrap="true">101-150</td>
-                                <td class="aqibtxt">Unhealthy for Sensitive Groups</td>
-                                <td class="aqibtxt">Members of sensitive groups may experience health effects. The general public is not likely to be affected.</td>
-                                <td class="aqibtxt">Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.</td>
-                            </tr>
-                            <tr style="background-color:#cc0033;">
-                                <td class="aqiwtxt" nowrap="true">151-200</td>
-                                <td class="aqiwtxt">Unhealthy</td>
-                                <td class="aqiwtxt">Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects</td>
-                                <td class="aqiwtxt">Active children and adults, and people with respiratory disease, such as asthma, should avoid prolonged outdoor exertion; everyone else, especially children, should limit prolonged outdoor exertion</td>
-                            </tr>
-                            <tr style="background-color:#660099;">
-                                <td class="aqiwtxt" nowrap="true">201-300</td>
-                                <td class="aqiwtxt">Very Unhealthy</td>
-                                <td class="aqiwtxt">Health warnings of emergency conditions. The entire population is more likely to be affected.</td>
-                                <td class="aqiwtxt">Active children and adults, and people with respiratory disease, such as asthma, should avoid all outdoor exertion; everyone else, especially children, should limit outdoor exertion.</td>
-                            </tr>
-                            <tr style="background-color:#7e0023;">
-                                <td class="aqiwtxt" nowrap="true">300+</td>
-                                <td class="aqiwtxt">Hazardous</td>
-                                <td class="aqiwtxt">Health alert: everyone may experience more serious health effects</td>
-                                <td class="aqiwtxt">Everyone should avoid all outdoor exertion</td>
+                            <tr>
+                                <td align="right" valign="top">
+                                    <a href="http://aqicn.org/ref/respro/" target="_">
+                                        <center><img src="https://aqicn.org/images/masks/respro/herringbone-purple__large.png" style="width:17.858729453576%;max-width:178.58729453576px;"><img src="https://aqicn.org/images/masks/respro/upgrade-kit-powa-elite-bs__zoom.jpg"
+                                                style="width:13.860506441582%;max-width:138.60506441582px;"><img src="https://aqicn.org/images/masks/respro/graffiti4__zoom.png" style="width:17.858729453576%;max-width:178.58729453576px;"><img src="https://aqicn.org/images/masks/respro/butterfly__large_thumbnail.jpg"
+                                                style="width:25.211017325633%;max-width:252.11017325633px;"><img src="https://aqicn.org/images/masks/respro/tartan__large_thumbnail.jpg" style="width:25.211017325633%;max-width:252.11017325633px;"></center>
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
-                    </table>{% endblock a%}
+                        <<<<<<< HEAD </table>{% endblock a%} =======
+                    </table>
+                    <p class="bigletter"> The <a href="http://aqicn.org/ref/respro/" target="_">Respro<sup>®</sup></a> Masks have been on the market for many years, and are especially suitable in the "urban sports environment", i.e. when biking in the city and having to get
+                        through heavy traffic where cars are the source of pollution (especially those diesel cars...). </p>
+                    <p> The mask come with two valves for an easier breathing, as well as with replacable filters. The filter life span is said to be 69 hours, so assuming that you bike 1 hour every day, that's 3 month use for one filter - not so bad. </p>
+                    <p>The mask itself is made of <a href="https://en.wikipedia.org/wiki/Neoprene">Neoprene</a>, which has the advantage of being resiliently stretchable, as well as beeing adaptable to varying facial features, thus ensuring a good sealing
+                        around the face - and therefore a good "fit". </p>
+                </section>
+                <h1 style="border-bottom:1px solid black;">Vogmask™ N99 CV (Carbon Layer / Exhaust Valve)</h1>
+                <section>
+                    <a href="http://aqicn.org/ref/vogmask/" target="_">
+                        <center><img src="https://aqicn.org/images/masks/vogmask6.jpg" style="width:20%;max-width:200px;"><img src="https://aqicn.org/images/masks/vogmask8.jpg" style="width:20%;max-width:200px;"><img src="https://aqicn.org/images/masks/vogmask2.jpg"
+                                style="width:20%;max-width:200px;"><img src="https://aqicn.org/images/masks/vogmask4.jpg" style="width:20%;max-width:200px;"><img src="https://aqicn.org/images/masks/vogmask7.jpg" style="width:20%;max-width:200px;"></center>
+                    </a>
+                    <p class="bigletter"> Last, but not the least, <a href="http://aqicn.org/ref/vogmask/" target="_">Vogmask™</a> is a trendy mask. From a filtration point of view, it uses microfiber filtration fabric to provide an N99 rating. Half of the models come with
+                        a valve, similar to the 3M Cool Flow, for improved comfort. </p>
+                </section> For more information about other masks and test result, you can refer to the Doctor Richard Saint Cyr's blog: my health beijing. <a href="http://aqicn.org/ref/stcyr-mask-overview/" target="_">myhealthbeijing.com</a>. <br> <br> <br> <br>
+            </div> <a target="_" href="http://www.greenpeace.org/eastasia/campaigns/air-pollution/problems/coal-hard-truth-air-pollution/"> <img style="max-width:95%" border="0" src="https://aqicn.org/images/coal-hard-truth-airpollution.jpg" alt="Greenpeace: PM2.5 is a measurement of small particulate matter in the air, and until recently its omission from official air quality readings has been a major hurdle in solving China" s="" air="" pollution="" crisis.="" here's="" everything="" you="" need="" to="" know="" about="" pm2.5,="" such="" as="" what="" it="" is,="" why="" it\'s="" important,="" and="" how="" protect="" yourself="" from="" them.'=""> </a><br>            <br>
+        </center>
+    </div>
+    <a name="infoaqi"></a>
+    <div class="h1section h1section-divider">
+        <div class="h1section-rainbow">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h1>
+            <div id="h1header2" style="padding: 2px; font-family: &quot;Noto Serif&quot;, Cambria, &quot;Palatino Linotype&quot;, &quot;Book Antiqua&quot;, &quot;URW Palladio L&quot;, serif; font-size: 30px;">About the Air Quality and Pollution Measurement:</div>
+        </h1>
+    </div>
+    <script type="text/javascript">
+        ;
+        if (!isMobileUA) {
+            fitLine('#h1header2', .88, {
+                maxfs: 45
+            });
+        };
+    </script>
+    <style>
+        .section-content {
+            max-width: 95%;
+            width: 1100px;
+            font-size: 18px;
+            min-height: 300px;
+            text-align: left;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .section-content-tight {
+            min-height: 0px;
+        }
+        
+        .section-banner {
+            background-size: 100%;
+            background: url(https://aqicn.org/images//bluesky-banner-panoramic.jpg) no-repeat center bottom #eee;
+            margin-top: -2px;
+            z-index: -1;
+            border-bottom: 1px solid #888;
+            width: 100%;
+        }
+        
+        .h2-title {
+            x-font-family: 'Bowlby One SC', serif;
+            font-family: inherit;
+            font-size: 1.1em;
+            overflow: hidden;
+            text-align: center;
+            text-transform: capitalize;
+        }
+        
+        .h2-title:before,
+        .h2-title:after {
+            background-color: #ddd;
+            content: '';
+            display: inline-block;
+            height: 1px;
+            position: relative;
+            vertical-align: middle;
+            width: 50%;
+        }
+        
+        .h2-title:before {
+            right: 0.5em;
+            margin-left: -50%;
+        }
+        
+        .h2-title:after {
+            left: 0.5em;
+            margin-right: -50%;
+        }
+        
+        @media only screen and (max-width: 800px) {
+            .section-content {
+                line-height: 1.6;
+                max-width: 98%;
+                min-height: 10px;
+            }
+            .section-banner {
+                display: none;
+            }
+        }
+        
+        .gtrans-div-manual>div {
+            font-family: font-family: "Noto Serif", Cambria, "Palatino Linotype", "Book Antiqua", "URW Palladio L", serif;
+            ;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            border-radius: 3px;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            background: #f8f8f0;
+        }
+    </style>
+    <div class="whitebody" style="font-family:&quot;Noto Serif&quot;,Cambria,&quot;Palatino Linotype&quot;,&quot;Book Antiqua&quot;,&quot;URW Palladio L&quot;,serif;">
+        <center>
+            <div class="section-content">
+                <center> About the Air Quality Levels<br> <br>
+                    <style type="text/css">
+                        #legend-full table.infoaqitable {
+                            line-height: 1.5;
+                            background-color: white;
+                            max-width: 1000px;
+                            width: 95%;
+                            margin: 0px;
+                            border: 1px solid black;
+                            cursor: pointer;
+                        }
+                        
+                        #legend-full table.infoaqitable td {
+                            padding: 5px;
+                            font-size: 15px;
+                            text-shadow: none;
+                        }
+                        
+                        #legend-full .aqiwtxt {
+                            color: #ffffff;
+                        }
+                        
+                        #legend-full .aqibtxt {
+                            color: #000000;
+                        }
+                        
+                        @media only screen and (max-width: 800px) {
+                            #legend-full table.infoaqitable {
+                                width: 98%;
+                            }
+                        }
+                        
+                        @media only screen and (max-width: 800px) {
+                            #legend-full table.infoaqitable td {
+                                display: block;
+                            }
+                            #legend-full table.infoaqitable td:nth-child(1) {
+                                display: inline-block;
+                                font-size: 1.2em;
+                            }
+                            #legend-full table.infoaqitable td:nth-child(2) {
+                                display: inline-block;
+                                font-weight: 800;
+                                font-size: 1.2em;
+                            }
+                        }
+                    </style>
+                    <div id="legend-full" onclick="window.location=&quot;/scale/&quot;">
+                        <table class="infoaqitable cautionary">
+                            <thead>
+                                <tr>
+                                    <td>AQI</td>
+                                    <td>Air Pollution Level</td>
+                                    <td>Health Implications</td>
+                                    <td>Cautionary Statement (for PM2.5)</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#009966;">
+                                    <td class="aqiwtxt" nowrap="true">0 - 50</td>
+                                    <td class="aqiwtxt">Good</td>
+                                    <td class="aqiwtxt">Air quality is considered satisfactory, and air pollution poses little or no risk</td>
+                                    <td class="aqiwtxt">None</td>
+                                </tr>
+                                <tr style="background-color:#ffde33" class="aqibtxt">
+                                    <td class="aqibtxt" nowrap="true">51 -100</td>
+                                    <td class="aqibtxt">Moderate</td>
+                                    <td class="aqibtxt">Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.</td>
+                                    <td class="aqibtxt">Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.</td>
+                                </tr>
+                                <tr style="background-color:#ff9933;">
+                                    <td class="aqibtxt" nowrap="true">101-150</td>
+                                    <td class="aqibtxt">Unhealthy for Sensitive Groups</td>
+                                    <td class="aqibtxt">Members of sensitive groups may experience health effects. The general public is not likely to be affected.</td>
+                                    <td class="aqibtxt">Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.</td>
+                                </tr>
+                                <tr style="background-color:#cc0033;">
+                                    <td class="aqiwtxt" nowrap="true">151-200</td>
+                                    <td class="aqiwtxt">Unhealthy</td>
+                                    <td class="aqiwtxt">Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects</td>
+                                    <td class="aqiwtxt">Active children and adults, and people with respiratory disease, such as asthma, should avoid prolonged outdoor exertion; everyone else, especially children, should limit prolonged outdoor exertion</td>
+                                </tr>
+                                <tr style="background-color:#660099;">
+                                    <td class="aqiwtxt" nowrap="true">201-300</td>
+                                    <td class="aqiwtxt">Very Unhealthy</td>
+                                    <td class="aqiwtxt">Health warnings of emergency conditions. The entire population is more likely to be affected.</td>
+                                    <td class="aqiwtxt">Active children and adults, and people with respiratory disease, such as asthma, should avoid all outdoor exertion; everyone else, especially children, should limit outdoor exertion.</td>
+                                </tr>
+                                <tr style="background-color:#7e0023;">
+                                    <td class="aqiwtxt" nowrap="true">300+</td>
+                                    <td class="aqiwtxt">Hazardous</td>
+                                    <td class="aqiwtxt">Health alert: everyone may experience more serious health effects</td>
+                                    <td class="aqiwtxt">Everyone should avoid all outdoor exertion</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><br>To know more about Air Quality and Pollution, check the <a href="http://en.wikipedia.org/wiki/Air_quality">wikipedia Air Quality topic</a> or the <a href="http://www.airnow.gov/index.cfm?action=aqibasics.aqi">airnow guide to Air Quality and Your Health</a>.<br><br>For
+                    very useful health advices of Beijing Doctor Richard Saint Cyr MD, check <a href="http://www.myhealthbeijing.com/">www.myhealthbeijing.com</a> blog.<br><br>
+                </center>
+            </div>
+        </center>
+    </div>
+</body>
+
+</html>
