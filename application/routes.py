@@ -41,7 +41,42 @@ def southAmerica():
 @app.route("/northAmerica")
 def northAmerica():
     return render_template("northAmerica.html")
+@app.route("/news")
+def news():
+    return render_template("news.html")
 
+@app.route('/result2', methods = ['GET','POST'])
+def result2():
+    input = request.form.get('input')
+    input = input.title()
+    
+    Lat=0
+    Lon=0
+    #def latlon(input):
+    def Lat_Lon_Find(input):
+        url = "https://us1.locationiq.com/v1/search.php?key=pk.b31969419cb75a4fa46f0419635ee6c3&q=%s&format=json"%(input)
+        payload = {}
+        headers= {}
+        response = requests.request("GET", url, headers=headers, data =payload)
+        print(url)
+        Lat = json.loads(response.text)[0]['lat']
+        Lon = json.loads(response.text)[0]['lon']
+        return(Lat,Lon)
+        print("The Longitude value: "+Lon)
+    #print(json.loads(response.text))
+    #latLon(input)   
+        print(input)
+    Lat_Lon_Find(input)
+    def output(Lat,Lon):
+        url_value = "http://api.airpollutionapi.com/1.0/aqi?lat=%s&lon=%s&APPID=lkoc3osdik3gc8u9hg67u0i4ni"%(Lat,Lon)
+        payload = {}
+        headers= {}
+        response = requests.request("GET",url_value, headers=headers, data = payload)
+        Status = json.loads(response.text)["data"]
+        alert = Status["value"]
+        country = Status["country"]
+    output(Lat,Lon)
+    return render_template("result_input.html")
 #Getting Data from 2nd api
 @app.route('/searchT', methods = ['GET', 'POST'])
 def searchT():
@@ -59,14 +94,14 @@ def searchT():
                     break
             #return data["state"]    
             if flag =='Y':
-                return data["state"]
+                return data["state","country"]
             else:
                 return 'No data Found'
         
         # return render_template("Result.html")
         # city = 'srinagar'
         state = stateName(city)        
-        url = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=india&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970" %(city,state)   
+        url = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=%scountry&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970" %(city,state,country)   
         payload = {}
         headers= {}
         response = requests.request("GET", url, headers=headers, data = payload)
@@ -146,15 +181,12 @@ def searchT():
         data['windspeed']=airResponse["current"]["weather"]["ws"]
         data['wind_direction']=airResponse["current"]["weather"]["wd"]
         data['icon']= output
-
-
-
         print(data)    
         
         return render_template("Result.html",data=data)
 
         
-            # return redirect(url_for('booking', date=date))
+        # return redirect(url_for('booking', date=date))
         # return render_template('main/index.html')
 
 
@@ -381,4 +413,80 @@ courseData = [ {"country":"india","state":"Jammu and kashmir","city":"Jammu"},
 {"country":"india","state":"West Bengal","city":"Kolkata"},
 {"country":"india","state":"West Bengal","city":"Medinipur"},
 {"country":"india","state":"West Bengal","city":"Siliguri"},
-{"country":"india","state":"West Bengal","city":"Solap"}]
+{"country":"india","state":"West Bengal","city":"Solap"},
+{"country":"China","state":"Anhui","city":"Anqing"},
+{"country":"China","state":"Anhui","city":"Bengbu"},
+{"country":"China","state":"Anhui","city":"Bozhou"},
+{"country":"China","state":"Anhui","city":"Chaohu"},
+{"country":"China","state":"Anhui","city":"Chizhou"},
+{"country":"China","state":"Anhui","city":"Datong"},
+{"country":"China","state":"Anhui","city":"Fuyang"},
+{"country":"China","state":"Anhui","city":"Gushu"},
+{"country":"China","state":"Anhui","city":"Hefei"},
+{"country":"China","state":"Anhui","city":"Huaibei"},
+{"country":"China","state":"Anhui","city":"Huainan"},
+{"country":"China","state":"Anhui","city":"Huaiyuan Chengguanzhen"},
+{"country":"China","state":"Anhui","city":"Huangshan"},
+{"country":"China","state":"Anhui","city":"Jieshou"},
+{"country":"China","state":"Anhui","city":"Jiujiang"},
+{"country":"China","state":"Anhui","city":"Luan"},
+{"country":"China","state":"Anhui","city":"Lucheng"},
+{"country":"China","state":"Anhui","city":"Maanshan"},
+{"country":"China","state":"Anhui","city":"Mengcheng Chengguanzhen"},
+{"country":"China","state":"Anhui","city":"Mingguang"},
+{"country":"China","state":"Beijing","city":"Beijing"},
+{"country":"China","state":"Chongqing","city":"Beibei"},
+{"country":"China","state":"Chongqing","city":"Chongqing"},
+{"country":"China","state":"Chongqing","city":"Fuling"},
+{"country":"China","state":"Chongqing","city":"Hechuan"},
+{"country":"China","state":"Chongqing","city":"Jijiang"},
+{"country":"China","state":"Chongqing","city":"Wanxian"},
+{"country":"China","state":"Chongqing","city":"Yongchuan"},
+{"country":"China","state":"Chongqing","city":"Yudong"},
+{"country":"China","state":"Fujian","city":"Fuzhou"},
+{"country":"China","state":"Fujian","city":"Longyan"},
+{"country":"China","state":"Fujian","city":"Nanping"},
+{"country":"China","state":"Fujian","city":"Ningde"},
+{"country":"China","state":"Fujian","city":"Putian"},
+{"country":"China","state":"Gansu","city":"Baiyin"},
+{"country":"China","state":"Gansu","city":"Dingxi"},
+{"country":"China","state":"Gansu","city":"Gannan"},
+{"country":"China","state":"Gansu","city":"Jiayuguan"},
+{"country":"China","state":"Guangdong","city":"Chaozhou"},
+{"country":"China","state":"Guangdong","city":"Dongguan"},
+{"country":"China","state":"Guangdong","city":"Foshan"},
+{"country":"China","state":"Guangdong","city":"Guangzhou"},
+{"country":"China","state":"Guangdong","city":"Heyuan"},
+{"country":"China","state":"Guangdong","city":"Huizhou"},
+{"country":"China","state":"Guangdong","city":"Jiangmen"},
+{"country":"China","state":"Hainan","city":"Haikou"},
+{"country":"China","state":"Hainan","city":"Sanya"},
+{"country":"China","state":"Hebei","city":"Baoding Shi"},
+{"country":"China","state":"Hebei","city":"Cangzhou Shi"},
+{"country":"China","state":"Hebei","city":"Chengde"},
+{"country":"China","state":"Hebei","city":"Handan"},
+{"country":"China","state":"Henan","city":"Anyang"},
+{"country":"China","state":"Henan","city":"Dingcheng"},
+{"country":"China","state":"Henan","city":"Hebi"},
+{"country":"China","state":"Henan","city":"Jiaozuo"},
+{"country":"China","state":"Henan","city":"Jinchang"},
+{"country":"China","state":"Henan","city":"Kaifeng"},
+{"country":"China","state":"Henan","city":"Shangqiu"},
+{"country":"China","state":"Shaanxi","city":"Ankang"},
+{"country":"China","state":"Shaanxi","city":"Shangluo"},
+{"country":"China","state":"Shaanxi","city":"Tongchuan"},
+{"country":"China","state":"Shaanxi","city":"Weinan"},
+{"country":"China","state":"Tibet","city":"Changdu"},
+{"country":"China","state":"Tibet","city":"Lasa"},
+{"country":"China","state":"Tibet","city":"Nagqu"},
+{"country":"China","state":"Tibet","city":"Ngari"},
+{"country":"China","state":"Tibet","city":"Nyingchi"},
+{"country":"China","state":"Xinjiang","city":"Aksu"},
+{"country":"China","state":"Xinjiang","city":"Altay"},
+{"country":"China","state":"Xinjiang","city":"Bayinguoleng Mengguzizhizhou"},
+{"country":"China","state":"Xinjiang","city":"Bortala"},
+{"country":"China","state":"Xinjiang","city":"Changji"},
+{"country":"China","state":"Xinjiang","city":"Ili"},
+{"country":"China","state":"Xinjiang","city":"Karamay"},
+{"country":"China","state":"Xinjiang","city":"Kashgar"},
+{"country":"China","state":"Xinjiang","city":"Wujiaqu"}]
