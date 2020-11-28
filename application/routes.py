@@ -43,13 +43,20 @@ def northAmerica():
     return render_template("northAmerica.html")
 @app.route("/news")
 def news():
-    return render_template("news.html")
+    country_code="in"
+    url="http://newsapi.org/v2/top-headlines?country=%s&category=health&apiKey=65bdc6b66ccc47128ad5934cc48cc804"%(country_code)
+    payload = {}
+    headers = {}
+    response = requests.request("GET",url, headers=headers,data=payload)
+    news = json.loads(response.text)
+    Title = news["articles"]
+    print(Title)
+    return render_template("news.html",data=Title)
 
 @app.route('/result2', methods = ['GET','POST'])
 def result2():
     input = request.form.get('input')
     input = input.title()
-    
     Lat=0
     Lon=0
     #def latlon(input):
@@ -77,6 +84,7 @@ def result2():
         country = Status["country"]
     output(Lat,Lon)
     return render_template("result_input.html")
+
 #Getting Data from 2nd api
 @app.route('/searchT', methods = ['GET', 'POST'])
 def searchT():

@@ -1,3 +1,35 @@
-{% extends "layout.html" %}{% block content %}
+{% extends "layout.html" %} {% block content %}
+<div class="app-content content container-fluid">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="row match-height">
+                <div class="card ">
+                    <div class="col-md-12 text-xs-center">
+                        <div class="px-2 py-3 row mb-0 mt-3">
+                            <h1 class=" light-blue text-bold-700 ">Latest News</h1>
+                            <h6 class=" text-bold-700 tag tag-danger ">Protect your air anytime, anywhere
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% for title in data %}
 
-<h1>Hello</h1>{% endblock %}
+                <div class="col-xl-4 col-md-6 col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <img class="card-img-top img-fluid" src="{{ title.urlToImage }}" alt="Card image cap">
+                            <div class="card-block">
+                                <h4 class="card-title">{{ title.source.name }}</h4>
+                                <p class="card-text">{{ title.description }} </p>
+                                <a href="{{title.url}}" target="blank" class=" btn btn-outline-pink ">Know More About</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if loop.counter == 1 %} This is the First user {% endif %} {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
