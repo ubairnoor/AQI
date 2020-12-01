@@ -2,6 +2,8 @@ import dateparser
 from application import app,db
 from flask import render_template, request,Response,json
 from pip._vendor import requests
+from newsapi import NewsApiClient
+newsapi = NewsApiClient(api_key='65bdc6b66ccc47128ad5934cc48cc804')
 
 @app.route("/")
 @app.route("/index")
@@ -56,33 +58,42 @@ def news():
 @app.route('/result2', methods = ['GET','POST'])
 def result2():
     input = request.form.get('input')
-    input = input.title()
-    Lat=0
-    Lon=0
-    #def latlon(input):
+    input= input.title()
+    print(input)   
+   
     def Lat_Lon_Find(input):
         url = "https://us1.locationiq.com/v1/search.php?key=pk.b31969419cb75a4fa46f0419635ee6c3&q=%s&format=json"%(input)
         payload = {}
         headers= {}
-        response = requests.request("GET", url, headers=headers, data =payload)
+        response = requests.request("GET", url, headers=headers, data=payload)
         print(url)
         Lat = json.loads(response.text)[0]['lat']
         Lon = json.loads(response.text)[0]['lon']
-        return(Lat,Lon)
-        print("The Longitude value: "+Lon)
-    #print(json.loads(response.text))
-    #latLon(input)   
-        print(input)
-    Lat_Lon_Find(input)
-    def output(Lat,Lon):
-        url_value = "http://api.airpollutionapi.com/1.0/aqi?lat=%s&lon=%s&APPID=lkoc3osdik3gc8u9hg67u0i4ni"%(Lat,Lon)
-        payload = {}
-        headers= {}
-        response = requests.request("GET",url_value, headers=headers, data = payload)
-        Status = json.loads(response.text)["data"]
-        alert = Status["value"]
-        country = Status["country"]
-    output(Lat,Lon)
+       
+        return(Lat,Lon,input)
+        #print(json.loads(response.text))
+        #latLon(input)   
+    def aqi(result):
+        
+        url_value = "http://api.airpollutionapi.com/1.0/aqi?lat=%s&lon=%s&APPID=lkoc3osdik3gc8u9hg67u0i4ni"%(result[0],result[1])
+        print(url_value)
+    #def output(result):
+        
+        #url_value = "http://api.airpollutionapi.com/1.0/aqi?lat=%s&lon=%s&APPID=lkoc3osdik3gc8u9hg67u0i4ni"%(Lat,Lon)
+        #payload = {}
+       # headers= {}
+        #response = requests.request("GET",url_value, headers=headers, data = payload)
+        
+        
+        
+        #Status = json.loads(response.text)["data"]
+        #alert = Status["value"]
+        
+        #country = Status["country"]
+    result = Lat_Lon_Find(input)
+    aqi(result)
+    
+    #output(result)
     return render_template("result_input.html")
 
 #Getting Data from 2nd api
