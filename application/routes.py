@@ -44,24 +44,36 @@ def southAmerica():
 def northAmerica():
     return render_template("northAmerica.html")
 @app.route("/news")
-def news():
-    country_code="in"
-    url="http://newsapi.org/v2/top-headlines?country=%s&category=health&apiKey=65bdc6b66ccc47128ad5934cc48cc804"%(country_code)
+def news(country):
+    data=country
+    print(data)
+    def country_code(country):
+      print(country)
+      for data in CC:
+            if (data["country"] == country):
+                return data["code"]
+    
+    code_output=country_code(country)
+    print("code_output")
+    print(code_output)
+    url="http://newsapi.org/v2/top-headlines?country=%s&category=health&apiKey=65bdc6b66ccc47128ad5934cc48cc804"%(code_output)
+    print(url)
     payload = {}
     headers = {}
     response = requests.request("GET",url, headers=headers,data=payload)
     news = json.loads(response.text)
     Title = news["articles"]
     print(Title)
+    
     return render_template("news.html",data=Title)
 
 @app.route('/result2', methods = ['GET','POST'])
 def result2():
     input = request.form.get('input')
-    input= input.title()
-    print(input)   
    
+    print(input)   
     def Lat_Lon_Find(input):
+        
         url = "https://us1.locationiq.com/v1/search.php?key=pk.b31969419cb75a4fa46f0419635ee6c3&q=%s&format=json"%(input)
         payload = {}
         headers= {}
@@ -69,23 +81,43 @@ def result2():
         print(url)
         Lat = json.loads(response.text)[0]['lat']
         Lon = json.loads(response.text)[0]['lon']
-       
         return(Lat,Lon,input)
         #print(json.loads(response.text))
         #latLon(input)   
-    def aqi(result):
-        
+    def aqi(result):        
         url_value = "http://api.airpollutionapi.com/1.0/aqi?lat=%s&lon=%s&APPID=lkoc3osdik3gc8u9hg67u0i4ni"%(result[0],result[1])
         print(url_value)
+        payload = {}
+        headers= {}
+        response = requests.request("GET",url_value, headers=headers, data = payload)
+        print(response)
+        Status = json.loads(response.text)["status"]
+       
+            
+        if(Status == "success"):
+            Output = json.loads(response.text)["data"]
+            print("if condition worked")
+            alert = Output["value"]
+            country = Output["country"]
+            news(country)
+            print(country)
+            print(alert)
+            
+            
+        elif(Status == "error"):
+            print("Elif Block is executed")
+        else:
+            print("Inside the block")
+            
+            
+      
+        
     #def output(result):
         
         #url_value = "http://api.airpollutionapi.com/1.0/aqi?lat=%s&lon=%s&APPID=lkoc3osdik3gc8u9hg67u0i4ni"%(Lat,Lon)
         #payload = {}
        # headers= {}
         #response = requests.request("GET",url_value, headers=headers, data = payload)
-        
-        
-        
         #Status = json.loads(response.text)["data"]
         #alert = Status["value"]
         
@@ -199,7 +231,7 @@ def searchT():
         data['humidity'] = airResponse["current"]["weather"]["hu"]
         data['windspeed']=airResponse["current"]["weather"]["ws"]
         data['wind_direction']=airResponse["current"]["weather"]["wd"]
-        data['icon']= output
+        data['icon']=output
         print(data)    
         
         return render_template("Result.html",data=data)
@@ -285,6 +317,9 @@ def infoaqi():
 # def api():
    
 #course data
+CC = [{"country":"pakistan","code":"pk"},
+      {"country":"india","code":"in"}]
+
 
 courseData = [ {"country":"india","state":"Jammu and kashmir","city":"Jammu"},
 {"country":"india","state":"Jammu and kashmir","city":"Srinagar"},
