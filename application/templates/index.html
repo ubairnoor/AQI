@@ -1,4 +1,7 @@
 {% extends "layout.html" %} {% block content %}
+<style>
+
+</style>
 
 <body data-open="click" data-menu="vertical-menu" data-col="2-columns" class="  1-column 2-columns  fixed-navbar">
 
@@ -13,7 +16,7 @@
                 <div class="row match-height">
                     <div class="col-md-4 ">
                         <div class="px-2 py-3 row mb-0 mt-3">
-                            <h1 class="text-lg-right light-blue text-bold-700 ">Explore The Air Quality</h1>
+                            <h1 class="text-lg-right text-bold-700 ">Explore The Air Quality</h1>
                             <h6 class=" text-sm-right  text-bold-700 ">Anywhere In The World</h6>
                         </div>
                     </div>
@@ -22,7 +25,7 @@
                         <div class="col-md-7 ">
                             <div class="px-2 py-3 row mb-0 mt-3">
                                 <fieldset class="form-group position-relative no-border-top text-xs-center">
-                                    <input type="text" required data-parsley-required="true" data-parsley-min="3" class="form-control form-control-lg input-lg no-border-top no-border-left no-border-right bottom-darken-4 " id="city" name="city" placeholder="Your country, city or location…">
+                                    <input type="text" required data-parsley-required="true" data-parsley-min="3" class="form-control form-control-lg input-lg no-border-top no-border-left no-border-right bottom-darken-4 " id="city" name="city" placeholder="Your country, city or location… Press Enter">
                                     <div class="form-control-position ">
                                         <i class="icon-search font-medium-4" type="submit"> 
                                         </i>
@@ -102,7 +105,7 @@
                     <div class="col-xl-8 col-lg-6">
                         <div class="card ">
                             <div class="card-header">
-                                <h4 class="card-title text-danger">Media List</h4>
+                                <h4 class="card-title text-danger">Latest News</h4>
                                 <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -122,6 +125,11 @@
                                             <div class="media-body">
                                                 <h5 class="media-heading">Cookie candy</h5>
                                             </div>
+                                            <div class="media-body">
+                                                <p>Hello</p>
+                                            </div>
+
+
                                         </div>
                                         <div class="media">
                                             <span class="media-left">
@@ -148,19 +156,37 @@
                 <!--Row match height end-->
 
                 <!-- New Section Breath the clean air-->
-                <div class="row ">
-                    <div class="card ">
-                        <div class="col-md-12 text-xs-center">
-                            <div class="px-2 py-3 row mb-0 mt-3">
-                                <h1 class=" light-blue text-bold-700 ">Breathe Cleaner Air</h1>
-                                <h6 class=" text-bold-700 tag tag-danger ">Protect your air anytime, anywhere
-                                </h6>
+                <div class="app-content content container-fluid">
+                    <div class="content-wrapper">
+                        <div class="content-header row">
+                            <div class="row match-height">
+                                <div class="card ">
+                                    <div class="col-md-12 text-xs-center">
+                                        <div class="px-2 py-3 row mb-0 mt-3">
+                                            <h1 class=" light-blue text-bold-700 ">Latest News</h1>
+                                            <h6 class=" text-bold-700 tag tag-danger ">Protect your air anytime, anywhere
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% for title in data %}
+
+                                <div class="col-xl-4 col-md-6 col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <img class="card-img-top img-fluid" src="{{ title.urlToImage }}" alt="Card image cap">
+                                            <div class="card-block">
+                                                <h4 class="card-title">{{ title.source.name }}</h4>
+                                                <p class="card-text">{{ title.description }} </p>
+                                                <a href="{{title.url}}" target="blank" class=" btn btn-outline-pink ">Know More About</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if loop.counter == 1 %} This is the First user {% endif %} {% endfor %}
                             </div>
                         </div>
                     </div>
-
-                    <!-- Breath the clean air End-->
-                    <!-- div Content end-->
                 </div>
 
 

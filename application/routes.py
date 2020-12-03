@@ -2,6 +2,8 @@ import dateparser
 from application import app,db
 from flask import render_template, request,Response,json
 from pip._vendor import requests
+from newsapi import NewsApiClient
+newsapi = NewsApiClient(api_key='65bdc6b66ccc47128ad5934cc48cc804')
 
 @app.route("/")
 @app.route("/index")
@@ -41,6 +43,100 @@ def southAmerica():
 @app.route("/northAmerica")
 def northAmerica():
     return render_template("northAmerica.html")
+@app.route("/news")
+def news(country):
+    data=country
+    print(data)
+    def country_code(country):
+      print(country)
+      for data in CC:
+            if (data["country"] == country):
+                return data["code"]
+    
+    code_output = country_code(country)
+    print("code_output")
+    print(code_output)
+    url="http://newsapi.org/v2/top-headlines?country=%s&category=health&apiKey=65bdc6b66ccc47128ad5934cc48cc804"%(code_output)
+    
+    payload = {}
+    headers = {}
+    response = requests.request("GET",url, headers=headers,data=payload)
+    news = json.loads(response.text)
+    Title = news["articles"]
+    print(Title)
+    return render_template("news.html",data=Title)
+
+@app.route('/result2', methods = ['GET','POST'])
+def result2():
+    input = request.form.get('input')
+   
+    print(input)   
+    def Lat_Lon_Find(input):
+        url = "https://us1.locationiq.com/v1/search.php?key=pk.b31969419cb75a4fa46f0419635ee6c3&q=%s&format=json"%(input)
+        payload = {}
+        headers= {}
+        response = requests.request("GET", url, headers=headers, data=payload)
+        print(url)
+        Lat = json.loads(response.text)[0]['lat']
+        Lon = json.loads(response.text)[0]['lon']
+        return(Lat,Lon,input)
+        #print(json.loads(response.text))
+        #latLon(input)   
+    def aqi(result):
+        #adding waqi api
+        url_value = "https://api.waqi.info/feed/%s/?token=4a10769fcaf1c9b08c25a271fd1c92b1ab1b1db0"%(result[2])
+        print(url_value)
+        payload = {}
+        headers= {}
+        response = requests.request("GET",url_value, headers=headers, data = payload)
+        print(response) 
+        Status_two = json.loads(response.text)["status"]
+        print(Status_two)   
+        
+        if(Status_two == "ok"):
+            waqi_output = json.loads(response.text)["data"]
+            aqi=waqi_output["aqi"]
+            print(aqi)  
+        elif(Status_two == "error"):  
+            #airpollution api
+            url_value = "http://api.airpollutionapi.com/1.0/aqi?lat=%s&lon=%s&APPID=lkoc3osdik3gc8u9hg67u0i4ni"%(result[0],result[1])
+            print(url_value)
+            payload = {}
+            headers= {}
+            response = requests.request("GET",url_value, headers=headers, data = payload)
+            print(response)
+            Status = json.loads(response.text)["status"]
+            if(Status == "success"):
+                Output = json.loads(response.text)["data"]
+                print("if condition worked")
+                alert = Output["value"]
+                country = Output["country"]
+                print()
+                news(country)
+                print(country)
+                print(alert)
+            
+        else:
+            print("Inside the block")
+            
+            
+      
+        
+    #def output(result):
+        
+        #url_value = "http://api.airpollutionapi.com/1.0/aqi?lat=%s&lon=%s&APPID=lkoc3osdik3gc8u9hg67u0i4ni"%(Lat,Lon)
+        #payload = {}
+       # headers= {}
+        #response = requests.request("GET",url_value, headers=headers, data = payload)
+        #Status = json.loads(response.text)["data"]
+        #alert = Status["value"]
+        
+        #country = Status["country"]
+    result = Lat_Lon_Find(input)
+    aqi(result)
+    
+    #output(result)
+    return render_template("result_input.html")
 
 #Getting Data from 2nd api
 @app.route('/searchT', methods = ['GET', 'POST'])
@@ -59,14 +155,14 @@ def searchT():
                     break
             #return data["state"]    
             if flag =='Y':
-                return data["state"]
+                return data["state","country"]
             else:
                 return 'No data Found'
         
         # return render_template("Result.html")
         # city = 'srinagar'
         state = stateName(city)        
-        url = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=india&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970" %(city,state)   
+        url = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=%scountry&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970" %(city,state,country)   
         payload = {}
         headers= {}
         response = requests.request("GET", url, headers=headers, data = payload)
@@ -145,16 +241,13 @@ def searchT():
         data['humidity'] = airResponse["current"]["weather"]["hu"]
         data['windspeed']=airResponse["current"]["weather"]["ws"]
         data['wind_direction']=airResponse["current"]["weather"]["wd"]
-        data['icon']= output
-
-
-
+        data['icon']=output
         print(data)    
         
         return render_template("Result.html",data=data)
 
         
-            # return redirect(url_for('booking', date=date))
+        # return redirect(url_for('booking', date=date))
         # return render_template('main/index.html')
 
 
@@ -181,8 +274,7 @@ def enrollment():
     response = requests.request("GET", url, headers=headers, data = payload)
     print(url)
     print(json.loads(response.text))
-    airResponse = json.loads(response.text)["data"]
- 
+    airResponse = json.loads(response.text)["data"] 
     qualityValue=airResponse["current"]["pollution"]["aqius"]
     message_window=None
     message=None
@@ -234,6 +326,257 @@ def infoaqi():
 # def api():
    
 #course data
+CC = [{"country":"Afghanistan","code":"AF"},
+{"country":"Albania","code":"AL"},
+{"country":"Algeria","code":"DZ"},
+{"country":"American Samoa","code":"AS"},
+{"country":"Andorra","code":"AD"},
+{"country":"Angola","code":"AO"},
+{"country":"Anguilla","code":"AI"},
+{"country":"Antarctica","code":"AQ"},
+{"country":"Antigua and Barbuda","code":"AG"},
+{"country":"Argentina","code":"AR"},
+{"country":"Armenia","code":"AM"},
+{"country":"Aruba","code":"AW"},
+{"country":"Australia","code":"AU"},
+{"country":"Austria","code":"AT"},
+{"country":"Azerbaijan","code":"AZ"},
+{"country":"Bahamas","	code":"BS"},
+{"country":"Bahrain","code":"BH"},
+{"country":"Bangladesh","code":"BD"},
+{"country":"Barbados","code":"BB"},
+{"country":"Belarus","code":"BY"},
+{"country":"Belgium","code":"BE"},
+{"country":"Belize","code":"BZ"},
+{"country":"Benin","code":"BJ"},
+{"country":"Bermuda","code":"BM"},
+{"country":"Bhutan","code":"BT"},
+{"country":"Bolivia","code":"BO"},
+{"country":"Bonaire, Sint Eustatius and Saba","code":"BQ"},
+{"country":"Bosnia and Herzegovina","code":"BA"},
+{"country":"Botswana","code":"BW"},
+{"country":"Bouvet Island","code":"BV"},
+{"country":"Brazil","code":"BR"},
+{"country":"British Indian Ocean Territory (the)","code":"IO"},
+{"country":"Brunei Darussalam","code":"BN"},
+{"country":"Bulgaria","code":"BG"},
+{"country":"Burkina Faso","code":"BF"},
+{"country":"Burundi","code":"BI"},
+{"country":"Cabo Verde","code":"CV"},
+{"country":"Cambodia","code":"KH"},
+{"country":"Cameroon","code":"CM"},
+{"country":"Canada","code":"CA"},
+{"country":"Cayman Islands (the)","code":"KY"},
+{"country":"Central African Republic (the)","code":"CF"},
+{"country":"Chad","code":"TD"},
+{"country":"Chile","code":"CL"},
+{"country":"China","code":"CN"},
+{"country":"Christmas Island","code":"CX"},
+{"country":"Cocos (Keeling) Islands (the)","code":"CC"},
+{"country":"Colombia","code":"CO"},
+{"country":"Comoros (the)","code":"KM"},
+{"country":"Congo (the Democratic Republic of the)","code":"CD"},
+{"country":"Congo (the)","code":"CG"},
+{"country":"Cook Islands (the)","code":"CK"},
+{"country":"Costa Rica","code":"CR"},
+{"country":"Croatia","code":"HR"},
+{"country":"Cuba","code":"CU"},
+{"country":"Curaçao","code":"CW"},
+{"country":"Cyprus","code":"CY"},
+{"country":"Czechia","code":"CZ"},
+{"country":"Côte d'Ivoire","code":"CI"},
+{"country":"Denmark","code":"DK"},
+{"country":"Djibouti","code":"DJ"},
+{"country":"Dominica","code":"DM"},
+{"country":"Dominican Republic (the)","code":"DO"},
+{"country":"Ecuador","code":"EC"},
+{"country":"Egypt","code":"EG"},
+{"country":"El Salvador","code":"SV"},
+{"country":"Equatorial Guinea","code":"GQ"},
+{"country":"Eritrea","code":"ER"},
+{"country":"Estonia","code":"EE"},
+{"country":"Eswatini","code":"SZ"},
+{"country":"Ethiopia","code":"ET"},
+{"country":"Falkland Islands (the) [Malvinas]","code":"FK"},
+{"country":"Faroe Islands (the)","code":"FO"},
+{"country":"Fiji","code":"FJ"},
+{"country":"Finland","code":"FI"},
+{"country":"France","code":"FR"},
+{"country":"French Guiana","code":"GF"},
+{"country":"French Polynesia","code":"PF"},
+{"country":"French Southern Territories (the)","code":"TF"},
+{"country":"Gabon","code":"GA"},
+{"country":"Gambia (the)","code":"GM"},
+{"country":"Georgia","code":"GE"},
+{"country":"Germany","code":"DE"},
+{"country":"Ghana","code":"GH"},
+{"country":"Gibraltar","code":"GI"},
+{"country":"Greece","code":"GR"},
+{"country":"Greenland","code":"GL"},
+{"country":"Grenada","code":"GD"},
+{"country":"Guadeloupe","code":"GP"},
+{"country":"Guam","code":"GU"},
+{"country":"Guatemala","code":"GT"},
+{"country":"Guernsey","code":"GG"},
+{"country":"Guinea","code":"GN"},
+{"country":"Guinea-Bissau","code":"GW"},
+{"country":"Guyana","code":"GY"},
+{"country":"Haiti","code":"HT"},
+{"country":"Heard Island and McDonald Islands","code":"HM"},
+{"country":"Holy See (the)","code":"VA"},
+{"country":"Honduras","code":"HN"},
+{"country":"Hong Kong","code":"HK"},
+{"country":"Hungary","code":"HU"},
+{"country":"Iceland","code":"IS"},
+{"country":"India","code":"IN"},
+{"country":"Indonesia","code":"ID"},
+{"country":"Iran (Islamic Republic of)","code":"IR"},
+{"country":"Iraq","code":"IQ"},
+{"country":"Ireland","code":"IE"},
+{"country":"Isle of Man","code":"IM"},
+{"country":"Israel","code":"IL"},
+{"country":"Italy","code":"IT"},
+{"country":"Jamaica","code":"JM"},
+{"country":"Japan","code":"JP"},
+{"country":"Jersey","code":"JE"},
+{"country":"Jordan","code":"JO"},
+{"country":"Kazakhstan","code":"KZ"},
+{"country":"Kenya","code":"KE"},
+{"country":"Kiribati","code":"KI"},
+{"country":"Korea","code":"KP"},
+{"country":"Korea (the Republic of)","code":"KR"},
+{"country":"Kuwait","code":"KW"},
+{"country":"Kyrgyzstan","code":"KG"},
+{"country":"Lao People's Democratic Republic (the)","code":"LA"},
+{"country":"Latvia","code":"LV"},
+{"country":"Lebanon","code":"LB"},
+{"country":"Lesotho","code":"LS"},
+{"country":"Liberia","code":"LR"},
+{"country":"Libya","code":"LY"},
+{"country":"Liechtenstein","code":"LI"},
+{"country":"Lithuania","code":"LT"},
+{"country":"Luxembourg","code":"LU"},
+{"country":"Macao","code":"MO"},
+{"country":"Madagascar","code":"MG"},
+{"country":"Malawi","code":"MW"},
+{"country":"Malaysia","code":"MY"},
+{"country":"Maldives","code":"MV"},
+{"country":"Mali","code":"ML"},
+{"country":"Malta","code":"MT"},
+{"country":"Marshall Islands (the)","code":"MH"},
+{"country":"Martinique","code":"MQ"},
+{"country":"Mauritania","code":"MR"},
+{"country":"Mauritius","code":"MU"},
+{"country":"Mayotte","code":"YT"},
+{"country":"Mexico","code":"MX"},
+{"country":"Micronesia (Federated States of)","code":"FM"},
+{"country":"Moldova (the Republic of)","code":"MD"},
+{"country":"Monaco","code":"MC"},
+{"country":"Mongolia","code":"MN"},
+{"country":"Montenegro","code":"ME"},
+{"country":"Montserrat","code":"MS"},
+{"country":"Morocco","code":"MA"},
+{"country":"Mozambique","code":"MZ"},
+{"country":"Myanmar","code":"MM"},
+{"country":"Namibia","code":"NA"},
+{"country":"Nauru","code":"NR"},
+{"country":"Nepal","code":"NP"},
+{"country":"Netherlands (the)","code":"NL"},
+{"country":"New Caledonia","code":"NC"},
+{"country":"New Zealand","code":"NZ"},
+{"country":"Nicaragua","code":"NI"},
+{"country":"Niger (the)","code":"NE"},
+{"country":"Nigeria","code":"NG"},
+{"country":"Niue","code":"NU"},
+{"country":"Norfolk Island","code":"NF"},
+{"country":"Northern Mariana Islands (the)","code":"MP"},
+{"country":"Norway","code":"NO"},
+{"country":"Oman","code":"OM"},
+{"country":"Pakistan","code":"pk"},
+{"country":"Palau","code":"PW"},
+{"country":"Palestine, State of","code":"PS"},
+{"country":"Panama","code":"PA"},
+{"country":"Papua New Guinea","code":"PG"},
+{"country":"Paraguay","code":"PY"},
+{"country":"Peru","code":"PE"},
+{"country":"Philippines (the)","code":"PH"},
+{"country":"Pitcairn","code":"PN"},
+{"country":"Poland","code":"PL"},
+{"country":"Portugal","code":"PT"},
+{"country":"Puerto Rico","code":"PR"},
+{"country":"Qatar","code":"QA"},
+{"country":"Republic of North Macedonia","code":"MK"},
+{"country":"Romania","code":"RO"},
+{"country":"Russian Federation (the)","code":"RU"},
+{"country":"Rwanda","code":"RW"},
+{"country":"Réunion","code":"RE"},
+{"country":"Saint Barthélemy","code":"BL"},
+{"country":"Saint Helena, Ascension and Tristan da Cunha","code":"SH"},
+{"country":"Saint Kitts and Nevis","code":"KN"},
+{"country":"Saint Lucia","code":"LC"},
+{"country":"Saint Martin (French part)","code":"MF"},
+{"country":"Saint Pierre and Miquelon","code":"PM"},
+{"country":"Saint Vincent and the Grenadines","code":"VC"},
+{"country":"Samoa","code":"WS"},
+{"country":"San Marino","code":"SM"},
+{"country":"Sao Tome and Principe","code":"ST"},
+{"country":"Saudi Arabia","code":"SA"},
+{"country":"Senegal","code":"SN"},
+{"country":"Serbia","code":"RS"},
+{"country":"Seychelles","code":"SC"},
+{"country":"Sierra Leone","code":"SL"},
+{"country":"Singapore","code":"SG"},
+{"country":"Sint Maarten (Dutch part)","code":"SX"},
+{"country":"Slovakia","code":"SK"},
+{"country":"Slovenia","code":"SI"},
+{"country":"Solomon Islands","code":"SB"},
+{"country":"Somalia","code":"SO"},
+{"country":"South Africa","code":"ZA"},
+{"country":"South Georgia and the South Sandwich Islands","code":"GS"},
+{"country":"South Sudan","code":"SS"},
+{"country":"Spain","code":"ES"},
+{"country":"Sri Lanka","code":"LK"},
+{"country":"Sudan (the)","code":"SD"},
+{"country":"Suriname","code":"SR"},
+{"country":"Svalbard and Jan Mayen","code":"SJ"},
+{"country":"Sweden","code":"SE"},
+{"country":"Switzerland","code":"CH"},
+{"country":"Syrian Arab Republic","code":"SY"},
+{"country":"Taiwan (Province of China)","code":"TW"},
+{"country":"Tajikistan","code":"TJ"},
+{"country":"Tanzania, United Republic of","code":"TZ"},
+{"country":"Thailand","code":"TH"},
+{"country":"Timor-Leste","code":"TL"},
+{"country":"Togo","code":"TG"},
+{"country":"Tokelau","code":"TK"},
+{"country":"Tonga","code":"TO"},
+{"country":"Trinidad and Tobago","code":"TT"},
+{"country":"Tunisia","code":"TN"},
+{"country":"Turkey","code":"TR"},
+{"country":"Turkmenistan","code":"TM"},
+{"country":"Turks and Caicos Islands (the)","code":"TC"},
+{"country":"Tuvalu","code":"TV"},
+{"country":"Uganda","code":"UG"},
+{"country":"Ukraine","code":"UA"},
+{"country":"United Arab Emirates (the)","code":"AE"},
+{"country":"United Kingdom of Great Britain and Northern Ireland (the)","code":"GB"},
+{"country":"United States Minor Outlying Islands (the)","code":"UM"},
+{"country":"United States of America (the)","code":"US"},
+{"country":"Uruguay","code":"UY"},
+{"country":"Uzbekistan","code":"UZ"},
+{"country":"Vanuatu","code":"VU"},
+{"country":"Venezuela (Bolivarian Republic of)","code":"VE"},
+{"country":"Viet Nam","code":"VN"},
+{"country":"Virgin Islands (British)","code":"VG"},
+{"country":"Virgin Islands (U.S.)","code":"VI"},
+{"country":"Wallis and Futuna","code":"WF"},
+{"country":"Western Sahara","code":"EH"},
+{"country":"Yemen","code":"YE"},
+{"country":"Zambia","code":"ZM"},
+{"country":"Zimbabwe","code":"ZW"},
+{"country":"Åland Islands","code":"AX"}
+]
+
 
 courseData = [ {"country":"india","state":"Jammu and kashmir","city":"Jammu"},
 {"country":"india","state":"Jammu and kashmir","city":"Srinagar"},
@@ -381,4 +724,80 @@ courseData = [ {"country":"india","state":"Jammu and kashmir","city":"Jammu"},
 {"country":"india","state":"West Bengal","city":"Kolkata"},
 {"country":"india","state":"West Bengal","city":"Medinipur"},
 {"country":"india","state":"West Bengal","city":"Siliguri"},
-{"country":"india","state":"West Bengal","city":"Solap"}]
+{"country":"india","state":"West Bengal","city":"Solap"},
+{"country":"China","state":"Anhui","city":"Anqing"},
+{"country":"China","state":"Anhui","city":"Bengbu"},
+{"country":"China","state":"Anhui","city":"Bozhou"},
+{"country":"China","state":"Anhui","city":"Chaohu"},
+{"country":"China","state":"Anhui","city":"Chizhou"},
+{"country":"China","state":"Anhui","city":"Datong"},
+{"country":"China","state":"Anhui","city":"Fuyang"},
+{"country":"China","state":"Anhui","city":"Gushu"},
+{"country":"China","state":"Anhui","city":"Hefei"},
+{"country":"China","state":"Anhui","city":"Huaibei"},
+{"country":"China","state":"Anhui","city":"Huainan"},
+{"country":"China","state":"Anhui","city":"Huaiyuan Chengguanzhen"},
+{"country":"China","state":"Anhui","city":"Huangshan"},
+{"country":"China","state":"Anhui","city":"Jieshou"},
+{"country":"China","state":"Anhui","city":"Jiujiang"},
+{"country":"China","state":"Anhui","city":"Luan"},
+{"country":"China","state":"Anhui","city":"Lucheng"},
+{"country":"China","state":"Anhui","city":"Maanshan"},
+{"country":"China","state":"Anhui","city":"Mengcheng Chengguanzhen"},
+{"country":"China","state":"Anhui","city":"Mingguang"},
+{"country":"China","state":"Beijing","city":"Beijing"},
+{"country":"China","state":"Chongqing","city":"Beibei"},
+{"country":"China","state":"Chongqing","city":"Chongqing"},
+{"country":"China","state":"Chongqing","city":"Fuling"},
+{"country":"China","state":"Chongqing","city":"Hechuan"},
+{"country":"China","state":"Chongqing","city":"Jijiang"},
+{"country":"China","state":"Chongqing","city":"Wanxian"},
+{"country":"China","state":"Chongqing","city":"Yongchuan"},
+{"country":"China","state":"Chongqing","city":"Yudong"},
+{"country":"China","state":"Fujian","city":"Fuzhou"},
+{"country":"China","state":"Fujian","city":"Longyan"},
+{"country":"China","state":"Fujian","city":"Nanping"},
+{"country":"China","state":"Fujian","city":"Ningde"},
+{"country":"China","state":"Fujian","city":"Putian"},
+{"country":"China","state":"Gansu","city":"Baiyin"},
+{"country":"China","state":"Gansu","city":"Dingxi"},
+{"country":"China","state":"Gansu","city":"Gannan"},
+{"country":"China","state":"Gansu","city":"Jiayuguan"},
+{"country":"China","state":"Guangdong","city":"Chaozhou"},
+{"country":"China","state":"Guangdong","city":"Dongguan"},
+{"country":"China","state":"Guangdong","city":"Foshan"},
+{"country":"China","state":"Guangdong","city":"Guangzhou"},
+{"country":"China","state":"Guangdong","city":"Heyuan"},
+{"country":"China","state":"Guangdong","city":"Huizhou"},
+{"country":"China","state":"Guangdong","city":"Jiangmen"},
+{"country":"China","state":"Hainan","city":"Haikou"},
+{"country":"China","state":"Hainan","city":"Sanya"},
+{"country":"China","state":"Hebei","city":"Baoding Shi"},
+{"country":"China","state":"Hebei","city":"Cangzhou Shi"},
+{"country":"China","state":"Hebei","city":"Chengde"},
+{"country":"China","state":"Hebei","city":"Handan"},
+{"country":"China","state":"Henan","city":"Anyang"},
+{"country":"China","state":"Henan","city":"Dingcheng"},
+{"country":"China","state":"Henan","city":"Hebi"},
+{"country":"China","state":"Henan","city":"Jiaozuo"},
+{"country":"China","state":"Henan","city":"Jinchang"},
+{"country":"China","state":"Henan","city":"Kaifeng"},
+{"country":"China","state":"Henan","city":"Shangqiu"},
+{"country":"China","state":"Shaanxi","city":"Ankang"},
+{"country":"China","state":"Shaanxi","city":"Shangluo"},
+{"country":"China","state":"Shaanxi","city":"Tongchuan"},
+{"country":"China","state":"Shaanxi","city":"Weinan"},
+{"country":"China","state":"Tibet","city":"Changdu"},
+{"country":"China","state":"Tibet","city":"Lasa"},
+{"country":"China","state":"Tibet","city":"Nagqu"},
+{"country":"China","state":"Tibet","city":"Ngari"},
+{"country":"China","state":"Tibet","city":"Nyingchi"},
+{"country":"China","state":"Xinjiang","city":"Aksu"},
+{"country":"China","state":"Xinjiang","city":"Altay"},
+{"country":"China","state":"Xinjiang","city":"Bayinguoleng Mengguzizhizhou"},
+{"country":"China","state":"Xinjiang","city":"Bortala"},
+{"country":"China","state":"Xinjiang","city":"Changji"},
+{"country":"China","state":"Xinjiang","city":"Ili"},
+{"country":"China","state":"Xinjiang","city":"Karamay"},
+{"country":"China","state":"Xinjiang","city":"Kashgar"},
+{"country":"China","state":"Xinjiang","city":"Wujiaqu"}]
