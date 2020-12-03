@@ -1,0 +1,19 @@
+{% extends "layout.html" %} {% block content %}
+<form action="/result2" method="post">
+
+    <div class="col-md-7 ">
+        <div class="px-2 py-3 row mb-0 mt-3">
+            <fieldset class="form-group position-relative no-border-top text-xs-center">
+                <input type="text" required data-parsley-required="true" data-parsley-min="3" class="form-control form-control-lg input-lg no-border-top no-border-left no-border-right bottom-darken-4 " id="input" name="input" placeholder="Your country, city or location…">
+                <div class="form-control-position ">
+                    <i class="icon-search font-medium-4" type="submit"> 
+                 </i>
+
+                </div>
+            </fieldset>
+
+
+        </div>
+    </div>
+
+</form>{% endblock %}
