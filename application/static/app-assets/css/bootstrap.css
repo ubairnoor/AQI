@@ -86,8 +86,10 @@ dfn {
 }
 
 h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
+    font-size: 2.5rem;
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 mark {
@@ -557,7 +559,10 @@ h6,
 
 h1,
 .h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 h2,
@@ -4611,14 +4616,21 @@ tbody.collapse.in {
 
 .navbar-light .navbar-nav .nav-link {
     color: #55595c;
+    font-weight: 700;
 }
 
 .navbar-light .navbar-nav .nav-link:focus {
-    color: #818a91;
+    font-size: 2.5rem;
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-    color: #818a91;
+    font-size: 2.5rem;
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .navbar-light .navbar-nav .open>.nav-link,

@@ -1,1 +1,91 @@
-<h1>Heelo </h1>
+{% extends "layout.html" %} {% block content %}
+<div class="app-content content container-fluid">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="row match-height">
+                <div class="card ">
+                    <div class="col-md-12 text-xs-center">
+                        <div class="px-2 py-3 row mb-0 mt-3">
+                            <h1 class=" light-blue text-bold-700 ">Contact Us</h1>
+                            <h6 class=" text-bold-700 tag tag-warning ">Protect your air anytime, anywhere
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title" id="basic-layout-card-center text-xs-center">Subscribe Our Website</h4>
+                                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body collapse in">
+                                <div class="card-block">
+                                    <div class="card-text">
+                                    </div>
+                                    <form class="form">
+                                        <div class="form-body">
+
+                                            <div class="form-group">
+                                                <label for="eventRegInput1">Full Name</label>
+                                                <input type="text" id="eventRegInput1" class="form-control" placeholder="name" name="fullname">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="eventRegInput2">Title</label>
+                                                <input type="text" id="eventRegInput2" class="form-control" placeholder="title" name="title">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="eventRegInput3">Country</label>
+                                                <input type="text" id="eventRegInput3" class="form-control" placeholder="company" name="company">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="eventRegInput4">Email</label>
+                                                <input type="email" id="eventRegInput4" class="form-control" placeholder="email" name="email">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="eventRegInput5">Contact Number</label>
+                                                <input type="tel" id="eventRegInput5" class="form-control" name="contact" placeholder="contact number">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Existing Customer</label>
+                                                <div class="input-group">
+                                                    <label class="display-inline-block custom-control custom-radio ml-1">
+          <input type="radio" name="customer" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description ml-0">Yes</span>
+         </label>
+                                                    <label class="display-inline-block custom-control custom-radio">
+          <input type="radio" name="customer" checked class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description ml-0">No</span>
+         </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-actions center">
+
+                                            <button type="submit" class="btn btn-success">
+        <i class="icon-check2"></i> Subscribe
+       </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>{% endblock %}
