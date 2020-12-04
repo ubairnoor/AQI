@@ -1,18 +1,48 @@
 {% extends "layout.html" %} {% block content %}
-<style>
 
-</style>
 
 <body data-open="click" data-menu="vertical-menu" data-col="2-columns" class="  1-column 2-columns  fixed-navbar">
-
-
     <div class="app-content content container-fluid">
         <div class="content-wrapper">
-            <div class="content-header row">
-
-
-            </div>
             <div class="content-body">
+                <div class="row match-height">
+                    <div class="col-md-2 ">
+                        <div class="px-2  row mb-0 mt-3">
+                            <h2 class="text-lg-left text-bold-700 rainbow-text " id="placename"></h2>
+                            <h6 class=" text-sm-left  text-bold-700 " id="statename">Jammu And Kashmir</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-2 ">
+                        <div class="px-2  row mb-0 mt-3">
+                            <h2 class="text-lg-center text-bold-700 rainbow-text " id="aqivalue"></h2>
+                            <h6 class=" text-sm-center  text-bold-700 ">Air Quality Index</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="px-2  row mb-0 mt-3">
+                            <h2 class="text-lg-center text-bold-700 rainbow-text" id="forecast"></h2>
+                            <h6 class=" text-sm-center  text-bold-700 ">7 Days ForeCast</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="px-2  row mb-0 mt-3">
+                            <h2 class="text-lg-center text-bold-700 rainbow-text" id="temp"> degrees</h2>
+                            <h6 class=" text-sm-center  text-bold-700 ">Temperature</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="px-2  row mb-0 mt-3">
+                            <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                            <h6 class=" text-sm-center  text-bold-700 " id="clouds">7 Days ForeCast</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="px-2  row mb-0 mt-3">
+                            <h2 class="text-lg-center text-bold-700 rainbow-text" id="message"></h2>
+                            <h6 class=" text-sm-center  text-bold-700 ">Weather</h6>
+                        </div>
+                    </div>
+                </div>
                 <div class="row match-height">
                     <div class="col-md-4 ">
                         <div class="px-2 py-3 row mb-0 mt-3">
@@ -20,133 +50,92 @@
                             <h6 class=" text-sm-right  text-bold-700 ">Anywhere In The World</h6>
                         </div>
                     </div>
-                    <form action="/searchT" method="post">
-
+                    <form action="/search" method="post">
                         <div class="col-md-7 ">
                             <div class="px-2 py-3 row mb-0 mt-3">
-                                <fieldset class="form-group position-relative no-border-top text-xs-center">
-                                    <input type="text" required data-parsley-required="true" data-parsley-min="3" class="form-control form-control-lg input-lg no-border-top no-border-left no-border-right bottom-darken-4 " id="city" name="city" placeholder="Your country, city or location… Press Enter">
-                                    <div class="form-control-position ">
-                                        <i class="icon-search font-medium-4" type="submit"> 
-                                        </i>
-
-                                    </div>
+                                <fieldset class="form-group position-relative no-border-top text-xs-center"><input type="text" required data-parsley-required="true" data-parsley-min="3" class="form-control form-control-lg input-lg no-border-top no-border-left no-border-right bottom-darken-4 " id="city" name="city" placeholder="Your country, city or location… Press Enter">
+                                    <div class="form-control-position "><i class="icon-search font-medium-4" type="submit"></i></div>
                                 </fieldset>
-
-
                             </div>
                         </div>
-
                     </form>
 
                 </div>
-
-                <!-- <form action="/" method="post">
-                    <label for="text">Date: </label>
-                    <input type="text" id="date" name="date">
-                </form> -->
+                <!-- <form action="/ " method="post "><label for="text ">Date: </label><input type="text " id="date " name="date "></form>-->
                 <!-- Recent invoice with Statistics -->
-                <div class="row match-height">
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="card ">
-                            <div class="card-header">
-                                <h4 class="card-title text-info ">Live City Ranking</h4>
-                                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-                                <div class="heading-elements">
-                                    <ul class="list-inline mb-0">
-                                        <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
-                                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
-                                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
 
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body collapse in">
+
+                <div class="row match-height ">
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
                                 <div class="card-block">
-                                    <div class="media-list">
-                                        <div class="media">
-                                            <a class="media-left" href="#">
-                                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-3.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Cookie candy</h4>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <a class="media-left" href="#">
-                                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-6.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Tootsie roll dessert </h4>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <a class="media-left" href="#">
-                                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-13.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Lemon drops ice cream</h4>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-
-                                            <div class="media-body">
-                                                <button class="btn btn-warning btn-min-width mr-1 mb-1 btn-block" data-trigger="hover" data-original-title="Hover Triggered">See All Rankings</button>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                                    <h4 class="card-title text-xs-center">TOP CITIES</h4>
+                                    <p class="card-text"> </p>
                                 </div>
+
+                                <ul class="list-group list-group-flush">
+                                    {% for city in best %}
+                                    <li class="list-group-item">
+                                        <span class="tag tag-default tag-pill bg-success float-xs-right">{{city.station.a}}</span> {{city.city }}
+                                    </li>
+                                    {% if loop.counter == 1 %} This is the First user {% endif %} {% endfor %}
+
+                                </ul>
+
                             </div>
                         </div>
                     </div>
-
                     <!--new section -->
-                    <div class="col-xl-8 col-lg-6">
+
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <h4 class="card-title text-xs-center">TOP WORST CITIES</h4>
+                                    <p class="card-text"> </p>
+                                </div>
+
+                                <ul class="list-group list-group-flush">
+                                    {% for city in worst %}
+                                    <li class="list-group-item">
+                                        <span class="tag tag-default tag-pill bg-danger float-xs-right">{{city.station.a}}</span> {{city.city }}
+                                    </li>
+                                    {% if loop.counter == 1 %} This is the First user {% endif %} {% endfor %}
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 ">
                         <div class="card ">
-                            <div class="card-header">
-                                <h4 class="card-title text-danger">Latest News</h4>
-                                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-                                <div class="heading-elements">
-                                    <ul class="list-inline mb-0">
-                                        <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
-                                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
-                                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
-                                    </ul>
+                            <div class="card-header ">
+                                <h4 class="card-title text-danger text-xs-center  ">Latest News</h4><a class="heading-elements-toggle "><i class="icon-ellipsis font-medium-3 "></i></a>
+                                <div class="heading-elements ">
+
                                 </div>
                             </div>
-                            <div class="card-body collapse in">
-                                <div class="card-block">
-                                    <div class="media-list media-bordered">
-                                        <div class="media">
-                                            <span class="media-left">
-                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-3.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                            </span>
-                                            <div class="media-body">
-                                                <h5 class="media-heading">Cookie candy</h5>
-                                            </div>
-                                            <div class="media-body">
-                                                <p>Hello</p>
+                            <div class="card-body collapse in ">
+                                <div class="card-block ">
+                                    <div class="media-list media-bordered ">
+                                        {% for title in data[:5] %}
+                                        <div class="media "><span class="media-left "><img class="media-object " src="{{title.urlToImage}} " alt="Generic placeholder image " style="width: 64px;height: 64px; " /></span>
+                                            <div class="media-body ">
+                                                <h5 class="media-heading ">
+                                                    <a href="{{title.url}}" target="_blank"> {{ title.title }}</a></h5>
                                             </div>
 
+                                        </div>
+                                        {% if loop.counter == 1 %} This is the First user {% endif %} {% endfor %}
 
-                                        </div>
-                                        <div class="media">
-                                            <span class="media-left">
-                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-6.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                            </span>
-                                            <div class="media-body">
-                                                <h5 class="media-heading">Tootsie roll dessert</h5>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <span class="media-left">
-                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-15.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                            </span>
-                                            <div class="media-body">
-                                                <h5 class="media-heading">Lemon drops ice cream</h5>
-                                            </div>
-                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="media ">
+                                    <div class="media-body ">
+                                        <p class="text-xs-center"><a class="btn btn-warning btn-min-width mr-1 mb-1 text-xs-center" href="{{url_for('news')}}">See All Rankings</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -154,48 +143,58 @@
                     </div>
                 </div>
                 <!--Row match height end-->
-
                 <!-- New Section Breath the clean air-->
-                <div class="app-content content container-fluid">
-                    <div class="content-wrapper">
-                        <div class="content-header row">
-                            <div class="row match-height">
-                                <div class="card ">
-                                    <div class="col-md-12 text-xs-center">
-                                        <div class="px-2 py-3 row mb-0 mt-3">
-                                            <h1 class=" light-blue text-bold-700 ">Latest News</h1>
-                                            <h6 class=" text-bold-700 tag tag-danger ">Protect your air anytime, anywhere
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% for title in data %}
-
-                                <div class="col-xl-4 col-md-6 col-sm-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <img class="card-img-top img-fluid" src="{{ title.urlToImage }}" alt="Card image cap">
-                                            <div class="card-block">
-                                                <h4 class="card-title">{{ title.source.name }}</h4>
-                                                <p class="card-text">{{ title.description }} </p>
-                                                <a href="{{title.url}}" target="blank" class=" btn btn-outline-pink ">Know More About</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% if loop.counter == 1 %} This is the First user {% endif %} {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
+                <!--
+               
             </div>
         </div>
-        <!-- ////////////////////////////////////////////////////////////////////////////-->
+    </div>
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+
+                <script>
+                    $(document).ready(function() {
+                        function geoFindMe() {
+
+                            function success(position) {
+                                const latitude = position.coords.latitude;
+                                const longitude = position.coords.longitude;
+                                console.log(latitude, longitude)
+                                    // $("#lat").val(latitude)
+                                    // $("#lon").val(longitude)
+                                axios.get(`/open?lat=${latitude}&long=${longitude}`).then(function(response) {
+                                    if (response.data) {
+                                        $("#placename").text(response.data.placeName)
+                                        $("#aqivalue").text(response.data.aqi)
+                                        $("#forecast").text(response.data.forecast)
+                                        $("#temp").text(response.data.temp)
+                                        $("#message").text(response.data.message)
+                                        $("#clouds").text(response.data.clouds)
 
 
+                                    }
+                                })
 
+                            }
+
+                            function error() {
+                                console.log('Unable to retrieve your location');
+                            }
+
+                            if (!navigator.geolocation) {
+                                status.textContent = 'Geolocation is not supported by your browser';
+                            } else {
+                                status.textContent = 'Locating…';
+                                navigator.geolocation.getCurrentPosition(success, error);
+                            }
+
+                        }
+
+                        window.addEventListener('load', (event) => {
+                            geoFindMe();
+                        });
+                    });
+                </script>
 </body>
 {% endblock %}

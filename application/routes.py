@@ -1,7 +1,8 @@
 import dateparser
 from application import app,db
-from flask import render_template, request,Response,json
+from flask import render_template, request,Response,json,jsonify
 from pip._vendor import requests
+
 from newsapi import NewsApiClient
 newsapi = NewsApiClient(api_key='65bdc6b66ccc47128ad5934cc48cc804')
 
@@ -9,7 +10,13 @@ newsapi = NewsApiClient(api_key='65bdc6b66ccc47128ad5934cc48cc804')
 @app.route("/index")
 @app.route("/home")
 def index():
-    return render_template("index.html",index=True)
+    Title = newsapi.return_news()
+    worst_cities = newsapi.get_top_cities()
+    best_cities = newsapi.get_bottom_cities()
+    return render_template("index.html",index=True,data=Title['articles'],worst=worst_cities,best=best_cities)
+@app.route("/get_my_ip", methods=["GET"])
+def get_my_ip():
+    return request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
 @app.route("/courses")
 @app.route("/courses/<term>")
 def courses(term=" Spring 2019"):
@@ -24,7 +31,9 @@ def login():
 @app.route("/search")
 def  search():
     return render_template("search-page.html")
-
+@app.route("/test")
+def test():
+    return render_template("test.html")
 @app.route("/worldmap")
 def worldMap():
     return render_template("WorldMap.html")
@@ -44,33 +53,66 @@ def southAmerica():
 def northAmerica():
     return render_template("northAmerica.html")
 @app.route("/news")
-def news(country):
-    data=country
-    print(data)
-    def country_code(country):
-      print(country)
-      for data in CC:
-            if (data["country"] == country):
-                return data["code"]
-    
-    code_output = country_code(country)
-    print("code_output")
-    print(code_output)
-    url="http://newsapi.org/v2/top-headlines?country=%s&category=health&apiKey=65bdc6b66ccc47128ad5934cc48cc804"%(code_output)
-    
+def news():
+    Title = newsapi.return_news()
+    return render_template("news.html",data=Title['articles'])
+@app.route('/open', methods = ['GET', 'POST'])
+def frontPage():
+    lat= request.args.get('lat')   
+    lon = request.args.get('long')
+    print("...............................")
+    print(lat)
+    print(lon)
+    def find_location():
+        api_url = "https://us1.locationiq.com/v1/reverse.php?key=pk.b31969419cb75a4fa46f0419635ee6c3&format=json&lat=%s&lon=%s"%(lat,lon)
+        payload = {}
+        headers= {}
+        response = requests.request("GET", api_url, headers=headers, data = payload)
+        address = json.loads(response.text)
+        city = address["address"]["county"]
+        state =  address["address"]["state"]
+        country = address["address"]["country"]
+        return(city,state,country)
+    city_state_country = find_location()
+    print("..................................")
+    print(city_state_country)
+    print("........................................")
+    url_value = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=%scountry&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970"%(city_state_country[0],city_state_country[1],city_state_country[2])
+    print(url_value)
     payload = {}
-    headers = {}
-    response = requests.request("GET",url, headers=headers,data=payload)
-    news = json.loads(response.text)
-    Title = news["articles"]
-    print(Title)
-    return render_template("news.html",data=Title)
-
+    headers= {}
+    response = requests.request("GET",url_value, headers=headers, data = payload)
+    print(response)
+    Status = json.loads(response.text)["status"]
+    print(Status)
+    Output = json.loads(response.text)["data"]
+    print("if condition worked")
+    value = Output["value"]
+    country = Output["country"]
+    message = Output["text"]
+    
+    print()
+    news(country)
+    print(country)
+    finalData= {}
+    finalData['placeName']=country
+    finalData['aqi'] = value
+    finalData['forecast'] = '192'
+    finalData['temp'] = '192'
+    finalData['forecast'] = '192'
+    finalData['message'] = message
+    
+    return finalData
+    
+    
+    
+    
 @app.route('/result2', methods = ['GET','POST'])
 def result2():
     input = request.form.get('input')
    
-    print(input)   
+    print(request.args.get('lat'))   
+    print(request.args.get('long'))   
     def Lat_Lon_Find(input):
         url = "https://us1.locationiq.com/v1/search.php?key=pk.b31969419cb75a4fa46f0419635ee6c3&q=%s&format=json"%(input)
         payload = {}
@@ -97,6 +139,7 @@ def result2():
             waqi_output = json.loads(response.text)["data"]
             aqi=waqi_output["aqi"]
             print(aqi)  
+            news(country)
         elif(Status_two == "error"):  
             #airpollution api
             url_value = "http://api.airpollutionapi.com/1.0/aqi?lat=%s&lon=%s&APPID=lkoc3osdik3gc8u9hg67u0i4ni"%(result[0],result[1])
@@ -136,10 +179,19 @@ def result2():
     aqi(result)
     
     #output(result)
-    return render_template("result_input.html")
+    finalData={}
+    finalData['placeName']='srinagar'
+    finalData['aqi'] = '72'
+    finalData['forecast'] = '192'
+    finalData['temp'] = '192'
+    finalData['forecast'] = '192'
+    
+    
+ 
+    return finalData
 
 #Getting Data from 2nd api
-@app.route('/searchT', methods = ['GET', 'POST'])
+@app.route('/search', methods = ['GET', 'POST'])
 def searchT():
     if request.method == 'POST':      
         city = request.form.get('city')
@@ -173,7 +225,7 @@ def searchT():
         qualityValue=airResponse["current"]["pollution"]["aqius"]
         # message_window=None
         # message=None
-        # message_window=None
+        # message_window=Nones
         # message_outdoor=None
         
 
@@ -244,7 +296,7 @@ def searchT():
         data['icon']=output
         print(data)    
         
-        return render_template("Result.html",data=data)
+        return render_template("test.html",data=data)
 
         
         # return redirect(url_for('booking', date=date))
