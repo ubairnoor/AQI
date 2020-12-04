@@ -91,6 +91,21 @@ def news(country):
     return render_template("news.html", data=Title)
 
 
+@app.route('/forecast')
+def forecast():
+    # adding waqi api
+    url_value = "https://api.waqi.info/feed/delhi/?token=4a10769fcaf1c9b08c25a271fd1c92b1ab1b1db0"
+
+    print(url_value)
+    payload = {}
+    headers = {}
+    response = requests.request(
+        "GET", url_value, headers=headers, data=payload)
+    print(response)
+    forecast_data = json.loads(response.text)["data"]["forecast"]["daily"]
+    print(forecast_data[0])
+    return render_template("forecast.html")
+
 @app.route('/result2', methods=['GET', 'POST'])
 def result2():
     input = request.form.get('input')
@@ -150,7 +165,8 @@ def result2():
 
         else:
             print("Inside the block")
-
+  
+            
     # def output(result):
 
         #url_value = "http://api.airpollutionapi.com/1.0/aqi?lat=%s&lon=%s&APPID=lkoc3osdik3gc8u9hg67u0i4ni"%(Lat,Lon)
@@ -164,7 +180,7 @@ def result2():
     result = Lat_Lon_Find(input)
     aqi(result)
 
-    # output(result)
+        # output(result)
     return render_template("result_input.html")
 
 # Getting Data from 2nd api
@@ -358,3 +374,4 @@ def user():
 @app.route("/infoaqi")
 def infoaqi():
     return render_template("infoaqi.html", infoaqi=infoaqi)
+
