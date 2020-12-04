@@ -329,6 +329,66 @@ def searchT():
         # return redirect(url_for('booking', date=date))
         # return render_template('main/index.html')
 
+@app.route('/global_temp', methods=['GET', 'POST'])
+def global_temp():
+
+    url = "https://global-warming.org/api/temperature-api"
+    payload = {}
+    headers = {}
+    response = requests.request("GET", url, headers=headers, data=payload)
+    
+    result = []
+    result = json.loads(response.text)["result"]
+    print(result)
+
+    time = []
+    station = []
+    land = []
+
+    for value in result:
+        time.append(value["time"])
+        station.append(value["station"])
+        land.append(value["land"])
+    
+    final_data = {}
+    final_data["time"] = time
+    final_data["station"] = station
+    final_data["land"] = land
+    
+    return final_data
+
+
+@app.route('/testData', methods=['GET', 'POST'])
+def testData():
+
+    url = "https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000019a6ac6e8d7cc45ff6fa12518db0ddd77&format=json&offset=0&limit=20"
+    payload = {}
+    headers = {}
+    response = requests.request("GET", url, headers=headers, data=payload)
+    #print(json.loads(response.text)["records"])
+    result = []
+    result = json.loads(response.text)["records"]
+
+    cities = []
+    aqi_values = []
+
+    for value in result:
+        aqi_values.append(value["pollutant_max"])
+        cities.append(value["city"])
+    print(aqi_values)
+
+    final_data = {}
+    final_data["cities"] = cities
+    final_data["aqi_values"] = aqi_values
+
+    
+    
+    return final_data
+
+        # return redirect(url_for('booking', date=date))
+        # return render_template('main/index.html')
+
+
 
 # @app.route('/booking')
 # def booking():
