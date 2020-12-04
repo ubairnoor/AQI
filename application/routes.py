@@ -2,7 +2,6 @@ import dateparser
 from application import app,db
 from flask import render_template, request,Response,json,jsonify
 from pip._vendor import requests
-
 from newsapi import NewsApiClient
 newsapi = NewsApiClient(api_key='65bdc6b66ccc47128ad5934cc48cc804')
 
@@ -21,7 +20,32 @@ def get_my_ip():
 @app.route("/courses/<term>")
 def courses(term=" Spring 2019"):
     return render_template("courses.html", courseData=courseData, courses= True, term=term)
+@app.route('/testData', methods=['GET', 'POST'])
+def testData():
 
+    url = "https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000019a6ac6e8d7cc45ff6fa12518db0ddd77&format=json&offset=0&limit=20"
+    payload = {}
+    headers = {}
+    response = requests.request("GET", url, headers=headers, data=payload)
+    #print(json.loads(response.text)["records"])
+    result = []
+    result = json.loads(response.text)["records"]
+
+    cities = []
+    aqi_values = []
+
+    for value in result:
+        aqi_values.append(value["pollutant_max"])
+        cities.append(value["city"])
+    print(aqi_values)
+
+    final_data = {}
+    final_data["cities"] = cities
+    final_data["aqi_values"] = aqi_values
+
+    
+    
+    return final_data
 @app.route("/register")
 def register():
     return render_template("index2.html", register= True)

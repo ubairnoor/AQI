@@ -142,6 +142,12 @@
                         </div>
                     </div>
                 </div>
+
+                <div>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                    <canvas id="densityChart" width="600" height="400"></canvas>
+                </div>
+
                 <!--Row match height end-->
                 <!-- New Section Breath the clean air-->
                 <!--
@@ -196,5 +202,35 @@
                         });
                     });
                 </script>
+
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+
+        axios.get("/testData").then(function(response) {
+            console.log("response", response.data)
+            let cities = response.data.cities
+            let aqi = response.data.aqi_values
+            var densityCanvas = document.getElementById("densityChart");
+
+            Chart.defaults.global.defaultFontFamily = "Lato";
+            Chart.defaults.global.defaultFontSize = 18;
+
+            var densityData = {
+                label: 'Aqi values of cities',
+                data: aqi
+            };
+
+            var barChart = new Chart(densityCanvas, {
+                type: 'bar',
+                data: {
+                    labels: cities,
+                    datasets: [densityData]
+                }
+            });
+        });
+    })
+</script>
 {% endblock %}
