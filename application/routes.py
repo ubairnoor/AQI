@@ -190,6 +190,11 @@ def result2():
  
     return finalData
 
+@app.route("/faq")
+def faq():
+    return render_template()
+
+
 #Getting Data from 2nd api
 @app.route('/search', methods = ['GET', 'POST'])
 def searchT():
@@ -626,6 +631,7 @@ CC = [{"country":"Afghanistan","code":"AF"},
 {"country":"Yemen","code":"YE"},
 {"country":"Zambia","code":"ZM"},
 {"country":"Zimbabwe","code":"ZW"},
+
 {"country":"Åland Islands","code":"AX"}
 ]
 
