@@ -142,6 +142,9 @@ def result2():
 def faq():
     return render_template()
 
+@app.route("/shop")
+def shop():
+    return render_template("shop.html")
 
 #Getting Data from 2nd api
 @app.route('/searchT', methods = ['GET', 'POST'])
