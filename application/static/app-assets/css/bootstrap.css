@@ -569,8 +569,9 @@ h2,
 .h2 {
     font-family: "Work Sans", sans-serif !important;
     font-weight: 800 !important;
-    font-size: 2em !important;
+    font-size: 3em !important;
     line-height: 0.9em !important;
+    padding: 10px;
 }
 
 .rainbow-text {
@@ -584,16 +585,16 @@ h2,
     background-repeat: repeat !important;
     /* Use the text as a mask for the background. */
     /* This will show the gradient as a text color rather than element bg. */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
     /* Animate the text when loading the element. */
     /* This animates it on page load and when hovering out. */
-    animation: rainbow-text-animation-rev 0.5s ease forwards;
-    cursor: pointer;
+    animation: rainbow-text-animation-rev 0.5s ease forwards !important;
+    cursor: pointer !important;
 }
 
 .rainbow-text:hover {
-    animation: rainbow-text-animation 0.5s ease forwards;
+    animation: rainbow-text-animation 0.5s ease forwards !important;
 }
 
 

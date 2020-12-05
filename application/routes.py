@@ -227,7 +227,12 @@ def faq():
     return render_template()
 
 @app.route('/search_location',methods = ['GET','POST'])
-def testsearch_location():
+def search_location():
+    message_window=None
+    message=None
+    message_window=None
+    message_outdoor=None
+   
     worst_cities = newsapi.get_top_cities()
     best_cities = newsapi.get_bottom_cities()
     resultant={}
@@ -241,7 +246,7 @@ def testsearch_location():
         for data in courseData:
         
             if data["city"]== input:
-                print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+                
                 city_data=data["city"]
                 state=data["state"]
                 country= data["country"]
@@ -255,18 +260,40 @@ def testsearch_location():
             headers= {}
             response = requests.request("GET",url_value, headers=headers, data = payload)
             print(response)
-            api_output = json.loads(response.text)["data"]
-            print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            api_output = json.loads(response.text)["data"]         
             print(api_output)
             print(api_output["city"])
-            city=api_output["city"]
-           
+            city=api_output["city"] 
             state= api_output['state']
             country= api_output['country']
             aquius= api_output['current']['pollution']['aqius']
             aqichina= api_output['current']['pollution']['aqicn']
             temperature= api_output['current']['weather']['tp']
             humidity= api_output['current']['weather']['hu']
+            qualityValue = api_output['current']['pollution']['aqius']
+            
+            #checking Condition
+            if(qualityValue<50):
+                quality="Good"
+                message="Wear a mask outdoors"  
+            elif(qualityValue>=51 and qualityValue<99):
+                quality="Satisfactory"
+                message="Wear a mask outdoors"
+                message_outdoor="Avoid Outdoor Excercise" 
+                message_window="Close your windows to avoid dirty outdoor air"
+            elif(qualityValue>100 and qualityValue<=200):
+                quality="Unhealthy For Sensitive Groups"
+                message="Wear a mask outdoors"
+                message_window="Close your windows to avoid dirty outdoor air"
+                message_outdoor="Avoid Outdoor Games"
+            elif(qualityValue>200 and qualityValue<=300):
+                quality="Unhealthy"
+            elif(qualityValue>301 and qualityValue<=400):
+                quality="Very Poor"
+            else:
+                quality="Severe"
+                        
+            
             combined_Data={}
             combined_Data['city']=city
             combined_Data['state']=state
@@ -275,10 +302,19 @@ def testsearch_location():
             combined_Data['temperature']=temperature
             combined_Data['humidity']=humidity
             combined_Data['city']=city
-            return render_template("test.html",data=combined_Data,worst_cities_=worst_cities,best_cities_=best_cities)
+            combined_Data['message']=message
+            combined_Data['message_window']=message_window
+            combined_Data['message_outdoor']=message_outdoor
+            combined_Data['quality']=quality
+             
+            return render_template("search_location.html",data=combined_Data,worst_cities_=worst_cities,best_cities_=best_cities)
         else:
             print("no data")
-    return render_template("test.html",data=None,worst_cities_=worst_cities,best_cities_=best_cities)     
+        
+       
+    
+        
+    return render_template("search_location.html",data=None,worst_cities_=worst_cities,best_cities_=best_cities)     
                 
         
      
