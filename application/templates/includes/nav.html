@@ -20,13 +20,16 @@
 
                     </li>
                     <li class="dropdown dropdown-language nav-item"><a id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle nav-link"><i class="icon-sphere"></i><span class="selected-language">World Air Quality</span></a>
-                        <div aria-labelledby="dropdown-flag" class="dropdown-menu"><a href="{{url_for('asia')}}" class="dropdown-item"><i class="flag-icon flag-icon-gb"></i> Asia</a><a href="" class="dropdown-item"><i class="flag-icon flag-icon-fr"></i> Australia</a><a href="#" class="dropdown-item"><i class="flag-icon flag-icon-cn"></i> Africa</a>
-                            <a href="{{url_for('europe')}}" class="dropdown-item"><i class="flag-icon flag-icon-de"></i> Europe</a>
-                        </div>
+
 
 
                     </li>
                     <li class="nav-item"><a id="dropdown-flag" href="{{url_for('news')}}" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="icon-newspaper"></i><span class="selected-language">News</span></a>
+
+
+
+                    </li>
+                    <li class="nav-item"><a id="dropdown-flag" href="{{url_for('shop')}}" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="icon-shopping-cart"></i><span class="selected-language">Shop</span></a>
 
 
 
@@ -40,12 +43,20 @@
 
                 </ul>
                 <ul class="nav navbar-nav float-xs-right">
-                    <input type="text" required data-parsley-required="true" data-parsley-min="3" class="form-control form-control-lg input-lg no-border-top no-border-left no-border-right bottom-darken-4 " id="city" name="city" placeholder="Find Here">
 
+                    </li>
+                    <li class="dropdown dropdown-notification nav-item"><a href="#" data-toggle="dropdown" class="nav-link nav-link-label"><i class="icon-facebook22"></i>Facebook</a>
 
+                    </li>
+                    <li class="dropdown dropdown-notification nav-item"><a href="#" data-toggle="dropdown" class="nav-link nav-link-label"><i class="icon-instagram"></i>Instagram </a>
 
+                    </li>
+                    <li class="dropdown dropdown-notification nav-item"><a href="#" data-toggle="dropdown" class="nav-link nav-link-label"><i class="icon-telegram"></i>Telegram</a>
+
+                    </li>
 
                 </ul>
+
             </div>
         </div>
     </div>

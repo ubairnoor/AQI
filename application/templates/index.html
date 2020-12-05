@@ -1,47 +1,44 @@
 {% extends "layout.html" %} {% block content %}
+<style>
 
+</style>
 
 <body data-open="click" data-menu="vertical-menu" data-col="2-columns" class="  1-column 2-columns  fixed-navbar">
     <div class="app-content content container-fluid">
         <div class="content-wrapper">
             <div class="content-body">
                 <div class="row match-height">
+                    <div class="col-md-2">
+                        <div class="px-2  row mb-0 mt-3">
+                            <h2 class="text-lg-center text-bold-700 rainbow-text" id="temp"> </h2>
+                            <h6 class=" text-sm-center  text-bold-700 ">Temperature(Celcius)</h6>
+                        </div>
+                    </div>
                     <div class="col-md-2 ">
                         <div class="px-2  row mb-0 mt-3">
-                            <h2 class="text-lg-left text-bold-700 rainbow-text " id="placename"></h2>
-                            <h6 class=" text-sm-left  text-bold-700 " id="statename">Jammu And Kashmir</h6>
+                            <h2 class="text-lg-center text-bold-700  " id="aqiusa"></h2>
+                            <h6 class=" text-sm-center  text-bold-700 ">Air Quality Index( USA )</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="px-2  row mb-0 mt-3">
+                            <h2 class="text-lg-center text-bold-900  rainbow_font-size" id="placename"></h2>
+                            <h6 class=" text-sm-center  text-bold-700 " id="state">State</h6>
                         </div>
                     </div>
                     <div class="col-md-2 ">
                         <div class="px-2  row mb-0 mt-3">
-                            <h2 class="text-lg-center text-bold-700 rainbow-text " id="aqivalue"></h2>
-                            <h6 class=" text-sm-center  text-bold-700 ">Air Quality Index</h6>
+                            <h2 class="text-lg-center text-bold-700  " id="aqicn"></h2>
+                            <h6 class=" text-sm-center  text-bold-700 ">Air Quality Index (China)</h6>
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="px-2  row mb-0 mt-3">
-                            <h2 class="text-lg-center text-bold-700 rainbow-text" id="forecast"></h2>
-                            <h6 class=" text-sm-center  text-bold-700 ">7 Days ForeCast</h6>
+                            <h2 class="text-lg-center text-bold-700 " id="humidity"></h2>
+                            <h6 class=" text-sm-center  text-bold-700 ">Humidity</h6>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <div class="px-2  row mb-0 mt-3">
-                            <h2 class="text-lg-center text-bold-700 rainbow-text" id="temp"> degrees</h2>
-                            <h6 class=" text-sm-center  text-bold-700 ">Temperature</h6>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="px-2  row mb-0 mt-3">
-                            <img class="card-img-top img-fluid" src="" alt="Card image cap">
-                            <h6 class=" text-sm-center  text-bold-700 " id="clouds">7 Days ForeCast</h6>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="px-2  row mb-0 mt-3">
-                            <h2 class="text-lg-center text-bold-700 rainbow-text" id="message"></h2>
-                            <h6 class=" text-sm-center  text-bold-700 ">Weather</h6>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="row match-height">
                     <div class="col-md-4 ">
@@ -50,7 +47,7 @@
                             <h6 class=" text-sm-right  text-bold-700 ">Anywhere In The World</h6>
                         </div>
                     </div>
-                    <form action="/search" method="post">
+                    <form action="/search_location" method="post">
                         <div class="col-md-7 ">
                             <div class="px-2 py-3 row mb-0 mt-3">
                                 <fieldset class="form-group position-relative no-border-top text-xs-center"><input type="text" required data-parsley-required="true" data-parsley-min="3" class="form-control form-control-lg input-lg no-border-top no-border-left no-border-right bottom-darken-4 " id="city" name="city" placeholder="Your country, city or location… Press Enter">
@@ -143,9 +140,41 @@
                     </div>
                 </div>
 
-                <div>
-                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-                    <canvas id="densityChart" width="600" height="400"></canvas>
+                <div class="card" style="">
+                    <div class="card-header">
+                        <h4 class="card-title">Basic Tabs</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-block">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link" id="base-tab1" data-toggle="tab" aria-controls="tab1" href="#tab1" aria-expanded="false">AQI PM2.5</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="base-tab2" data-toggle="tab" aria-controls="tab2" href="#tab2" aria-expanded="false">Tab 2</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="base-tab3" data-toggle="tab" aria-controls="tab3" href="#tab3" aria-expanded="true">Tab 3</a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content px-1 pt-1">
+                                <div role="tabpanel" class="tab-pane" id="tab1" aria-expanded="false" aria-labelledby="base-tab1">
+                                    <div>
+                                        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                                        <canvas id="densityChart" width="600" height="400"></canvas>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab2" aria-labelledby="base-tab2" aria-expanded="false">
+                                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                                    <canvas id="densityChart2" width="600" height="400"></canvas>
+                                </div>
+                                <div class="tab-pane active" id="tab3" aria-labelledby="base-tab3" aria-expanded="true">
+                                    <p>Biscuit ice cream halvah candy canes bear claw ice cream cake chocolate bar donut. Toffee cotton candy liquorice. Oat cake lemon drops gingerbread dessert caramels. Sweet dessert jujubes powder sweet sesame snaps.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!--Row match height end-->
@@ -172,11 +201,11 @@
                                 axios.get(`/open?lat=${latitude}&long=${longitude}`).then(function(response) {
                                     if (response.data) {
                                         $("#placename").text(response.data.placeName)
-                                        $("#aqivalue").text(response.data.aqi)
-                                        $("#forecast").text(response.data.forecast)
-                                        $("#temp").text(response.data.temp)
-                                        $("#message").text(response.data.message)
-                                        $("#clouds").text(response.data.clouds)
+                                        $("#state").text(response.data.state)
+                                        $("#aqiusa").text(response.data.aqiusa)
+                                        $("#aqicn").text(response.data.aqichina)
+                                        $("#temp").text(response.data.temperature)
+                                        $("#humidity").text(response.data.humidity)
 
 
                                     }
@@ -213,7 +242,9 @@
             console.log("response", response.data)
             let cities = response.data.cities
             let aqi = response.data.aqi_values
+            let NO2 = response.data.NO2
             var densityCanvas = document.getElementById("densityChart");
+            var densityCanvas2 = document.getElementById("densityChart2");
 
             Chart.defaults.global.defaultFontFamily = "Lato";
             Chart.defaults.global.defaultFontSize = 18;
@@ -223,6 +254,11 @@
                 data: aqi
             };
 
+            var densityData2 = {
+                label: 'NO2 values of cities',
+                data: NO2
+            };
+
             var barChart = new Chart(densityCanvas, {
                 type: 'bar',
                 data: {
@@ -230,7 +266,16 @@
                     datasets: [densityData]
                 }
             });
+
+            var barChart2 = new Chart(densityCanvas2, {
+                type: 'bar',
+                data: {
+                    labels: cities,
+                    datasets: [densityData2]
+                }
+            });
         });
     })
 </script>
+
 {% endblock %}

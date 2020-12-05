@@ -23,38 +23,43 @@ def courses(term=" Spring 2019"):
 @app.route('/testData', methods=['GET', 'POST'])
 def testData():
 
-    url = "https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000019a6ac6e8d7cc45ff6fa12518db0ddd77&format=json&offset=0&limit=20"
+    url = "https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000019a6ac6e8d7cc45ff6fa12518db0ddd77&format=json&offset=0&limit=1600"
     payload = {}
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
     #print(json.loads(response.text)["records"])
     result = []
     result = json.loads(response.text)["records"]
-
+    
     cities = []
     aqi_values = []
+    NO2_values = []
 
     for value in result:
-        aqi_values.append(value["pollutant_max"])
         cities.append(value["city"])
-    print(aqi_values)
+        if value["pollutant_id"] == "PM2.5":
+                aqi_values.append(value["pollutant_max"])
+        if value["pollutant_id"] == "NO2":
+                NO2_values.append(value["pollutant_max"])        
+        
 
     final_data = {}
     final_data["cities"] = cities
     final_data["aqi_values"] = aqi_values
+    final_data["NO2_values"] = NO2_values
 
     
     
     return final_data
+@app.route('/shop')
+def shop():
+    return render_template("shop.html")
 @app.route("/register")
 def register():
     return render_template("index2.html", register= True)
 @app.route("/login")
 def login():
     return render_template("login.html", login= True)
-@app.route("/search")
-def  search():
-    return render_template("search-page.html")
 @app.route("/test")
 def test():
     return render_template("test.html")
@@ -87,7 +92,13 @@ def frontPage():
     print("...............................")
     print(lat)
     print(lon)
-    def find_location():
+    def find_location(lat,lon):
+        print(lat)
+        print(lon)
+        lat = str(float(lat) + 5.3982)
+        lon = str(float(lon) - 2.4279)
+        print(lat)
+        print(lon)
         api_url = "https://us1.locationiq.com/v1/reverse.php?key=pk.b31969419cb75a4fa46f0419635ee6c3&format=json&lat=%s&lon=%s"%(lat,lon)
         payload = {}
         headers= {}
@@ -96,12 +107,16 @@ def frontPage():
         city = address["address"]["county"]
         state =  address["address"]["state"]
         country = address["address"]["country"]
+        if(state == "Jammu and Kashmir"):
+            city ="Srinagar"
+        print(city)
         return(city,state,country)
-    city_state_country = find_location()
+    city_state_country = find_location(lat,lon)
     print("..................................")
     print(city_state_country)
     print("........................................")
-    url_value = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=%scountry&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970"%(city_state_country[0],city_state_country[1],city_state_country[2])
+    
+    url_value = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=%s&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970"%(city_state_country[0],city_state_country[1],city_state_country[2])
     print(url_value)
     payload = {}
     headers= {}
@@ -109,24 +124,17 @@ def frontPage():
     print(response)
     Status = json.loads(response.text)["status"]
     print(Status)
-    Output = json.loads(response.text)["data"]
-    print("if condition worked")
-    value = Output["value"]
-    country = Output["country"]
-    message = Output["text"]
-    
-    print()
-    news(country)
-    print(country)
-    finalData= {}
-    finalData['placeName']=country
-    finalData['aqi'] = value
-    finalData['forecast'] = '192'
-    finalData['temp'] = '192'
-    finalData['forecast'] = '192'
-    finalData['message'] = message
-    
-    return finalData
+    api_output = json.loads(response.text)["data"]
+   
+    api_output['placeName']=api_output["city"]
+    api_output['state'] = api_output['state']
+    api_output['country']= api_output['country']
+    api_output['aqiusa']= api_output['current']['pollution']['aqius']
+    api_output['aqichina']= api_output['current']['pollution']['aqicn']
+    api_output['temperature']= api_output['current']['weather']['tp']
+    api_output['humidity']= api_output['current']['weather']['hu']
+    return api_output
+
     
     
     
@@ -218,7 +226,100 @@ def result2():
 def faq():
     return render_template()
 
-
+@app.route('/search_location',methods = ['GET','POST'])
+def testsearch_location():
+    worst_cities = newsapi.get_top_cities()
+    best_cities = newsapi.get_bottom_cities()
+    resultant={}
+    
+    if request.method == 'POST':
+        city_data=None
+        state = None
+        country = None
+        input = request.form.get('city')
+        input= input.title()
+        for data in courseData:
+        
+            if data["city"]== input:
+                print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+                city_data=data["city"]
+                state=data["state"]
+                country= data["country"]
+                break
+        
+        print(city_data)
+        if(city_data != None and state!=None and country !=None):        
+            url_value = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=%s&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970"%(city_data,state,country)
+            print(url_value)
+            payload = {}
+            headers= {}
+            response = requests.request("GET",url_value, headers=headers, data = payload)
+            print(response)
+            api_output = json.loads(response.text)["data"]
+            print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            print(api_output)
+            print(api_output["city"])
+            city=api_output["city"]
+           
+            state= api_output['state']
+            country= api_output['country']
+            aquius= api_output['current']['pollution']['aqius']
+            aqichina= api_output['current']['pollution']['aqicn']
+            temperature= api_output['current']['weather']['tp']
+            humidity= api_output['current']['weather']['hu']
+            combined_Data={}
+            combined_Data['city']=city
+            combined_Data['state']=state
+            combined_Data['aquius']=aquius
+            combined_Data['aqichina']=aqichina
+            combined_Data['temperature']=temperature
+            combined_Data['humidity']=humidity
+            combined_Data['city']=city
+            return render_template("test.html",data=combined_Data,worst_cities_=worst_cities,best_cities_=best_cities)
+        else:
+            print("no data")
+    return render_template("test.html",data=None,worst_cities_=worst_cities,best_cities_=best_cities)     
+                
+        
+     
+        # print(input)
+        # data_url_value= "https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000019a6ac6e8d7cc45ff6fa12518db0ddd77&format=json&offset=0&limit=100" 
+        # payload = {}
+        # headers= {}
+        # response = requests.request("GET", data_url_value, headers=headers, data = payload)
+        # if(response == "200"):
+            
+        #     data=json.loads(response.text)
+        #     print(data_url_value)
+        #     state=data["records"]
+        #     #print(state)
+        #     for  k in state:
+        #         print('-----------',k["city"]==input)
+        #         if k["city"] == input:
+        #             resultant = k
+        #             break
+        #         else:
+        #             resultant = {}
+        #             continue
+        #         break
+        
+        # else:
+        #     url = "https://us1.locationiq.com/v1/search.php?key=pk.b31969419cb75a4fa46f0419635ee6c3&q=%s&format=json"%(input)
+        #     payload = {}
+        #     headers= {}
+        #     response = requests.request("GET", url, headers=headers, data=payload)
+        #     print(url)
+        #     Lat = json.loads(response.text)[0]['lat']
+        #     Lon = json.loads(response.text)[0]['lon']
+        #     return(Lat,Lon,input)
+        #     url = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=%scountry&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970" %(city,state,country) 
+        
+        
+            
+        # print(resultant)
+        
+    
+         
 #Getting Data from 2nd api
 @app.route('/search', methods = ['GET', 'POST'])
 def searchT():
