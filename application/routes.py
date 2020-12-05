@@ -140,7 +140,62 @@ def result2():
 
 @app.route("/faq")
 def faq():
-    return render_template()
+    return render_template("faq.html")
+
+@app.route("/forecast")
+def forecast():
+    return render_template("forecast.html")
+
+@app.route('/fore_cast', methods=['GET', 'POST'] )
+def fore_cast():
+    url = "https://api.waqi.info/feed/bangalore/?token=4a10769fcaf1c9b08c25a271fd1c92b1ab1b1db0"
+    payload = {}
+    headers = {}
+    response = requests.request("GET", url, headers=headers, data=payload)
+    #print(json.loads(response.text)["records"])
+    result1 = []
+    result2 = []
+    result3 = []
+    result4 = []
+    result1 = json.loads(response.text)["data"]["forecast"]["daily"]["o3"]
+    result2 = json.loads(response.text)["data"]["forecast"]["daily"]["pm10"]
+    result3 = json.loads(response.text)["data"]["forecast"]["daily"]["pm25"]
+    result4 = json.loads(response.text)["data"]["forecast"]["daily"]["uvi"]
+    #print(result)
+    day = []
+    o3_values = []
+    for value in result1:
+        o3_values.append(value["avg"])
+        day.append(value["day"])
+    
+    pm10_values = []
+    for value in result2:
+        pm10_values.append(value["avg"])
+    
+    pm25_values = []
+    for value in result3:
+        pm25_values.append(value["avg"])
+    
+    uvi_values = []
+    for value in result4:
+        uvi_values.append(value["avg"])
+    
+    final_data = {}
+    final_data["o3_values"] = o3_values
+    final_data["pm10_values"] = pm10_values
+    final_data["pm25_values"] = pm25_values
+    final_data["uvi_values"] = uvi_values
+    final_data["day"] = day
+
+    print(final_data)
+
+
+    #print(result)
+    return final_data
+
+@app.route("/worldairqualitymap")
+def worldairqualitymap():
+    return render_template("worldairqualitymap.html")
 
 @app.route("/shop")
 def shop():
