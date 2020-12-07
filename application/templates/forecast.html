@@ -1,0 +1,126 @@
+{% extends "layout.html" %} {% block content %}
+<div class="card" style="">
+    <div class="card-header">
+        <h4 class="card-title">Basic Tabs</h4>
+    </div>
+    <div class="card-body">
+        <div class="card-block">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="base-tab1" data-toggle="tab" aria-controls="tab1" href="#tab1"
+                        aria-expanded="true">o3</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="base-tab2" data-toggle="tab" aria-controls="tab2" href="#tab2"
+                        aria-expanded="false">pm10</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " id="base-tab3" data-toggle="tab" aria-controls="tab3" href="#tab3"
+                        aria-expanded="false">pm25</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " id="base-tab4" data-toggle="tab" aria-controls="tab4" href="#tab4"
+                        aria-expanded="false">uvi</a>
+                </li>
+
+
+            </ul>
+            <div class="tab-content px-1 pt-1">
+                <div role="tabpanel" class="tab-pane active" id="tab1" aria-expanded="true" aria-labelledby="base-tab1">
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                    <canvas id="densityChart" width="600" height="200"></canvas>
+                </div>
+                <div class="tab-pane" id="tab2" aria-labelledby="base-tab2" aria-expanded="false">
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                    <canvas id="densityChart2" width="600" height="200"></canvas>
+                </div>
+                <div class="tab-pane active" id="tab3" aria-labelledby="base-tab3" aria-expanded="false">
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                    <canvas id="densityChart3" width="600" height="200"></canvas>
+                </div>
+                <div class="tab-pane " id="tab4" aria-labelledby="base-tab4" aria-expanded="false">
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                    <canvas id="densityChart4" width="600" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0-0/axios.js"></script>
+<script>
+    $(document).ready(function () {
+
+        axios.get("/fore_cast").then(function (response) {
+            console.log("response", response.data)
+            let o3 = response.data.o3_values
+            let pm10 = response.data.pm10_values
+            let pm25 = response.data.pm25_values
+            let uvi = response.data.uvi_values
+            let day = response.data.day
+            
+            var densityCanvas = document.getElementById("densityChart");
+            var densityCanvas2 = document.getElementById("densityChart2");
+            var densityCanvas3 = document.getElementById("densityChart3");
+            var densityCanvas4 = document.getElementById("densityChart4");
+
+            Chart.defaults.global.defaultFontFamily = "Lato";
+            Chart.defaults.global.defaultFontSize = 18;
+
+            var densityData = {
+                label: 'o3 values forecast',
+                data: o3
+            };
+            var barChart = new Chart(densityCanvas, {
+                type: 'bar',
+                data: {
+                    labels: day,
+
+                    datasets: [densityData]
+                }
+            });
+
+            var densityData2 = {
+                label: 'pm10 values forecast',
+                data: pm10
+
+            };
+            var barChart2 = new Chart(densityCanvas2, {
+                type: 'bar',
+                data: {
+                    labels: day,
+                    datasets: [densityData2]
+                }
+            });
+
+            var densityData3 = {
+                label: 'pm25 values forecast',
+                data: pm25
+
+            };
+            var barChart3 = new Chart(densityCanvas3, {
+                type: 'bar',
+                data: {
+                    labels: day,
+                    datasets: [densityData3]
+                }
+            });
+
+            var densityData4 = {
+                label: 'uvi values forecast',
+                data: uvi
+
+            };
+            var barChart4 = new Chart(densityCanvas4, {
+                type: 'bar',
+                data: {
+                    labels: day,
+                    datasets: [densityData4]
+                }
+            });
+        });
+    })
+</script>
+{% endblock %}
