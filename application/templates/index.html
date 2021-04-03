@@ -11,25 +11,25 @@
                     <div class="col-md-2">
                         <div class="px-2  row mb-0 mt-3">
                             <h2 class="text-lg-center text-bold-700 " id="temp"> </h2>
-                            <h6 class=" text-sm-center  text-bold-700 ">Temperature(Celcius)</h6>
+                            <h6 class=" text-sm-center  text-bold-700 ">Temperature(°C)</h6>
                         </div>
                     </div>
                     <div class="col-md-2 ">
                         <div class="px-2  row mb-0 mt-3">
                             <h2 class="text-lg-center text-bold-700  " id="aqiusa"></h2>
-                            <h6 class=" text-sm-center  text-bold-700 ">Air Quality Index( USA )</h6>
+                            <h6 class=" text-sm-center  text-bold-700 ">AQI( US )</h6>
                         </div>
                     </div>
                     <div class="col-md-4 ">
                         <div class="px-2  row mb-0 mt-3">
                             <h2 class="text-lg-center text-bold-900  " id="placename"></h2>
-                            <h6 class=" text-sm-center  text-bold-700 " id="state">State</h6>
+                            <h6 class=" text-sm-center  text-bold-700 " id="state">Locaion</h6>
                         </div>
                     </div>
                     <div class="col-md-2 ">
                         <div class="px-2  row mb-0 mt-3">
                             <h2 class="text-lg-center text-bold-700 " id="aqicn"></h2>
-                            <h6 class=" text-sm-center  text-bold-700 ">Air Quality Index (China)</h6>
+                            <h6 class=" text-sm-center  text-bold-700 ">AQI(CN)</h6>
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -63,48 +63,6 @@
 
 
                 <div class="row match-height ">
-                    <div class="col-xl-4 col-md-6 col-sm-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-block">
-                                    <h4 class="card-title text-xs-center">TOP CITIES</h4>
-                                    <p class="card-text"> </p>
-                                </div>
-
-                                <ul class="list-group list-group-flush">
-                                    {% for city in best %}
-                                    <li class="list-group-item">
-                                        <span class="tag tag-default tag-pill bg-success float-xs-right">{{city.station.a}}</span> {{city.city }}
-                                    </li>
-                                    {% if loop.counter == 1 %} This is the First user {% endif %} {% endfor %}
-
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!--new section -->
-
-                    <div class="col-xl-4 col-md-6 col-sm-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-block">
-                                    <h4 class="card-title text-xs-center">TOP WORST CITIES</h4>
-                                    <p class="card-text"> </p>
-                                </div>
-
-                                <ul class="list-group list-group-flush">
-                                    {% for city in worst %}
-                                    <li class="list-group-item">
-                                        <span class="tag tag-default tag-pill bg-danger float-xs-right">{{city.station.a}}</span> {{city.city }}
-                                    </li>
-                                    {% if loop.counter == 1 %} This is the First user {% endif %} {% endfor %}
-
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-xl-4 col-lg-6 ">
                         <div class="card ">
                             <div class="card-header ">
@@ -138,11 +96,54 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <h4 class="card-title text-xs-center">Cities with Good Air Quality</h4>
+                                    <p class="card-text"> </p>
+                                </div>
+
+                                <ul class="list-group list-group-flush">
+                                    {% for city in best %}
+                                    <li class="list-group-item">
+                                        <span class="tag tag-default tag-pill bg-success float-xs-right">{{city.station.a}}</span> {{city.city }}
+                                    </li>
+                                    {% if loop.counter == 1 %} This is the First user {% endif %} {% endfor %}
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--new section -->
+
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <h4 class="card-title text-xs-center">Cities with Bad Air Quality</h4>
+                                    <p class="card-text"> </p>
+                                </div>
+
+                                <ul class="list-group list-group-flush">
+                                    {% for city in worst %}
+                                    <li class="list-group-item">
+                                        <span class="tag tag-default tag-pill bg-danger float-xs-right">{{city.station.a}}</span> {{city.city }}
+                                    </li>
+                                    {% if loop.counter == 1 %} This is the First user {% endif %} {% endfor %}
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="card" style="">
+                <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Basic Tabs</h4>
+                        <h4 class="card-title text-xs-center">Pollutant wise city ranking graph</h4>
                     </div>
                     <div class="card-body">
                         <div class="card-block">
@@ -197,7 +198,6 @@
                 <script>
                     $(document).ready(function() {
                         function geoFindMe() {
-
                             function success(position) {
                                 const latitude = position.coords.latitude;
                                 const longitude = position.coords.longitude;

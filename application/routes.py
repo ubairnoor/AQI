@@ -27,26 +27,35 @@ def testData():
     payload = {}
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
-    #print(json.loads(response.text)["records"])
+   
     result = []
     result = json.loads(response.text)["records"]
-    
+
     cities = []
     aqi_values = []
     NO2_values = []
+    CO_values = []
+    SO2_values = []
 
     for value in result:
-        cities.append(value["city"])
+        if (value["city"] not in cities):
+                cities.append(value["city"])
         if value["pollutant_id"] == "PM2.5":
-                aqi_values.append(value["pollutant_max"])
+                aqi_values.append(value["pollutant_avg"])
         if value["pollutant_id"] == "NO2":
-                NO2_values.append(value["pollutant_max"])        
+                NO2_values.append(value["pollutant_avg"]) 
+        if value["pollutant_id"] == "SO2":
+                SO2_values.append(value["pollutant_avg"])
+        if value["pollutant_id"] == "CO":
+                CO_values.append(value["pollutant_avg"])        
         
 
     final_data = {}
     final_data["cities"] = cities
     final_data["aqi_values"] = aqi_values
     final_data["NO2_values"] = NO2_values
+    final_data["SO2_values"] = SO2_values
+    final_data["CO_values"] = CO_values
 
     
     
@@ -58,33 +67,19 @@ def shop():
 def register():
     return render_template("index2.html", register= True)
 @app.route("/login")
-def login():
-    return render_template("login.html", login= True)
-@app.route("/test")
-def test():
-    return render_template("test.html")
+
 @app.route("/worldmap")
-def worldMap():
+def worldmap():
     return render_template("WorldMap.html")
-@app.route("/asia")
-def asia():
-    return render_template("asia.html")
-@app.route("/europe")
-def europe():
-    return render_template("europe.html")
-@app.route("/africa")
-def africa():
-    return render_template("africa.html")
-@app.route("/southAmerica")
-def southAmerica():
-    return render_template("southAmerica.html")
-@app.route("/northAmerica")
-def northAmerica():
+
     return render_template("northAmerica.html")
 @app.route("/news")
 def news():
     Title = newsapi.return_news()
     return render_template("news.html",data=Title['articles'])
+@app.route("/aboutus")
+def aboutus():
+    return render_template("AboutUs.html")
 @app.route('/open', methods = ['GET', 'POST'])
 def frontPage():
     lat= request.args.get('lat')   
@@ -97,9 +92,8 @@ def frontPage():
         print(lon)
         lat = str(float(lat) + 5.3982)
         lon = str(float(lon) - 2.4279)
-        print(lat)
         print(lon)
-        api_url = "https://us1.locationiq.com/v1/reverse.php?key=pk.b31969419cb75a4fa46f0419635ee6c3&format=json&lat=%s&lon=%s"%(lat,lon)
+        api_url = "https://us1.locationiq.com/v1/reverse.php?key=pk.b31969419cb75a4fa46f0419635ee6c3&format=json&lat=34.038303&lon=74.819557"
         payload = {}
         headers= {}
         response = requests.request("GET", api_url, headers=headers, data = payload)
@@ -112,9 +106,7 @@ def frontPage():
         print(city)
         return(city,state,country)
     city_state_country = find_location(lat,lon)
-    print("..................................")
-    print(city_state_country)
-    print("........................................")
+  
     
     url_value = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=%s&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970"%(city_state_country[0],city_state_country[1],city_state_country[2])
     print(url_value)
@@ -133,12 +125,7 @@ def frontPage():
     api_output['aqichina']= api_output['current']['pollution']['aqicn']
     api_output['temperature']= api_output['current']['weather']['tp']
     api_output['humidity']= api_output['current']['weather']['hu']
-    return api_output
-
-    
-    
-    
-    
+    return api_output    
 @app.route('/result2', methods = ['GET','POST'])
 def result2():
     input = request.form.get('input')
@@ -224,8 +211,62 @@ def result2():
 
 @app.route("/faq")
 def faq():
-    return render_template()
+    return render_template("faq.html")
 
+
+@app.route("/forecast")
+def forecast():
+    return render_template("forecast.html")
+@app.route('/fore_cast', methods=['GET', 'POST'] )
+def fore_cast():
+    url = "https://api.waqi.info/feed/bangalore/?token=4a10769fcaf1c9b08c25a271fd1c92b1ab1b1db0"
+    payload = {}
+    headers = {}
+    response = requests.request("GET", url, headers=headers, data=payload)
+    #print(json.loads(response.text)["records"])
+    result1 = []
+    result2 = []
+    result3 = []
+    result4 = []
+    result1 = json.loads(response.text)["data"]["forecast"]["daily"]["o3"]
+    result2 = json.loads(response.text)["data"]["forecast"]["daily"]["pm10"]
+    result3 = json.loads(response.text)["data"]["forecast"]["daily"]["pm25"]
+    result4 = json.loads(response.text)["data"]["forecast"]["daily"]["uvi"]
+    #print(result)
+    day = []
+    o3_values = []
+    for value in result1:
+        o3_values.append(value["avg"])
+        day.append(value["day"])
+    
+    pm10_values = []
+    for value in result2:
+        pm10_values.append(value["avg"])
+    
+    pm25_values = []
+    for value in result3:
+        pm25_values.append(value["avg"])
+    
+    uvi_values = []
+    for value in result4:
+        uvi_values.append(value["avg"])
+    
+    final_data = {}
+    final_data["o3_values"] = o3_values
+    final_data["pm10_values"] = pm10_values
+    final_data["pm25_values"] = pm25_values
+    final_data["uvi_values"] = uvi_values
+    final_data["day"] = day
+
+    print(final_data)
+
+
+    #print(result)
+    return final_data
+
+@app.route("/worldairqualitymap")
+def worldairqualitymap():
+    return render_template("worldairqualitymap.html")
 @app.route('/search_location',methods = ['GET','POST'])
 def search_location():
     message_window=None
@@ -473,55 +514,11 @@ def searchT():
 # def booking():
 #     date = request.args.get('date', None)
 #     return render_template('main/booking.html', date=date) 
-@app.route("/australia")
-def australia():
-    return render_template("australia.html")
+
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
-@app.route("/enrollment")
-def enrollment():
-    id = request.args.get('courseID')
-    title = request.args.get('title')
-    term = request.args.get('term')
-    state = request.args.get('state')
-    city = request.args.get('city')
-    url = "http://api.airvisual.com/v2/city?city=%s&state=%s&country=india&key=ed06533f-c5d9-4b3e-8605-6d3c4c716970" %(city,state)
-    payload = {}
-    headers= {}
-    response = requests.request("GET", url, headers=headers, data = payload)
-    print(url)
-    print(json.loads(response.text))
-    airResponse = json.loads(response.text)["data"] 
-    qualityValue=airResponse["current"]["pollution"]["aqius"]
-    message_window=None
-    message=None
-    message_window=None
-    message_outdoor=None
-    
 
-    if(qualityValue<50):
-        quality="Good"
-        message="Wear a mask outdoors" 
-       
-    elif(qualityValue>=51 and qualityValue<99):
-        quality="Satisfactory"
-        message="Wear a mask outdoors"
-        message_outdoor="Avoid Outdoor Excercise" 
-        message_window="Close your windows to avoid dirty outdoor air"
-    elif(qualityValue>100 and qualityValue<=200):
-        quality="Unhealthy For Sensitive Groups"
-        message="Wear a mask outdoors"
-        message_window="Close your windows to avoid dirty outdoor air"
-        message_outdoor="Avoid Outdoor Games"
-    elif(qualityValue>200 and qualityValue<=300):
-        quality="Unhealthy"
-    elif(qualityValue>301 and qualityValue<=400):
-        quality="Very Poor"
-    else:
-        quality="Severe"
-    #return render_template("enrollment.html", enrollment=True, data={"id":id, "title":title, "term":term ,"location":airResponse["city"], "pollution":airResponse["current"]["pollution"]["aqius"],"quality":quality})
-    return render_template("index.html", enrollment=True, data={"id":id, "title":title, "term":term ,"location":airResponse["city"], "pollution":airResponse["current"]["pollution"]["aqius"],"weather":airResponse["current"]["weather"]["tp"],"Humidity":airResponse["current"]["weather"]["hu"],"pressure":airResponse["current"]["weather"]["pr"],"windspeed":airResponse["current"]["weather"]["ws"],"quality":quality,"message":message,"message_window":message_window,"message_outdoor":message_outdoor})
 #                             
 class  User(db.Document):
     user_id = db.IntField(unique = True)
