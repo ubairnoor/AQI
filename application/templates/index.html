@@ -1,175 +1,318 @@
 {% extends "layout.html" %} {% block content %}
+<style>
+
+</style>
 
 <body data-open="click" data-menu="vertical-menu" data-col="2-columns" class="  1-column 2-columns  fixed-navbar">
-
-
     <div class="app-content content container-fluid">
         <div class="content-wrapper">
-            <div class="content-header row">
-
-
-            </div>
             <div class="content-body">
+                <div class="row match-height">
+                    <div class="col-md-2">
+                        <div class="px-2  row mb-0 mt-3">
+                            <h2 class="text-lg-center text-bold-700 " id="temp"> </h2>
+                            <h6 class=" text-sm-center  text-bold-700 ">Temperature(°C)</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-2 ">
+                        <div class="px-2  row mb-0 mt-3">
+                            <h2 class="text-lg-center text-bold-700  " id="aqiusa"></h2>
+                            <h6 class=" text-sm-center  text-bold-700 ">AQI( US )</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="px-2  row mb-0 mt-3">
+                            <h2 class="text-lg-center text-bold-900  " id="placename"></h2>
+                            <h6 class=" text-sm-center  text-bold-700 " id="state">Locaion</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-2 ">
+                        <div class="px-2  row mb-0 mt-3">
+                            <h2 class="text-lg-center text-bold-700 " id="aqicn"></h2>
+                            <h6 class=" text-sm-center  text-bold-700 ">AQI(CN)</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="px-2  row mb-0 mt-3">
+                            <h2 class="text-lg-center text-bold-700 " id="humidity"></h2>
+                            <h6 class=" text-sm-center  text-bold-700 ">Humidity</h6>
+                        </div>
+                    </div>
+
+                </div>
                 <div class="row match-height">
                     <div class="col-md-4 ">
                         <div class="px-2 py-3 row mb-0 mt-3">
-                            <h1 class="text-lg-right light-blue text-bold-700 ">Explore The Air Quality</h1>
+                            <h1 class="text-lg-right text-bold-700 ">Explore The Air Quality</h1>
                             <h6 class=" text-sm-right  text-bold-700 ">Anywhere In The World</h6>
                         </div>
                     </div>
-                    <form action="/searchT" method="post">
-
+                    <form action="/search_location" method="post">
                         <div class="col-md-7 ">
                             <div class="px-2 py-3 row mb-0 mt-3">
-                                <fieldset class="form-group position-relative no-border-top text-xs-center">
-                                    <input type="text" required data-parsley-required="true" data-parsley-min="3" class="form-control form-control-lg input-lg no-border-top no-border-left no-border-right bottom-darken-4 " id="city" name="city" placeholder="Your country, city or location…">
-                                    <div class="form-control-position ">
-                                        <i class="icon-search font-medium-4" type="submit"> 
-                                        </i>
-
-                                    </div>
+                                <fieldset class="form-group position-relative no-border-top text-xs-center"><input type="text" required data-parsley-required="true" data-parsley-min="3" class="form-control form-control-lg input-lg no-border-top no-border-left no-border-right bottom-darken-4 " id="city" name="city" placeholder="Your country, city or location… Press Enter">
+                                    <div class="form-control-position "><i class="icon-search font-medium-4" type="submit"></i></div>
                                 </fieldset>
-
-
                             </div>
                         </div>
-
                     </form>
 
                 </div>
-
-                <!-- <form action="/" method="post">
-                    <label for="text">Date: </label>
-                    <input type="text" id="date" name="date">
-                </form> -->
+                <!-- <form action="/ " method="post "><label for="text ">Date: </label><input type="text " id="date " name="date "></form>-->
                 <!-- Recent invoice with Statistics -->
-                <div class="row match-height">
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="card ">
-                            <div class="card-header">
-                                <h4 class="card-title text-info ">Live City Ranking</h4>
-                                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-                                <div class="heading-elements">
-                                    <ul class="list-inline mb-0">
-                                        <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
-                                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
-                                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
 
-                                    </ul>
+
+                <div class="row match-height ">
+                    <div class="col-xl-4 col-lg-6 ">
+                        <div class="card ">
+                            <div class="card-header ">
+                                <h4 class="card-title text-danger text-xs-center  ">Latest News</h4><a class="heading-elements-toggle "><i class="icon-ellipsis font-medium-3 "></i></a>
+                                <div class="heading-elements ">
+
                                 </div>
                             </div>
-                            <div class="card-body collapse in">
-                                <div class="card-block">
-                                    <div class="media-list">
-                                        <div class="media">
-                                            <a class="media-left" href="#">
-                                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-3.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Cookie candy</h4>
+                            <div class="card-body collapse in ">
+                                <div class="card-block ">
+                                    <div class="media-list media-bordered ">
+                                        {% for title in data[:5] %}
+                                        <div class="media "><span class="media-left "><img class="media-object " src="{{title.urlToImage}} " alt="Generic placeholder image " style="width: 64px;height: 64px; " /></span>
+                                            <div class="media-body ">
+                                                <h5 class="media-heading ">
+                                                    <a href="{{title.url}}" target="_blank"> {{ title.title }}</a></h5>
                                             </div>
-                                        </div>
-                                        <div class="media">
-                                            <a class="media-left" href="#">
-                                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-6.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Tootsie roll dessert </h4>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <a class="media-left" href="#">
-                                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-13.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Lemon drops ice cream</h4>
-                                            </div>
-                                        </div>
-                                        <div class="media">
 
-                                            <div class="media-body">
-                                                <button class="btn btn-warning btn-min-width mr-1 mb-1 btn-block" data-trigger="hover" data-original-title="Hover Triggered">See All Rankings</button>
-                                            </div>
                                         </div>
+                                        {% if loop.counter == 1 %} This is the First user {% endif %} {% endfor %}
 
+                                    </div>
+
+                                </div>
+                                <div class="media ">
+                                    <div class="media-body ">
+                                        <p class="text-xs-center"><a class="btn btn-warning btn-min-width mr-1 mb-1 text-xs-center" href="{{url_for('news')}}">See All Rankings</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!--new section -->
-                    <div class="col-xl-8 col-lg-6">
-                        <div class="card ">
-                            <div class="card-header">
-                                <h4 class="card-title text-danger">Media List</h4>
-                                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-                                <div class="heading-elements">
-                                    <ul class="list-inline mb-0">
-                                        <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
-                                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
-                                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body collapse in">
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
                                 <div class="card-block">
-                                    <div class="media-list media-bordered">
-                                        <div class="media">
-                                            <span class="media-left">
-                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-3.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                            </span>
-                                            <div class="media-body">
-                                                <h5 class="media-heading">Cookie candy</h5>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <span class="media-left">
-                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-6.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                            </span>
-                                            <div class="media-body">
-                                                <h5 class="media-heading">Tootsie roll dessert</h5>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <span class="media-left">
-                                <img class="media-object" src="static/app-assets/images/portrait/small/avatar-s-15.png" alt="Generic placeholder image" style="width: 64px;height: 64px;" />
-                            </span>
-                                            <div class="media-body">
-                                                <h5 class="media-heading">Lemon drops ice cream</h5>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <h4 class="card-title text-xs-center">Cities with Good Air Quality</h4>
+                                    <p class="card-text"> </p>
+                                </div>
+
+                                <ul class="list-group list-group-flush">
+                                    {% for city in best %}
+                                    <li class="list-group-item">
+                                        <span class="tag tag-default tag-pill bg-success float-xs-right">{{city.station.a}}</span> {{city.city }}
+                                    </li>
+                                    {% if loop.counter == 1 %} This is the First user {% endif %} {% endfor %}
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--new section -->
+
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <h4 class="card-title text-xs-center">Cities with Bad Air Quality</h4>
+                                    <p class="card-text"> </p>
+                                </div>
+
+                                <ul class="list-group list-group-flush">
+                                    {% for city in worst %}
+                                    <li class="list-group-item">
+                                        <span class="tag tag-default tag-pill bg-danger float-xs-right">{{city.station.a}}</span> {{city.city }}
+                                    </li>
+                                    {% if loop.counter == 1 %} This is the First user {% endif %} {% endfor %}
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title text-xs-center">Pollutant wise city ranking graph</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-block">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="base-tab1" data-toggle="tab" aria-controls="tab1" href="#tab1" aria-expanded="true">AQI PM2.5</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="base-tab2" data-toggle="tab" aria-controls="tab2" href="#tab2" aria-expanded="false">NO2</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " id="base-tab3" data-toggle="tab" aria-controls="tab3" href="#tab3" aria-expanded="false">SO2</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " id="base-tab4" data-toggle="tab" aria-controls="tab4" href="#tab4" aria-expanded="false">CO</a>
+                                </li>
+
+
+                            </ul>
+                            <div class="tab-content px-1 pt-1">
+                                <div role="tabpanel" class="tab-pane active" id="tab1" aria-expanded="true" aria-labelledby="base-tab1">
+                                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                                    <canvas id="densityChart" width="600" height="250"></canvas>
+                                </div>
+                                <div class="tab-pane" id="tab2" aria-labelledby="base-tab2" aria-expanded="false">
+                                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                                    <canvas id="densityChart2" width="600" height="250"></canvas>
+                                </div>
+                                <div class="tab-pane active" id="tab3" aria-labelledby="base-tab3" aria-expanded="false">
+                                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                                    <canvas id="densityChart3" width="600" height="250"></canvas>
+                                </div>
+                                <div class="tab-pane " id="tab4" aria-labelledby="base-tab4" aria-expanded="false">
+                                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                                    <canvas id="densityChart4" width="600" height="250"></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--Row match height end-->
-
                 <!-- New Section Breath the clean air-->
-                <div class="row ">
-                    <div class="card ">
-                        <div class="col-md-12 text-xs-center">
-                            <div class="px-2 py-3 row mb-0 mt-3">
-                                <h1 class=" light-blue text-bold-700 ">Breathe Cleaner Air</h1>
-                                <h6 class=" text-bold-700 tag tag-danger ">Protect your air anytime, anywhere
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Breath the clean air End-->
-                    <!-- div Content end-->
-                </div>
-
-
-
+                <!--
+               
             </div>
         </div>
-        <!-- ////////////////////////////////////////////////////////////////////////////-->
+    </div>
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+
+                <script>
+                    $(document).ready(function() {
+                        function geoFindMe() {
+                            function success(position) {
+                                const latitude = position.coords.latitude;
+                                const longitude = position.coords.longitude;
+                                console.log(latitude, longitude)
+                                    // $("#lat").val(latitude)
+                                    // $("#lon").val(longitude)
+                                axios.get(`/open?lat=${latitude}&long=${longitude}`).then(function(response) {
+                                    if (response.data) {
+                                        $("#placename").text(response.data.placeName)
+                                        $("#state").text(response.data.state)
+                                        $("#aqiusa").text(response.data.aqiusa)
+                                        $("#aqicn").text(response.data.aqichina)
+                                        $("#temp").text(response.data.temperature)
+                                        $("#humidity").text(response.data.humidity)
 
 
+                                    }
+                                })
+
+                            }
+
+                            function error() {
+                                console.log('Unable to retrieve your location');
+                            }
+
+                            if (!navigator.geolocation) {
+                                status.textContent = 'Geolocation is not supported by your browser';
+                            } else {
+                                status.textContent = 'Locating…';
+                                navigator.geolocation.getCurrentPosition(success, error);
+                            }
+
+                        }
+
+                        window.addEventListener('load', (event) => {
+                            geoFindMe();
+                        });
+                    });
+                </script>
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+
+        axios.get("/testData").then(function(response) {
+            console.log("response", response.data)
+            let cities = response.data.cities
+            let aqi = response.data.aqi_values
+            let NO2 = response.data.NO2_values
+            let SO2 = response.data.SO2_values
+            let CO = response.data.CO_values
+
+            var densityCanvas = document.getElementById("densityChart");
+            var densityCanvas2 = document.getElementById("densityChart2");
+            var densityCanvas3 = document.getElementById("densityChart3");
+            var densityCanvas4 = document.getElementById("densityChart4");
+
+            Chart.defaults.global.defaultFontFamily = "Lato";
+            Chart.defaults.global.defaultFontSize = 18;
+
+            var densityData = {
+                label: 'AQI values of cities',
+                data: aqi
+            };
+            var barChart = new Chart(densityCanvas, {
+                type: 'bar',
+                data: {
+                    labels: cities,
+
+                    datasets: [densityData]
+                }
+            });
+
+            var densityData2 = {
+                label: 'NO2 values of cities',
+                data: NO2
+
+            };
+            var barChart2 = new Chart(densityCanvas2, {
+                type: 'bar',
+                data: {
+                    labels: cities,
+                    datasets: [densityData2]
+                }
+            });
+
+            var densityData3 = {
+                label: 'SO2 values of cities',
+                data: SO2
+
+            };
+            var barChart3 = new Chart(densityCanvas3, {
+                type: 'bar',
+                data: {
+                    labels: cities,
+                    datasets: [densityData3]
+                }
+            });
+
+            var densityData4 = {
+                label: 'CO values of cities',
+                data: CO
+
+            };
+            var barChart4 = new Chart(densityCanvas4, {
+                type: 'bar',
+                data: {
+                    labels: cities,
+                    datasets: [densityData4]
+                }
+            });
+        });
+    })
+</script>
+
 {% endblock %}
